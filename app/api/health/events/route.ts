@@ -1,0 +1,3 @@
+import {account,failure,crossSite} from '@/lib/server/account';
+import {recordHealth} from '@/lib/server/health';
+export async function POST(req:Request){if(crossSite(req))return Response.json({error:'Cross-site request rejected'},{status:403});try{const a=await account(false,req),raw=await req.text();if(raw.length>200)return Response.json({error:'Invalid event'},{status:400});let d;try{d=JSON.parse(raw);}catch{return Response.json({error:'Invalid event'},{status:400});}if(Object.keys(d??{}).length!==1||d.code!=='draft_storage_failed')return Response.json({error:'Invalid event'},{status:400});await recordHealth(a.id,d.code);return Response.json({recorded:true},{headers:{'Cache-Control':'no-store'}});}catch(e){return failure(e);}}

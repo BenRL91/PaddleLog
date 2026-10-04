@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import {Window} from 'happy-dom';
+const window=new Window({url:'https://app.test/account'});window.document.write(fs.readFileSync('app/account/account.html','utf8').replace(/<script[\s\S]*?<\/script>/g,''));
+const calls=[];let connected=true;
+const fetch=async(url,init={})=>{calls.push({url,body:init.body?JSON.parse(init.body):null});if(url==='/api/auth/config')return Response.json({mode:'supabase',redirectTo:'https://app.test/auth/return',providers:{google:true,apple:false},pendingLink:true});if(url==='/api/auth/session')return Response.json({accountId:'a'});if(init.method==='POST')return Response.json({cancelled:true});return Response.json({accountId:'a',email:'<img src=x onerror=bad()>',methods:[{provider:'email',email:'a@example.test'},...(connected?[{provider:'google',email:'a@example.test'}]:[])]});};
+vm.runInNewContext(fs.readFileSync('public/account-methods.js','utf8'),{document:window.document,location:window.location,history:window.history,fetch,URL,URLSearchParams,confirm:()=>false});
+await new Promise(r=>setTimeout(r,20));const $=id=>window.document.getElementById(id);
+assert.equal($('methods').children.length,2);assert.equal($('addGoogle').disabled,true);assert.equal($('addApple').disabled,true);assert.equal($('accountEmail').querySelector('img'),null);assert.equal($('cancelLink').hidden,false);
+$('cancelLink').click();await new Promise(r=>setTimeout(r,20));assert.ok(calls.some(c=>c.body?.action==='cancel'));
+connected=false;$('retryMethods').click();await new Promise(r=>setTimeout(r,20));assert.equal($('addGoogle').disabled,false);$('addGoogle').click();await new Promise(r=>setTimeout(r,20));assert.ok(!calls.some(c=>c.body?.action==='start'),'declining confirmation makes no linking request');
+await window.happyDOM.close();console.log('PASS: connected methods render as text, Google connected state, Apple unavailable, pending cancellation, refresh and declined confirmation.');

@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import {Window} from 'happy-dom';
+const window=new Window({url:'https://app.test/'});window.document.body.innerHTML='<p id="syncStatus"></p><a href="/leeway-account">Account</a>';
+let renews=0,apiCalls=0,loaded=false,expired=true;const requests=[];
+window.fetch=async(input,init={})=>{const url=String(input);requests.push({url,init});if(url==='/api/auth/config')return Response.json({mode:'supabase'});if(url==='/api/auth/session'){renews++;return Response.json({mode:'supabase',accountId:'account-a'});}assert.equal(new Headers(init.headers).get('x-leeway-account'),'account-a');apiCalls++;return Response.json({}, {status:expired&&apiCalls===1?401:200});};
+const code=fs.readFileSync('public/web-entry.js','utf8').replace("await import('/app.js?v=catalog1');","markLoaded();");
+vm.runInNewContext(code,{window,document:window.document,location:window.location,URL,Headers,Request,BroadcastChannel:undefined,markLoaded:()=>{loaded=true;}});
+for(let i=0;i<20&&!loaded;i++)await new Promise(r=>setTimeout(r,5));assert.equal(loaded,true);assert.equal(renews,1);
+assert.equal((await window.fetch('/api/state')).status,200);assert.equal(apiCalls,2);assert.equal(renews,2);
+assert.equal(window.document.querySelector('a').textContent,'LeewayPB sign-in');
+await window.happyDOM.close();console.log('PASS: browser bootstrap restores session before loading library and retries an expired API session with account binding.');

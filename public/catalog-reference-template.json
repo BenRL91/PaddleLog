@@ -1,0 +1,24 @@
+[
+  {
+    "brand": "Example Brand",
+    "model": "Example Model",
+    "shape": "Hybrid",
+    "reference": {
+      "kind": "manufacturer",
+      "name": "Replace with actual source name",
+      "url": "",
+      "asOf": "",
+      "values": {
+        "staticWeight": "",
+        "length": "",
+        "width": "",
+        "thickness": "",
+        "swingWeight": "",
+        "twistWeight": "",
+        "serveSpeed": "",
+        "volleySpeed": ""
+      }
+    },
+    "thickness": 16
+  }
+]

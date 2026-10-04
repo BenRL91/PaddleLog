@@ -1,0 +1,221 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PaddleLog setup</title><style>body{max-width:850px;margin:30px auto;padding:18px;font:16px/1.6 system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}a{padding:12px;display:inline-block}</style><a href="/">Back to PaddleLog</a><a href="/monetization.html">Subscription and sign-in setup</a><pre># PaddleLog architecture and audit — September 29, 2026
+
+Billing update: MONETIZATION.md supersedes this audit’s original no-paywall status.
+Free now permits three active paddles; JSON export is Pro. Purchases remain disabled.
+
+## What was found
+
+The existing product is a functioning vanilla HTML/ES-module application served by a
+Vinext route on Cloudflare Workers through ChatGPT Sites. D1 stores JSON; R2 stores
+photos. The private Sites gate authenticates the owner. React is scaffold infrastructure,
+not the application UI. Rewriting it would increase regression risk without solving saving.
+
+Working features retained: collapsed native details/summary accordions, paddle CRUD,
+Shape, photos, favorites/filter/sort, paddle picker, session CRUD, lifecycle periods,
+hours and shared timeline, catalog CSV/JSON import, manual entry, JSON backup/restore,
+explicit in-app confirmations, decimal inputs and three-way conflict merging.
+
+Risks found: one shared database row, photos without per-account ownership, one global
+browser draft key, photo bytes lost before upload, no account-deletion path, no explicit
+entitlement boundary, no native build or billing boundary. Prior VM tests did not prove
+browser/iPhone behavior. Data limit is 2 MB per account snapshot.
+
+## Implemented architecture
+
+Web -&gt; trusted Sites identity adapter -&gt; internal UUID account -&gt; account-scoped D1
+snapshot + owned R2 objects. All data APIs authenticate independently of the outer site
+gate. UUIDs are suitable for Apple&#x27;s appAccountToken and are independent of subscription
+providers. Sites subjects remain site-specific; they must not be treated as global Leeway IDs.
+A future OIDC identity adapter must map verified issuer + subject to the same account,
+using an authenticated linking flow. Never auto-link identities merely by email.
+
+The legacy owner migration is guarded by a hash of the owner email verified during the
+audit and supplied by trusted Sites authentication. It is not first-visitor claiming.
+It preserves the legacy row until account deletion. Existing photos remain readable only
+by that owner. New photos carry account ownership and account-prefixed object keys.
+
+Account deletion marks the account deleting, prevents writes, purges photo prefixes,
+then atomically removes account records, grants and the owner&#x27;s legacy data. Failed
+purges can be retried from the app. This deletes PaddleLog data, not the ChatGPT account.
+Hosting backup/log retention must be established before a public retention promise.
+
+Drafts: synchronous per-field local text persistence; scoped by UUID; explicit server
+Save; timeout/transient retries; stable IDs and compare-and-swap revisions; three-way
+merge and conflict feedback; local draft removal only after acknowledgment. Close is
+blocked if local draft storage fails; unload is warned during unsafe work. Beforeunload
+is best effort on iOS, so persistence happens before that event. Pending originals use
+IndexedDB, survive failed upload, and must be retried or explicitly discarded before
+saving a paddle. Browser storage may be evicted or cleared; it is not a cloud backup.
+
+The app keeps account snapshots as the compatibility write contract to avoid a risky
+rewrite. This is account isolation, not a fully normalized analytics database. Before
+large multi-user launch, migrate through a versioned repository to indexed paddle,
+session, period, measurement and model tables; retain the export/import contract and
+revision/idempotency semantics. Paginate sessions and add change cursors at that point.
+
+## Model boundaries
+
+`public/catalog.js`: Brand -&gt; Model -&gt; model metadata, deterministic IDs for the
+account-imported namespace. `modelId` is optional on a physical paddle. Manual entries
+remain valid; measured fields never get overwritten by a catalog refresh. Introduce a
+separate canonical-provider namespace and external IDs for licensed catalog sync.
+
+Physical paddle: all prior fields plus static weight (oz), started/retired dates, inactive
+status, replacement paddle ID, optional model reference and measurement snapshots.
+Snapshots capture changes to measured performance/setup with timestamps. Sessions keep
+absolute ISO start/end (hours derive from their duration). Usage periods represent
+rotation intervals, not hours; multiple periods remain supported. Removed predecessor
+IDs may remain as historical references. Analytics UI is intentionally unchanged.
+
+`shared/contracts.ts`: auth, secure storage, native capabilities, entitlements, purchase
+provider and server transaction verification contracts. `public/entitlements.js` answers
+access from active grants regardless of origin. `entitlement_grants` has provider-source
+references for idempotent ingestion; no client endpoint creates grants and no paywall
+is enabled. Only a trusted verified transaction/admin service may write grants.
+
+## Native and security boundaries
+
+`native/` builds the same HTML/modules into local packaged assets. Capacitor and plugins
+are installed. Native bootstrap intentionally refuses an unconfigured auth/API setup.
+Web cookies are not a supported native authentication strategy. Backend JWT verification,
+OIDC PKCE sign-in, Keychain token storage, CORS, native photo transport, and native account
+navigation still need implementation against the selected real identity provider.
+Camera, share, haptic, lifecycle, network and deep-link adapters are prepared; they are
+not yet complete product flows. Push is a contract only. No secrets are in client code.
+
+StoreKit Swift boundary supports product lookup, purchase outcomes, current-entitlement
+restore and deferred finishing. It is not compiled or registered as a Capacitor plugin.
+Server verification and notifications are not deployed. The purchase coordinator never
+finishes a transaction or reports completion before a successful server acknowledgment.
+Do not sell subscriptions with this scaffold alone.
+
+## Verification limits
+
+Run `pnpm test`, `pnpm exec tsc --noEmit`, `pnpm native:build`, and the Sites build.
+Tests cover real SQLite migrations/queries plus VM form logic and mocked storage.
+They are not Safari interaction or device tests. The available browser preview was
+blocked by its security policy; no alternative was used to bypass that restriction.
+Actual iPhone layout/keyboard/camera QA and native Xcode compilation remain release gates.
+There is no service worker/offline cold-start cache; online initial load is still required.
+
+
+# PaddleLog release readiness
+
+September 29, 2026. This is a substantial Web reliability/architecture upgrade, not a
+claim of App Store compliance or a TestFlight-ready binary.
+
+## Owner decisions and access needed
+
+- Apple Developer Program membership; authorized App Store Connect access; Mac/Xcode
+  and signing access. No password, private key or certificate should go in this repo.
+- Final registered bundle identifier, developer team, app record, subscription group,
+  product identifiers, pricing, regions, billing periods and free trial decisions.
+- Select the shared LeewayPB identity provider and provide its configured issuer/client
+  settings through server configuration. Decide whether native Apple sign-in plus Web
+  OIDC are offered. Implement verified account linking before expanding to other apps.
+- Legal operator/contact, privacy policy/support URLs, retention policy, terms/EULA,
+  export/backup policy and support process. Current privacy notice is private-preview
+  information, not finalized public legal documentation.
+- Approve actual Free/Pro limits before any enforcement. No features were paywalled.
+
+## Engineering gates before TestFlight
+
+1. Keep the private Web deployment and export a backup. Confirm the owner migration on
+   the real account. Keep a database rollback backup; don&#x27;t drop legacy data on release.
+2. Configure OIDC external-browser Authorization Code + PKCE, native callback/universal
+   links, server issuer/audience/signature/expiry verification and authenticated identity
+   linking. Implement Keychain refresh-token storage and revoked-session behavior.
+   The current Sites adapter remains Web-only; do not forward or fake trusted headers.
+3. Finish native transport: HTTPS API allowlist/CORS, authenticated photo blob downloads,
+   native sign-out/account deletion/export/share, token refresh and resume refresh.
+   Preserve drafts through authentication expiration and account changes.
+4. Run `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm exec tsc --noEmit`,
+   `pnpm native:build`. Set the real `PADDLELIFE_APP_ID` and `VITE_API_ORIGIN` before the
+   native build. From `native`, run `pnpm exec cap add ios`, `pnpm exec cap sync ios`,
+   and `pnpm exec cap open ios`. Commit generated native sources after configuration.
+5. Configure signing team, bundle ID and app version/build in Xcode. Check current Apple
+   required SDK/toolchain on upload day. Current Capacitor docs require Xcode 26+ and
+   iOS 15+; dependencies and the target device matrix must agree.
+6. If monetization is included: register StoreKit plugin, implement Transaction.updates,
+   product/paywall disclosures, purchase pending/cancel/error handling, Restore Purchases
+   and subscription management. Bind each purchase to the internal account UUID.
+7. Implement a server Apple JWS verifier with trusted certificate validation, app bundle,
+   environment/product allowlists, account token binding, signed dates, expiry/refund/
+   revocation checks. Reject ownership reassignment. Deduplicate transaction/event IDs.
+   Configure App Store Server API credentials as server secrets and V2 notifications.
+   Reconcile renewals, grace/billing retry, expiration, refunds, family sharing policy,
+   upgrades/downgrades and app relaunch. Finish StoreKit transactions only after durable
+   server acknowledgment. Never trust a client Boolean or store receipt in logs.
+8. Add purpose strings only for actually used camera/photo access. Verify plugin privacy
+   manifests, required-reason APIs, data collection declarations and entitlements. Push
+   stays disabled unless APNs and useful opt-in functionality are implemented.
+9. Real iPhone Safari + native QA (small and large screens, keyboard and safe areas):
+   add/edit/delete paddle; every tab; two usage periods; sessions create/edit/delete;
+   total hours/timeline; favorite/filter/sort; dropdown; accordion; catalog manual/import;
+   JSON export/import/malformed input; photo upload/retry/discard; refresh/reopen.
+10. Failure matrix on device: airplane mode during save, suspend/kill mid-draft and mid-photo,
+    storage unavailable/full, duplicate Save taps, lost acknowledgment, concurrent edits,
+    failed session deletion, auth expiry, sign-out/account switch with draft, account deletion
+    mid-purge/retry, network resume, VoiceOver/large text, dark UI contrast. Browser tests
+    were blocked in this environment and have not been substituted by VM tests.
+11. Complete security/privacy review: tenant isolation against live adapters, CSRF/CORS,
+    request/rate limits, bounded uploads, operational monitoring without personal content,
+    restore drill, photo-inclusive export, deletion from backups/retention, legal policy.
+    Current snapshots are capped at 2 MB; normalize/paginate before large scale usage.
+12. On Mac run simulator/device tests and StoreKit local configuration tests. Archive a
+    Release build in Xcode, Validate App, then Distribute App -&gt; App Store Connect -&gt; Upload.
+
+## TestFlight steps
+
+1. Create the App Store Connect app with the identical registered bundle ID and correct
+   platform, name and primary language. Complete agreements/tax/banking for paid products.
+2. Upload the signed archive, wait for processing, resolve signing/privacy manifest errors
+   and answer export-compliance questions based on actual encryption use.
+3. Add internal testers, assign the processed build and test real account/cloud flows.
+4. For external testing, enter beta description, feedback contact, review contact and a
+   working review account/instructions; submit the build for Beta App Review as required.
+5. Test sandbox purchases/restore across devices, renewals/expiry/refunds and deletion.
+   Gather crash and feedback results. Resolve release blockers before expanding testers.
+
+## App Store submission steps
+
+1. Finish public support URL, privacy-policy URL, terms/EULA, screenshots for required
+   display sizes, description/keywords, age rating, category and accessibility information.
+2. Complete App Privacy answers from the actual app and all SDKs: identity/account data,
+   user content/photos, diagnostics, tracking/advertising (do not assume &#x27;none&#x27; without audit).
+3. Confirm in-app account deletion is discoverable and functional; explain that deletion
+   does not cancel Apple subscriptions and provide subscription management. If using
+   Sign in with Apple, revoke its tokens during deletion. Finalize retention exceptions.
+4. Configure subscription products and group, durations/prices/localizations, review
+   screenshots and disclosures. Submit initial in-app purchases with the app as required.
+   Restore purchases must work for the signed-in owner without granting another account.
+5. Verify current App Review Guidelines, especially minimum functionality (4.2), purchases
+   and subscriptions (3.1), privacy/account deletion (5.1), login services and regional rules.
+   A useful native experience is required; packaging a URL alone does not establish eligibility.
+6. Choose the tested build, complete review notes/demo access, attach purchases, select
+   release method, submit for review. Monitor messages, resolve issues, then release.
+   Approval cannot be guaranteed by code inspection.
+
+## Recommended Free / Pro boundaries (proposal only)
+
+Free: manual specs, basic photos, favorites, session CRUD, hours, lifecycle dates, all
+reliability/draft protections, account deletion and personal data export. Consider 3–5
+paddles for new accounts, with existing libraries grandfathered and always editable/exportable.
+
+Pro: unlimited new paddles, richer history/analytics, comparisons, measurement trends,
+advanced filters, multiple photos, enhanced backup and future enthusiast tools. Keep
+basic cross-device recovery available where economically feasible; don&#x27;t charge to recover
+existing data. Never lock account deletion or make personal data portability contingent
+on payment. Entitlements can come from Apple, Web, lifetime, promotions or Leeway all-access.
+
+## Authoritative references to recheck at submission
+
+- https://developer.apple.com/app-store/review/guidelines/
+- https://developer.apple.com/support/offering-account-deletion-in-your-app/
+- https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy/
+- https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/
+- https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/
+- https://developer.apple.com/documentation/storekit/
+- https://capacitorjs.com/docs/ios
+- https://capacitorjs.com/docs/apis/preferences
+</pre></html>

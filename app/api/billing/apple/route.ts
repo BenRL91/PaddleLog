@@ -1,0 +1,4 @@
+import {account,failure,crossSite} from '@/lib/server/account';
+import {configuredAppleVerifier} from '@/lib/server/apple-verifier';
+import {syncAppleTransaction} from '@/lib/server/apple-sync';
+export async function POST(req:Request){if(crossSite(req))return Response.json({error:'Cross-site request rejected.'},{status:403});try{const a=await account(false,req);const setup=await configuredAppleVerifier();const raw=await req.text();if(raw.length>200000)return Response.json({error:'Transaction is too large.'},{status:413});let signed;try{signed=JSON.parse(raw).signedTransaction;if(typeof signed!=='string'||signed.length<10)throw new Error();}catch{return Response.json({error:'Invalid transaction request.'},{status:400});}const result=await syncAppleTransaction(a.id,signed,setup.verifier,setup.configuration);return Response.json(result,{headers:{'Cache-Control':'no-store'}});}catch(e){return failure(e);}}

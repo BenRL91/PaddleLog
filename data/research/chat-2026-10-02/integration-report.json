@@ -1,0 +1,65 @@
+{
+  "acceptedNewIds": [
+    "plref_3b99f3d46e50872f",
+    "plref_1255a798fabf7b27",
+    "plref_884d9c0fbe9646c5",
+    "plref_7b5e5f37cbc76dfa",
+    "plref_c428a913a926f023",
+    "plref_ef9987ef062cd656",
+    "plref_85c83b9693a4a525"
+  ],
+  "overlapIds": [
+    "plref_61a11984784f435f",
+    "plref_2f7c592e7039e115",
+    "plref_0733a5bb4276fb1f",
+    "plref_2f07662cddaf05ed",
+    "plref_c2d93840823e992b",
+    "plref_453bc447759a6ad6",
+    "plref_fa0fe5e82d1c3cf0",
+    "plref_d68ca973608c0ff1",
+    "plref_34efc87fe562f939",
+    "plref_31a4368d04f57e39"
+  ],
+  "referenceCorrections": [
+    {
+      "id": "plref_5ded35e819d5ba7b",
+      "priorWidth": 7.6,
+      "widthRange": {
+        "min": 7.5,
+        "max": 7.7
+      },
+      "withheldFields": [
+        "swingWeight",
+        "twistWeight"
+      ]
+    },
+    {
+      "id": "plref_05ff2a21c2934374",
+      "priorWidth": 7.3,
+      "widthRange": {
+        "min": 7.2,
+        "max": 7.4
+      },
+      "withheldFields": [
+        "swingWeight",
+        "twistWeight",
+        "gripCircumference"
+      ]
+    },
+    {
+      "id": "plref_e7a2e2c6f41f41d5",
+      "priorWidth": 7.6,
+      "widthRange": {
+        "min": 7.5,
+        "max": 7.7
+      },
+      "withheldFields": [
+        "swingWeight",
+        "twistWeight",
+        "gripCircumference",
+        "staticWeightOz"
+      ]
+    }
+  ],
+  "newCandidates": "Retained for later exact identity review; not inserted."
+}

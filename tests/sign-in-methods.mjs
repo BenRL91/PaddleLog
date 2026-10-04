@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import ts from 'typescript';import {createClient} from '@supabase/supabase-js';
+const deps={createClient};async function load(path){globalThis.methodDeps=deps;const code=fs.readFileSync(path,'utf8').replace(/^import .*;\s*$/gm,'');return import('data:text/javascript;base64,'+Buffer.from(ts.transpileModule('const {'+Object.keys(deps).join(',')+'}=globalThis.methodDeps;\n'+code,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText).toString('base64'));}
+Object.assign(deps,await load('lib/server/web-session.ts'));
+const {beginMethodLink,completeMethodLink,pendingLink,linkHeader}=await load('lib/server/sign-in-methods.ts');
+const token=Buffer.from(JSON.stringify({alg:'HS256'})).toString('base64url')+'.'+Buffer.from(JSON.stringify({exp:Math.floor(Date.now()/1000)+3600,sub:'owner'})).toString('base64url')+'.fixture';
+let subject='owner',connected=false,reject=false,calls=[];const user=()=>({id:subject,email:'owner@example.test',identities:[{provider:'email'},...(connected?[{provider:'google'}]:[])]});
+globalThis.fetch=async(url,init)=>{const u=new URL(url);calls.push(u.pathname);if(u.pathname.endsWith('/identities/authorize')){assert.equal(u.searchParams.get('provider'),'google');assert.equal(u.searchParams.get('prompt'),'select_account');assert.ok(u.searchParams.get('code_challenge'));assert.equal(u.searchParams.get('redirect_to'),'https://app.test/auth/return');return Response.json({url:'https://accounts.google.com/o/oauth2/auth?state=fixture'});}if(u.pathname.endsWith('/token')){assert.ok(JSON.parse(init.body).code_verifier);if(reject)return Response.json({msg:'Invalid code'},{status:400});connected=true;return Response.json({access_token:token,refresh_token:'rotated',expires_in:3600,token_type:'bearer',user:user()});}assert.equal(u.pathname,'/auth/v1/user');return Response.json(user());};
+const config={SUPABASE_URL:'https://provider.test',SUPABASE_PUBLISHABLE_KEY:'public-test'};
+const req=(extra='')=>new Request('https://app.test/api/auth/methods',{headers:{cookie:'__Host-leeway-access='+token+'; __Host-leeway-refresh=refresh; '+extra}});
+const started=await beginMethodLink(req(),config,'google','https://app.test/auth/return');assert.equal(started.pending.subject,'owner');assert.ok(Object.keys(started.pending.proof).length);assert.ok(!JSON.stringify(started.pending).includes(token));
+const linkedReq=req(linkHeader(started.pending).split(';')[0]);assert.equal(pendingLink(linkedReq).subject,'owner');
+subject='another';await assert.rejects(completeMethodLink(linkedReq,config,'code'),/account changed/);assert.ok(!calls.some(c=>c.endsWith('/token')));subject='owner';
+reject=true;await assert.rejects(completeMethodLink(linkedReq,config,'bad'),/Could not verify/);reject=false;
+const result=await completeMethodLink(linkedReq,config,'good');assert.equal(result.access_token,token);assert.equal(result.user.id,'owner');
+await assert.rejects(beginMethodLink(req(),config,'google','https://app.test/auth/return'),/already connected/);
+assert.equal(pendingLink(req(linkHeader({...started.pending,expires:Date.now()-1}).split(';')[0])),null);
+await assert.rejects(completeMethodLink(req(),config,'code'),/expired/);
+assert.equal(pendingLink(req('__Host-leeway-link=garbage')),null);
+assert.match(linkHeader(started.pending),/HttpOnly; Secure; SameSite=Lax/);
+console.log('PASS: actual SDK manual linking, provider PKCE challenge, token-free proof cookie, same-user callback verification, account-switch rejection, provider failure, existing method, expiry and malformed cookie.');

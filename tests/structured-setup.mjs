@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {Window} from 'happy-dom';
+import {estimateWeights,normalizeWeights} from '../public/weight-math.js';
+import {createSetupTools} from '../public/setup-tools.js';
+import {homeSpecs} from '../public/reference-comparison.js';
+const item={id:'x',zone:'throat',type:'tungsten',label:'',grams:6,quantity:2,positionCm:null,lateralCm:null};
+assert.equal(normalizeWeights({items:[item]}).items[0].grams,6);const result=estimateWeights({base:{grams:200,swingWeight:100,balanceCm:20},items:[item]});assert.equal(result.grams,206);assert.equal(result.swingDelta,null);assert.equal(result.twistDelta,null);assert.equal(result.balanceCm,null);assert.equal(result.swingWeight,null);
+assert.throws(()=>normalizeWeights({items:[{...item,quantity:0}]}));assert.throws(()=>normalizeWeights({items:[{...item,grams:-2}]}));
+const p={staticWeight:9.74,configuration:{tuningLab:{appliedFields:['staticWeight'],estimates:{staticWeight:9.74}}}};assert.equal(homeSpecs(p,[])[0].source,'Tuning Lab estimate');assert.equal(homeSpecs({...p,staticWeight:8.3},[])[0].source,'Your paddle');
+const win=new Window();win.document.write(fs.readFileSync('app/paddle.html','utf8').replace(/<script[\s\S]*?<\/script>/g,''));const doc=win.document,tools=createSetupTools({doc,getState:()=>({paddles:[]}),hours:()=>0,paddleName:()=>'',confirm:async()=>true,onDraft:()=>{},canCompare:async()=>false});doc.getElementById('weightConfig').value=JSON.stringify({base:{},items:[item]});tools.refresh();assert.equal(doc.querySelector('[data-key=grams]').value,'3');const q=doc.querySelector('[data-key=quantity]');q.value='3';q.dispatchEvent(new win.Event('input',{bubbles:true}));assert.equal(JSON.parse(doc.getElementById('weightConfig').value).items[0].grams,9);assert.equal(doc.querySelector('[data-key=positionCm]').value,'');assert.equal(doc.querySelector('[data-key=label]'),null);for(const id of ['setupTop','setupSides','setupButt','undergripNotes'])assert.equal(doc.getElementById(id).type,'hidden');assert.equal(doc.getElementById('undergripModel').tagName,'SELECT');await win.happyDOM.abort();console.log('PASS: grams-per-piece × quantity, optional positions stay unknown, dropdown-only setup, and Tuning Lab spec provenance.');

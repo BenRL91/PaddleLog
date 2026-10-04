@@ -1,0 +1,52 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {modelApproval,evaluateCompetition,modelKey} from '../public/competition.js';
+const now=Date.parse('2026-10-03T12:00:00Z'),sourceUrl='https://example.test/rules';
+const p={id:'p',brand:'Test',model:'Model',shape:'Wide',thickness:16};
+const rule={id:'approval',type:'approval',sourceUrl,lastVerified:'2026-10-02',organizations:['TEST']};
+const ruleset={id:'test',coverage:'partial',lastVerified:'2026-10-02',rules:[rule]};
+const a={modelKey:modelKey(p),organization:'TEST',status:'approved',sourceUrl,lastVerified:'2026-10-02'};
+const run=(records,rs=ruleset,paddle=p)=>modelApproval(paddle,rs,{approvals:records},now);
+assert.equal(run([a]).status,'APPROVED');assert.equal(run([{...a,status:'delisted'}]).status,'UNAPPROVED');assert.equal(run([]).status,'NOT_VERIFIED');assert.equal(run([{...a,verificationState:'importedClaim'}]).status,'NOT_VERIFIED');assert.equal(run([{...a,lastVerified:'2025-01-01'}]).status,'NOT_VERIFIED');assert.equal(run([a],{...ruleset,endsAt:'2026-09-01'}).status,'NOT_VERIFIED');
+assert.equal(run([a,{...a,status:'delisted'}]).status,'UNAPPROVED');assert.equal(run([{...a,status:'delisted'}],{...ruleset,rules:[{...rule,organizations:['TEST','OTHER']}]}).status,'NOT_VERIFIED');
+const catalog={...a,modelKey:undefined,catalogId:'ref',brand:p.brand,model:p.model,thicknessMm:16};assert.equal(run([catalog]).status,'APPROVED');assert.equal(run([catalog,{...catalog,catalogId:'ambiguous'}]).status,'NOT_VERIFIED');assert.equal(run([catalog],ruleset,{...p,thickness:14}).status,'NOT_VERIFIED');assert.equal(run([catalog],ruleset,{...p,modelId:'ref',thickness:16.2}).status,'APPROVED');
+assert.ok(evaluateCompetition(p,ruleset,{approvals:[catalog]},now).issues.some(x=>x.code==='MODEL_APPROVAL_RECORDED'));
+const production=JSON.parse(fs.readFileSync('public/competition-data.json'));const boom=production.approvals.find(x=>x.catalogIds?.includes('plref_cdc4e21142224c64'));assert.equal(modelApproval({...boom,modelId:'plref_cdc4e21142224c64'},production.rulesets.find(x=>x.id==='usap'),production,now).status,'APPROVED');
+assert.equal(production.approvals.filter(x=>x.verificationState==='verified').length,5641);
+console.log('PASS: approved/unapproved/unknown badges, stale policy/evidence, superseding records, alternative paths, manual exact match, ambiguity, variant isolation, and verified Boomstik USAP approval.');
+
+// Complete official-list absence is a ruleset-specific negative, never a blanket unit verdict.
+const absent={...p,modelId:'reference-absent',model:'Absent Model'};
+const verified={...a,id:'row',brand:'Other',model:'Other Model',verificationState:'verified'};
+const complete={approvals:[verified],officialLists:[{organization:'TEST',count:1,complete:true,sourceUrl}],officialListUpdatedAt:'2026-10-02',approvalSnapshot:{reviewDays:30}};
+const listing=d=>modelApproval(absent,ruleset,d,now);
+assert.equal(listing(complete).status,'UNAPPROVED');assert.equal(listing(complete).basis,'absentFromCompleteList');assert.equal(listing(complete).listEvidence[0].sourceUrl,sourceUrl);
+assert.equal(listing({...complete,officialLists:[{...complete.officialLists[0],complete:false}]}).status,'NOT_VERIFIED');
+assert.equal(listing({...complete,approvals:[]}).status,'NOT_VERIFIED');
+assert.equal(listing({...complete,officialListUpdatedAt:'2025-01-01'}).status,'NOT_VERIFIED');
+assert.equal(listing({...complete,approvals:[{...verified,verificationState:'importedClaim'}]}).status,'NOT_VERIFIED');
+assert.equal(modelApproval({brand:'Test',model:'Absent Model'},ruleset,complete,now).status,'NOT_VERIFIED');
+const otherThickness={...verified,brand:absent.brand,model:absent.model,thicknessMm:14};
+assert.equal(listing({...complete,approvals:[otherThickness]}).status,'UNAPPROVED');
+assert.equal(modelApproval({...absent,modelId:null,thickness:''},ruleset,{...complete,approvals:[otherThickness]},now).status,'NOT_VERIFIED');
+const {modelApprovalBadges}=await import('../public/equipment-ui.js');
+const us=production.rulesets.find(r=>r.id==='usap'),up=production.rulesets.find(r=>r.id==='ppa-pro');
+const linked=production.approvals.find(a=>a.organization==='USAP'&&a.catalogIds?.some(id=>production.approvals.some(b=>b.organization==='UPA-A'&&b.catalogIds?.includes(id))));
+const sharedId=linked.catalogIds.find(id=>production.approvals.some(b=>b.organization==='UPA-A'&&b.catalogIds?.includes(id)));
+const both={...linked,modelId:sharedId};
+assert.equal(modelApproval(both,us,production,now).status,'APPROVED');assert.equal(modelApproval(both,up,production,now).status,'APPROVED');
+const green=modelApprovalBadges(both,production,now);assert.equal((green.match(/competition-approved/g)||[]).length,2);assert.match(green,/USAP/);assert.match(green,/UPA-A/);
+const {normalizeSharedCatalog}=await import('../public/shared-catalog.js');
+const tko=normalizeSharedCatalog(JSON.parse(fs.readFileSync('public/reference-catalog.json'))).find(r=>r.brand==='Paddletek'&&r.model==='Bantam TKO-C 12.7mm');assert.ok(tko);
+const unit={brand:tko.brand,model:tko.model,modelId:tko.referenceModelId,thickness:12.7};assert.equal(modelApproval(unit,us,production,now).status,'APPROVED');assert.equal(modelApproval(unit,up,production,now).status,'UNAPPROVED');
+const mixed=modelApprovalBadges(unit,production,now);assert.match(mixed,/competition-approved/);assert.match(mixed,/competition-unapproved/);
+
+const stale=modelApprovalBadges(both,production,now+31*86400000);assert.equal((stale.match(/competition-verification/g)||[]).length,2);
+console.log('PASS: complete-list absence, per-ruleset badges, two approvals, mixed approval, variant isolation, stale/truncated/unverified lists, and unresolved identity.');
+
+const pegasus=normalizeSharedCatalog(JSON.parse(fs.readFileSync('public/reference-catalog.json'))).find(r=>r.brand==='11SIX24'&&r.model==='Pegasus Power 2');assert.ok(pegasus);
+const pegasusUnit={brand:pegasus.brand,model:pegasus.model,modelId:pegasus.referenceModelId,shape:pegasus.shape,thickness:pegasus.thickness};
+assert.equal(modelApproval(pegasusUnit,us,production,now).status,'UNAPPROVED');assert.equal(modelApproval(pegasusUnit,up,production,now).status,'APPROVED');
+assert.equal(listing({...complete,approvals:[{...verified,sourceUrl:sourceUrl+'/entry/123/'}]}).status,'UNAPPROVED');
+assert.equal(listing({...complete,approvals:[{...verified,sourceUrl:'https://malicious.test/rules/entry/123/'}]}).status,'NOT_VERIFIED');
+console.log('PASS: USAP official entry-page provenance, Pegasus Power 2 USAP-negative / UPA-A-positive regression, and foreign-source rejection.');

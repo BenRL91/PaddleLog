@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "paddlelog.configuration-approvals.v1",
+  "generatedAt": "2026-10-02",
+  "exactApprovedCombinations": [],
+  "genericModificationRules": [
+    {
+      "organization": "USA Pickleball",
+      "rulesetId": "USAP-2026",
+      "status": "permitted_category_not_product-specific_approval",
+      "components": [
+        "edge guard tape/replacements",
+        "weighted tape",
+        "OEM integrated-system weights",
+        "grip-size inserts",
+        "grip wraps",
+        "OEM interchangeable grips",
+        "OEM replacement paddle faces"
+      ],
+      "condition": "Altered paddle must continue to meet all USAP specifications.",
+      "sourceUrl": "https://equipment.usapickleball.org/docs/Equipment-Standards-Manual.pdf",
+      "sourceSection": "2.E.5 Alterations",
+      "verifiedAt": "2026-10-02"
+    },
+    {
+      "organization": "USA Pickleball",
+      "rulesetId": "USAP-2026",
+      "status": "permitted_category_not-product-specific-approval",
+      "components": [
+        "properly installed aftermarket weights/weight systems",
+        "grip-mounted aids"
+      ],
+      "condition": "Other specifications must remain compliant; grip aid may not increase OEM overall length or exceed current alteration allowances.",
+      "sourceUrl": "https://usapickleball.org/ref-notices/aftermarket-paddle-weights-and-aftermarket-grip-aids/",
+      "sourceSection": "Referee Notice",
+      "verifiedAt": "2026-10-02"
+    },
+    {
+      "organization": "UPA-A",
+      "rulesetId": "UPAA-PRO-2026",
+      "status": "permitted_category_not-product-specific-approval",
+      "components": [
+        "edge guard tape",
+        "edge guards",
+        "overgrips",
+        "flat weighted tape",
+        "grip inserts",
+        "butt cap replacement",
+        "butt cap weight"
+      ],
+      "condition": "Version 26.4 permitted customizations; this does not establish approval for replacement paddle faces/skins.",
+      "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+      "sourceSection": "4.3 Permitted Customizations",
+      "verifiedAt": "2026-10-02"
+    }
+  ],
+  "importantInterpretation": "A generic modification allowance is not an exact base-paddle + skin/product approval. No governing-body exact Reload or PIKKL replacement-surface combination matrix was verified in this pass."
+}

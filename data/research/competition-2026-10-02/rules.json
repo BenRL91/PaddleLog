@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "paddlelog.equipment-rules.v1",
+  "generatedAt": "2026-10-02",
+  "scope": "Verified governing-body/league equipment eligibility rules; facts and interpretations are explicitly separated.",
+  "rulesets": [
+    {
+      "id": "USAP-2026",
+      "organization": "USA Pickleball",
+      "competitionLevel": "USA Pickleball-sanctioned play",
+      "version": "2026 Official Rulebook + Equipment Standards Manual Rev 3.0 + 2026 equipment notices",
+      "effectiveDate": "2026-01-01",
+      "lastVerified": "2026-10-02",
+      "sourceUrls": [
+        "https://usapickleball.org/rules/",
+        "https://equipment.usapickleball.org/docs/Equipment-Standards-Manual.pdf",
+        "https://usapickleball.org/usap-news/equipment-news/update-regarding-the-usa-pickleball-spin-rate-test-and-implementation-timeline/"
+      ],
+      "rules": [
+        {
+          "ruleId": "USAP-LIST-CURRENT",
+          "topic": "model_approval",
+          "fact": "Players must use a paddle currently listed as Pass on the USA Pickleball Approved Paddle List for sanctioned match play.",
+          "sourceUrl": "https://equipment.usapickleball.org/view/paddle-list/",
+          "sourceSection": "Approved Paddle List / current equipment database",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-ESM-2.E.3",
+          "topic": "dimensions",
+          "fact": "Combined length and width, including edge guard and butt cap, must not exceed 24 in; paddle length must not exceed 17 in. The cited ESM states no thickness restriction.",
+          "sourceUrl": "https://equipment.usapickleball.org/docs/Equipment-Standards-Manual.pdf",
+          "sourceSection": "2.E.3 Size",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-ESM-2.E.4",
+          "topic": "weight",
+          "fact": "The cited ESM states no restriction on paddle weight.",
+          "sourceUrl": "https://equipment.usapickleball.org/docs/Equipment-Standards-Manual.pdf",
+          "sourceSection": "2.E.4 Weight",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-ESM-2.E.5",
+          "topic": "alterations",
+          "fact": "Altered paddles must continue to meet all specifications. Permitted examples include edge guard tape/replacements, weighted tape, OEM integrated-system weights, grip-size inserts, grip wraps, OEM interchangeable grips, OEM replacement paddle faces, and identification decals/markings within the rule limits.",
+          "sourceUrl": "https://equipment.usapickleball.org/docs/Equipment-Standards-Manual.pdf",
+          "sourceSection": "2.E.5 Alterations",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-REF-WEIGHTS-2026",
+          "topic": "added_weight",
+          "fact": "Properly installed aftermarket weights and weight systems are treated as equivalent to weighted tape and are permitted on USAP-approved paddles if all other paddle specifications remain compliant; removing OEM-installed weights does not void USAP approval.",
+          "sourceUrl": "https://usapickleball.org/ref-notices/aftermarket-paddle-weights-and-aftermarket-grip-aids/",
+          "sourceSection": "Aftermarket Paddle Weights",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-REF-GRIP-AIDS-2026",
+          "topic": "grip_modification",
+          "fact": "Grip-mounted aids are permitted if they do not increase the OEM paddle's overall length or otherwise alter the paddle beyond current rule allowances.",
+          "sourceUrl": "https://usapickleball.org/ref-notices/aftermarket-paddle-weights-and-aftermarket-grip-aids/",
+          "sourceSection": "Aftermarket Grip Aids",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-SPIN-2026-10-01",
+          "topic": "surface_spin",
+          "fact": "For paddles submitted for certification beginning October 1, 2026, maximum measured spin rate is 2,100 RPM; surface roughness and coefficient of friction upper thresholds become measurements of record. Previously certified paddles remain governed by standards in effect at their certification.",
+          "sourceUrl": "https://usapickleball.org/usap-news/equipment-news/update-regarding-the-usa-pickleball-spin-rate-test-and-implementation-timeline/",
+          "sourceSection": "Spin Rate Test Implementation / Certification Guidance",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "USAP-FIELD-TEST-2026",
+          "topic": "event_testing",
+          "fact": "USAP introduced on-site field testing at participating 2026 Golden Ticket events; initial testing evaluates coefficient of friction, deflection, and weight/balance properties, with paddles intended for competition subject to event testing.",
+          "sourceUrl": "https://usapickleball.org/usap-news/equipment-news/usa-pickleball-and-pickleball-instruments-to-launch-paddle-field-testing-program-at-golden-ticket-events/",
+          "sourceSection": "Ensuring Fair Play and Equipment Integrity",
+          "lastVerified": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "UPAA-PRO-2026",
+      "organization": "UPA-A",
+      "competitionLevel": "Professional PPA/MLP and other professional UPA events",
+      "version": "UPA-A Paddle Rules 26.4",
+      "effectiveDate": "2026",
+      "lastVerified": "2026-10-02",
+      "sourceUrls": [
+        "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+        "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+        "https://upaa.unitedpickleball.com/approved-paddles/"
+      ],
+      "rules": [
+        {
+          "ruleId": "UPAA-PRO-LIST-STAMP-MODEL",
+          "topic": "model_approval",
+          "fact": "Professional PPA/MLP eligibility requires the UPA-A certification stamp, a model number printed on the paddle, and the paddle to be listed on the UPA-A Approved Paddle List.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+          "sourceSection": "2026 UPA-A Certification",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-DIMENSIONS",
+          "topic": "dimensions",
+          "fact": "Maximum length + maximum width is 24.0 in.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "Section 1 - Requirements for New Paddles",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-WEIGHT",
+          "topic": "weight",
+          "fact": "Maximum paddle weight is 10.0 oz.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "Section 1 - Requirements for New Paddles",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-THICKNESS",
+          "topic": "thickness",
+          "fact": "Maximum paddle thickness is 0.945 in (24 mm).",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "Section 1 - Requirements for New Paddles",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-PEF",
+          "topic": "performance",
+          "fact": "New-paddle PEF must be <=0.385; post-break-in performance may rise but must not exceed 0.405. Performance must not exceed 0.405 through useful life.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "Section 1 - Requirements for New Paddles",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-SPIN",
+          "topic": "surface_spin",
+          "fact": "Maximum spin rate is 2,100 RPM through useful life.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "Section 1 - Requirements for New Paddles",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-ADF",
+          "topic": "event_testing",
+          "fact": "Current on-site eligibility threshold is ADF >=42, subject to the documented correlated-ADF exception for qualifying certified post-ABI paddles.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "UPA-A Deflection (ADF) Measurement & Enforcement Onsite",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-CUSTOM",
+          "topic": "modifications",
+          "fact": "Permitted customizations listed in version 26.4 are edge guard tape, edge guards, overgrips, flat weighted tape, grip inserts, butt cap replacement, and butt cap weight. Except for the grip, paddles may not incorporate components/features designed to be removable.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "4. Paddle Adjustability / Customization",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-26.4-STAMP",
+          "topic": "certification_mark",
+          "fact": "The UPA-A certification mark must be permanently applied on at least one paddle face; alteration, removal, or covering of the stamp renders the paddle non-compliant for sanctioned play.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+          "sourceSection": "5. UPA-A Certification Stamp",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-MODEL-STRUCTURE",
+          "topic": "variant_identity",
+          "fact": "UPA-A certifications are tied to unique model numbers. Thickness, length, weight, surface material/grittiness, width, handle length, edge design and other physical differences can require distinct certification; purely cosmetic variations may share certification if structurally identical.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/about-us/",
+          "sourceSection": "Certification FAQ",
+          "lastVerified": "2026-10-02"
+        },
+        {
+          "ruleId": "UPAA-24-MONTH",
+          "topic": "expiration",
+          "fact": "A paddle certification remains eligible for 24 months from its approval/certification date, after which recertification is required for continued professional eligibility.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+          "sourceSection": "2026 Fees / certification validity",
+          "lastVerified": "2026-10-02"
+        }
+      ],
+      "officialSourceConflict": {
+        "status": "unresolved",
+        "rulebookVersion": "2026 UPA-A Rulebook v0.7 (4/20/2026)",
+        "rulebookStatement": "Section 3.2.2 states paddles appearing on the USAP Approved Paddle List are permitted.",
+        "certificationGuidanceStatement": "Current 2026 UPA-A certification guidance says UPA-A certification is required for professional PPA/MLP and requires stamp, model number, and UPA-A approved-list presence.",
+        "rulebookUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/2026-UPA-A-Rulebook-V0.7-4.20.2026.pdf",
+        "certificationUrl": "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+        "paddleRulesUrl": "https://upaa.unitedpickleball.com/wp-content/uploads/2026/04/UPA-A-Paddle-Rules-26.4.pdf",
+        "lastVerified": "2026-10-02",
+        "handling": "Do not infer precedence in stored facts; Competition Check should surface RULES_NEED_VERIFICATION until UPA-A clarifies or a superseding official document resolves the conflict."
+      }
+    },
+    {
+      "id": "UPA-AMATEUR-2026",
+      "organization": "UPA / UPA-A",
+      "competitionLevel": "Amateur divisions at UPA events",
+      "version": "2026 certification guidance",
+      "effectiveDate": "2026",
+      "lastVerified": "2026-10-02",
+      "sourceUrls": [
+        "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+        "https://upaa.unitedpickleball.com/paddles/"
+      ],
+      "rules": [
+        {
+          "ruleId": "UPA-AMATEUR-DUAL-PATH",
+          "topic": "model_approval",
+          "fact": "UPA-A certification is accepted for amateur competition but is not mandatory when the paddle has current USA Pickleball certification and is on the USAP Approved Paddle List.",
+          "sourceUrl": "https://upaa.unitedpickleball.com/paddle-testing/2026-upa-a-certification/",
+          "sourceSection": "2026 UPA-A Certification",
+          "lastVerified": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "CNPL-2026",
+      "organization": "Canadian National Pickleball League",
+      "competitionLevel": "CNPL professional competition",
+      "version": "1.09",
+      "effectiveDate": "2026-06-22",
+      "lastVerified": "2026-10-02",
+      "sourceUrls": [
+        "https://cnpl.ca/rules"
+      ],
+      "rules": [
+        {
+          "ruleId": "CNPL-1.09-PADDLE",
+          "topic": "model_approval_and_event_testing",
+          "fact": "All paddles used in CNPL competition must be USA Pickleball approved and must pass CNPL paddle testing at each event.",
+          "sourceUrl": "https://cnpl.ca/rules",
+          "sourceSection": "4.1 Before an Event - Paddle Testing",
+          "lastVerified": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "APP-2026",
+      "organization": "Association of Pickleball Players",
+      "competitionLevel": "APP Tour",
+      "version": null,
+      "effectiveDate": null,
+      "lastVerified": "2026-10-02",
+      "sourceUrls": [
+        "https://www.theapp.global/rules/app-next-rules",
+        "https://www.theapp.global/news/college-pickleball-2025"
+      ],
+      "rules": [],
+      "researchStatus": "unresolved",
+      "note": "No current 2026 APP Tour-wide official equipment rule or approved-paddle policy was located in this pass. APP Next's official rules page still states that all 2025 USA Pickleball rules apply, and the 2025-26 collegiate series is officially USAP-sanctioned; neither is sufficient evidence to generalize a 2026 APP Tour-wide equipment rule."
+    }
+  ]
+}

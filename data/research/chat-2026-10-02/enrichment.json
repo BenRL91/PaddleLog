@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "paddlelog.reference-enrichment.v1",
+  "checkedAt": "2026-10-02",
+  "items": [
+    {
+      "id": "plref_3b99f3d46e50872f",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Agassi Pro 14mm",
+      "expectedModelNumber": "A14G4D",
+      "shape": null,
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 7.9,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-agassi-pro-14mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-agassi-pro-14mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Agassi Pro IV, 14mm",
+        "manufacturerModel": "JOOLA Agassi Pro 14mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Agassi Pro 14mm commercial variant; manufacturer page identifies Technology: Pro IV and 14mm core. Catalog model number A14G4D is preserved; manufacturer page does not expose that governing-body model code."
+      }
+    },
+    {
+      "id": "plref_61a11984784f435f",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Agassi Pro 16mm",
+      "expectedModelNumber": "A16G4D",
+      "shape": null,
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.1,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5,
+        "gripCircumference": 4.25
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-agassi-pro-16mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-agassi-pro-16mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Agassi Pro IV, 16mm",
+        "manufacturerModel": "JOOLA Agassi Pro 16mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Agassi Pro 16mm commercial variant; page identifies Technology: Pro IV and 16mm core. Catalog model number A16G4D preserved."
+      }
+    },
+    {
+      "id": "plref_2f7c592e7039e115",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Hyperion IV 14mm",
+      "expectedModelNumber": "H14G4D",
+      "shape": null,
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 7.9,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/collections/hyperion/products/joola-hyperion-iv-14mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/collections/hyperion/products/joola-hyperion-iv-14mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Hyperion Pro IV, 14mm, Ben Johns",
+        "manufacturerModel": "JOOLA Hyperion Pro IV 14mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Hyperion Pro IV 14mm manufacturer page. Catalog uses shortened model name Hyperion IV 14mm; generation and thickness match. Catalog model number H14G4D preserved."
+      }
+    },
+    {
+      "id": "plref_0733a5bb4276fb1f",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Hyperion IV 16mm",
+      "expectedModelNumber": "H16G4D",
+      "shape": "Elongated with aero-curve",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.1,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-hyperion-iv-16mm-pickleball-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-hyperion-iv-16mm-pickleball-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "Hyperion Pro IV, 16mm, Ben Johns / 4.25in grip configuration",
+        "manufacturerModel": "JOOLA Hyperion Pro IV 16mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Hyperion Pro IV 16mm generation/thickness. JOOLA also sells a Simone Jardim 16mm with 4.125in grip; catalog record does not identify athlete/handle variant, so gripCircumference is intentionally omitted. Shared dimensions/weight/construction are corroborated by both official variants."
+      }
+    },
+    {
+      "id": "plref_2f07662cddaf05ed",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Perseus IV 14mm",
+      "expectedModelNumber": "P14G4D",
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 7.9,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-perseus-iv-14mm-pickleball-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-perseus-iv-14mm-pickleball-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "Perseus Pro IV, 14mm, Ben Johns",
+        "manufacturerModel": "JOOLA Perseus Pro IV 14mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Perseus Pro IV 14mm commercial variant. Main specification page supports dimensions/weight/construction; JOOLA product listing separately identifies Perseus as elongated. Catalog model number P14G4D preserved."
+      }
+    },
+    {
+      "id": "plref_c2d93840823e992b",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Perseus IV 16mm",
+      "expectedModelNumber": "P16G4D",
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.1,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.5,
+        "gripCircumference": 4.25
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/ben-johns-perseus-pro-iv-16mm-pickleball-paddle_2",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/ben-johns-perseus-pro-iv-16mm-pickleball-paddle_2",
+        "basis": "manufacturer-published",
+        "configuration": "Perseus Pro IV, 16mm, Ben Johns",
+        "manufacturerModel": "JOOLA Perseus Pro IV 16mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Perseus Pro IV 16mm commercial variant. JOOLA describes Perseus as an elongated profile. Catalog model number P16G4D preserved."
+      }
+    },
+    {
+      "id": "plref_453bc447759a6ad6",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Magnus IV 14mm",
+      "expectedModelNumber": "M14G4D",
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.0,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.0,
+        "gripCircumference": 4.1875
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-magnus-iv-14mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-magnus-iv-14mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Magnus Pro IV, 14mm, Tyson McGuffin",
+        "manufacturerModel": "JOOLA Magnus Pro IV 14mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Magnus Pro IV 14mm page; manufacturer explicitly calls the shape elongated with shorter handle. Catalog model number M14G4D preserved."
+      }
+    },
+    {
+      "id": "plref_fa0fe5e82d1c3cf0",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Magnus IV 16mm",
+      "expectedModelNumber": "M16G4D",
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.2,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.0,
+        "gripCircumference": 4.25
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/collections/magnus-series/products/joola-magnus-iv-16mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/collections/magnus-series/products/joola-magnus-iv-16mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Magnus Pro IV, 16mm, Tyson McGuffin",
+        "manufacturerModel": "JOOLA Magnus Pro IV 16mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Magnus Pro IV 16mm page; model number M16G4D aligns with generation 4 naming. A second catalog record named Magnus IV 16mm has model number M16G3D and is left unresolved rather than patched."
+      }
+    },
+    {
+      "id": "plref_d68ca973608c0ff1",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Scorpeus IV 14mm",
+      "expectedModelNumber": "S14G4D",
+      "shape": "Standard",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.0,
+        "width": 8.0,
+        "staticWeightOz": 7.9,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.25,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/products/joola-scorpeus-iv-14mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/products/joola-scorpeus-iv-14mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Scorpeus Pro IV, 14mm, Anna Bright",
+        "manufacturerModel": "JOOLA Scorpeus Pro IV 14mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Scorpeus Pro IV 14mm page; manufacturer identifies Shape: Scorpeus (standard). Catalog model number S14G4D preserved."
+      }
+    },
+    {
+      "id": "plref_34efc87fe562f939",
+      "expectedBrand": "JOOLA",
+      "expectedModel": "Scorpeus IV 16mm",
+      "expectedModelNumber": "S16G4M",
+      "shape": "Standard",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.0,
+        "width": 8.0,
+        "staticWeightOz": 8.1,
+        "faceMaterial": "Textured Carbon Fiber",
+        "coreMaterial": "PP core + EVA foam wall",
+        "handleLength": 5.25,
+        "gripCircumference": 4.25
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "JOOLA",
+        "url": "https://joola.com/collections/pickleball-paddles/products/joola-scorpeus-iv-16mm-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://joola.com/collections/pickleball-paddles/products/joola-scorpeus-iv-16mm-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Scorpeus Pro IV, 16mm, Collin Johns",
+        "manufacturerModel": "JOOLA Scorpeus Pro IV 16mm Pickleball Paddle",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact Scorpeus Pro IV 16mm page; manufacturer identifies Scorpeus as standard shape. Catalog model number S16G4M preserved."
+      }
+    },
+    {
+      "id": "plref_31a4368d04f57e39",
+      "expectedBrand": "Six Zero",
+      "expectedModel": "Ruby Pro RKD",
+      "expectedModelNumber": "102914",
+      "shape": null,
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.3,
+        "widthRange": {
+          "min": 7.5,
+          "max": 7.7
+        },
+        "staticWeightOzRange": {
+          "min": 8.0,
+          "max": 8.3
+        },
+        "faceMaterial": "Diamond Tough Aramid Fiber Flextech 45 Degrees",
+        "coreMaterial": "12mm Honeycomb Polypropylene",
+        "handleLength": 5.5
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Six Zero",
+        "url": "https://us.sixzeropickleball.com/products/ruby-pro-14mm",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://us.sixzeropickleball.com/products/ruby-pro-14mm",
+        "basis": "manufacturer-published",
+        "configuration": "Ruby Pro 14mm standard manufacturer configuration",
+        "manufacturerModel": "Ruby Pro 14MM",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Catalog Ruby Pro RKD is 14mm and manufacturer page is Ruby Pro 14MM. Model code 102914 is preserved. Manufacturer publishes swing/twist numbers but does not establish units/method on this page, so they are intentionally omitted."
+      }
+    },
+    {
+      "id": "plref_1255a798fabf7b27",
+      "expectedBrand": "Diadem",
+      "expectedModel": "Edge BluCore Hybrid",
+      "expectedModelNumber": "DPC15",
+      "shape": "Hybrid",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.2,
+        "width": 7.8,
+        "staticWeightOz": 8.0,
+        "faceMaterial": "18K Carbon",
+        "coreMaterial": "Full-foam EPP BluCore",
+        "handleLength": 5.7,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Diadem Sports",
+        "url": "https://diademsports.com/products/edge-blucore",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://diademsports.com/products/edge-blucore",
+        "basis": "manufacturer-published",
+        "configuration": "Edge BluCore Hybrid, 16mm",
+        "manufacturerModel": "Edge BluCore Hybrid 16",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact manufacturer Edge BluCore Hybrid 16 specification table. Existing Hybrid shape and 16mm thickness preserved. Published balance 235mm omitted because measurement origin is not stated."
+      }
+    },
+    {
+      "id": "plref_884d9c0fbe9646c5",
+      "expectedBrand": "Diadem",
+      "expectedModel": "Edge BluCore Pro",
+      "expectedModelNumber": "DPC12",
+      "shape": null,
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.0,
+        "faceMaterial": "18K Carbon",
+        "coreMaterial": "Full-foam EPP BluCore",
+        "handleLength": 5.7,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Diadem Sports",
+        "url": "https://diademsports.com/products/edge-blucore",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://diademsports.com/products/edge-blucore",
+        "basis": "manufacturer-published",
+        "configuration": "Edge BluCore Pro, 14mm",
+        "manufacturerModel": "Edge BluCore Pro 14",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact manufacturer Edge BluCore Pro 14 specification table. Published balance 235mm omitted because measurement origin is not stated."
+      }
+    },
+    {
+      "id": "plref_7b5e5f37cbc76dfa",
+      "expectedBrand": "Diadem",
+      "expectedModel": "Edge BluCore Pro",
+      "expectedModelNumber": "DPC13",
+      "shape": null,
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.0,
+        "faceMaterial": "18K Carbon",
+        "coreMaterial": "Full-foam EPP BluCore",
+        "handleLength": 5.7,
+        "gripCircumference": 4.125
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Diadem Sports",
+        "url": "https://diademsports.com/products/edge-blucore",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://diademsports.com/products/edge-blucore",
+        "basis": "manufacturer-published",
+        "configuration": "Edge BluCore Pro, 16mm",
+        "manufacturerModel": "Edge BluCore Pro 16",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact manufacturer Edge BluCore Pro 16 specification table. Published balance 235mm omitted because measurement origin is not stated."
+      }
+    },
+    {
+      "id": "plref_c428a913a926f023",
+      "expectedBrand": "Gearbox",
+      "expectedModel": "GX2 Power Hybrid 16mm",
+      "expectedModelNumber": "TP06-D2-1",
+      "shape": "Hybrid",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.2,
+        "width": 7.8,
+        "staticWeightOz": 8.0,
+        "coreMaterial": "Patented SST 2.0 CarbonRibCore structure",
+        "handleLength": 5.5,
+        "gripCircumference": 4.0
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/gx2-power-hybrid",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://gearboxsports.com/products/gx2-power-hybrid",
+        "basis": "manufacturer-published",
+        "configuration": "GX2 Power Hybrid, 16mm",
+        "manufacturerModel": "GX2 Power Hybrid",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact GX2 Power Hybrid 16mm catalog record (TP06-D2-1); manufacturer lists Hybrid (HH), 16mm, 8.0oz, 16.2 x 7.8, 5.5in handle and 4in grip. Face material not filled because this product-page extract does not state a face finish."
+      }
+    },
+    {
+      "id": "plref_ef9987ef062cd656",
+      "expectedBrand": "Gearbox",
+      "expectedModel": "Pressure X 8E",
+      "expectedModelNumber": null,
+      "shape": "Elongated+",
+      "thickness": 16,
+      "specs": {
+        "length": 16.5,
+        "width": 7.375,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.0
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/pressurex-8e-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://gearboxsports.com/products/pressurex-8e-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Pressure X 8E, manufacturer standard configuration",
+        "manufacturerModel": "Pressure X 8E Pickleball Paddle",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact Pressure X 8E manufacturer page. Existing catalog thickness is null; manufacturer verifies 16mm, so this patch adds 16mm without overwriting a non-null value. Surface is SpinLock system but material composition is not stated; faceMaterial omitted."
+      }
+    },
+    {
+      "id": "plref_85c83b9693a4a525",
+      "expectedBrand": "Gearbox",
+      "expectedModel": "Pro Ultimate Power 14mm Elongated",
+      "expectedModelNumber": null,
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.375,
+        "staticWeightOz": 8.0,
+        "faceMaterial": "Toray T700 Raw Carbon Fiber",
+        "coreMaterial": "140 FAW Toray T-700 Mid Modulus Carbon Fiber / patented SST Carbon Fiber Rib Structure",
+        "handleLength": 5.5,
+        "gripCircumference": 4.0
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/pro-ultimate-power-14mm",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://gearboxsports.com/products/pro-ultimate-power-14mm",
+        "basis": "manufacturer-published",
+        "configuration": "Pro Ultimate Power, elongated, 14mm",
+        "manufacturerModel": "Pro Ultimate - Power Elongated 14mm - SSTCORE",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact Gearbox Pro Ultimate Power elongated 14mm manufacturer configuration. Existing Elongated shape and 14mm thickness preserved."
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "plref_0733a5bb4276fb1f",
+      "brand": "JOOLA",
+      "model": "Hyperion IV 16mm",
+      "modelNumber": "H16G4D",
+      "issueType": "handle-variant-ambiguity",
+      "property": "gripCircumference",
+      "details": "JOOLA offers Ben Johns 16mm at 4.25in and Simone Jardim 16mm at 4.125in. Catalog identity does not specify which handle variant H16G4D represents.",
+      "sourceNeeded": "Manufacturer mapping from governing-body model code H16G4D to commercial/athlete handle variant."
+    },
+    {
+      "id": "plref_7f50aa7780d1b6f2",
+      "brand": "JOOLA",
+      "model": "Magnus IV 16mm",
+      "modelNumber": "M16G3D",
+      "issueType": "identity-conflict",
+      "property": "modelNumber/model generation",
+      "details": "Catalog model name says Magnus IV while modelNumber contains G3; a separate M16G4D record also exists. Manufacturer Pro IV page cannot safely be applied to M16G3D.",
+      "sourceNeeded": "Authoritative mapping/clarification for UPA model number M16G3D."
+    },
+    {
+      "id": "plref_31a4368d04f57e39",
+      "brand": "Six Zero",
+      "model": "Ruby Pro RKD",
+      "modelNumber": "102914",
+      "issueType": "missing-units-method",
+      "property": "swingWeight/twistWeight",
+      "details": "Manufacturer page lists Swing Weight 113 and Twist Weight 6.26 but does not state units or measurement method.",
+      "sourceNeeded": "Six Zero technical documentation establishing units and test method."
+    },
+    {
+      "id": "plref_5ded35e819d5ba7b",
+      "brand": "Six Zero",
+      "model": "Double Black Diamond Control 14mm",
+      "modelNumber": null,
+      "issueType": "source-conflict",
+      "property": "swingWeight/twistWeight",
+      "details": "Same manufacturer page contains duplicate spec sections with conflicting values (e.g. 14mm swing/twist 113/6.8 vs 110/6.4). Units/method also not established. Existing values left unchanged.",
+      "sourceNeeded": "Manufacturer clarification or technical method sheet."
+    },
+    {
+      "id": "plref_05ff2a21c2934374",
+      "brand": "Six Zero",
+      "model": "Double Black Diamond Control 15mm",
+      "modelNumber": null,
+      "issueType": "source-conflict",
+      "property": "gripCircumference/twistWeight",
+      "details": "Same manufacturer page conflicts on 15mm grip circumference (4.125 vs 4.25) and twist weight (5.85 vs 6.0). Existing values left unchanged.",
+      "sourceNeeded": "Manufacturer clarification."
+    },
+    {
+      "id": "plref_e7a2e2c6f41f41d5",
+      "brand": "Six Zero",
+      "model": "Double Black Diamond Control 16mm",
+      "modelNumber": null,
+      "issueType": "source-conflict",
+      "property": "gripCircumference",
+      "details": "Same manufacturer page conflicts on 16mm grip circumference (4.125 vs 4.1). Existing value left unchanged.",
+      "sourceNeeded": "Manufacturer clarification."
+    },
+    {
+      "id": "plref_f292bcca4f7f243f",
+      "brand": "Gearbox",
+      "model": "GX2 Power Hybrid",
+      "modelNumber": null,
+      "issueType": "duplicate-generic-record",
+      "property": "identity",
+      "details": "Catalog also contains a generic GX2 Power Hybrid record without thickness/model number. Exact manufacturer 16mm specs were applied only to TP06-D2-1, not the generic record.",
+      "sourceNeeded": "Determine whether generic record should alias, merge, or represent another variant."
+    }
+  ]
+}

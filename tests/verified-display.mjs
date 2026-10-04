@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {verifiedSpecs,physicalConfiguration} from '../public/competition.js';
+import {referenceComparisonMarkup} from '../public/reference-comparison.js';
+const p={id:'unit',brand:'A',model:'B',staticWeight:8.3,configuration:{modifications:[]}};
+const at='2026-01-01T00:00:00Z',now=Date.parse('2026-02-01');
+const measurement={paddleId:'unit',configurationKey:physicalConfiguration(p,now).fingerprint,verifiedBy:'paddlelog',units:{staticWeight:'oz'},values:{staticWeight:8.31},at,sourceUrl:'https://example.test/attestation'};
+assert.equal(verifiedSpecs(p,{verifiedMeasurements:[measurement]},now).staticWeight.value,8.31);
+for(const change of [{paddleId:'other'},{configurationKey:'other'},{verifiedBy:'user'},{units:{staticWeight:'g'}},{at:'2027-01-01'},{sourceUrl:'javascript:bad'}])assert.deepEqual(verifiedSpecs(p,{verifiedMeasurements:[{...measurement,...change}]},now),{});
+const catalog=[{brand:'A',model:'B',reference:{kind:'manufacturer',name:'Maker',values:{staticWeight:8.1}}}];
+const markup=referenceComparisonMarkup(p,catalog,verifiedSpecs(p,{verifiedMeasurements:[measurement]},now));assert.doesNotMatch(markup,/8.31|PaddleLog Verified/);assert.match(markup,/8.3/);assert.match(markup,/8.1/);assert.match(referenceComparisonMarkup(p,[]),/Not recorded/);assert.match(referenceComparisonMarkup(p,[]),/8.3/);
+console.log('PASS: Reference/Mine/Verified separation, configuration-bound attestation, wrong owner/source/units/date rejection, and manual measurements with unknown references.');

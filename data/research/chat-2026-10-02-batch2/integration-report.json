@@ -1,0 +1,187 @@
+{
+  "incoming": 23,
+  "newlyEnriched": [
+    "plref_ac993baf62370d83",
+    "plref_4e298220d5b4acba",
+    "plref_3309154d9a0413a1"
+  ],
+  "additionalFields": {
+    "plref_c2c160493791d711": [
+      "faceMaterial"
+    ],
+    "plref_37060c42f8979536": [
+      "faceMaterial"
+    ],
+    "plref_0c8b1283bbf6ca2c": [
+      "faceMaterial"
+    ],
+    "plref_2c7badf17a36318b": [
+      "faceMaterial"
+    ],
+    "plref_86208c4e191e348b": [
+      "faceMaterial"
+    ],
+    "plref_1538e7f9bccd22e2": [
+      "faceMaterial"
+    ],
+    "plref_abac8c68f20613cd": [
+      "faceMaterial"
+    ],
+    "plref_ff2acd34a5d66044": [
+      "faceMaterial"
+    ],
+    "plref_d139942983920060": [
+      "faceMaterial"
+    ],
+    "plref_b1fa2c06703c1a4b": [
+      "faceMaterial"
+    ],
+    "plref_0aef51b8ec8fe936": [
+      "faceMaterial"
+    ],
+    "plref_442b3dcd7bf97a1c": [
+      "faceMaterial"
+    ],
+    "plref_850deef686224c16": [
+      "faceMaterial"
+    ],
+    "plref_a4a1c736cc53bad7": [
+      "faceMaterial"
+    ]
+  },
+  "conflicts": [
+    {
+      "id": "plref_3940c1f3a6869438",
+      "field": "faceMaterial",
+      "existing": "T700 carbon fiber",
+      "incoming": "Multistrata T700 Carbon (3 layers)"
+    },
+    {
+      "id": "plref_cdc4e21142224c64",
+      "field": "faceMaterial",
+      "existing": "T700 carbon fiber",
+      "incoming": "Multistrata T700 Carbon (3 layers)"
+    },
+    {
+      "id": "plref_c2c160493791d711",
+      "field": "coreMaterial",
+      "existing": "Polypropylene / EVA foam",
+      "incoming": "Polypropylene surrounded by EVA Foam"
+    },
+    {
+      "id": "plref_37060c42f8979536",
+      "field": "coreMaterial",
+      "existing": "Polypropylene / EVA foam",
+      "incoming": "Polypropylene surrounded by EVA Foam"
+    },
+    {
+      "id": "plref_658b11439ce7c92a",
+      "field": "coreMaterial",
+      "existing": "PureFoam",
+      "incoming": "PureFoam\u2122"
+    },
+    {
+      "id": "plref_b0a3d851af1988a7",
+      "field": "coreMaterial",
+      "existing": "PureFoam",
+      "incoming": "PureFoam\u2122"
+    },
+    {
+      "id": "plref_7f61574e9f5815e5",
+      "field": "faceMaterial",
+      "existing": "T700 carbon fiber",
+      "incoming": "T700 Raw Carbon Fiber"
+    },
+    {
+      "id": "plref_7f61574e9f5815e5",
+      "field": "coreMaterial",
+      "existing": "Polypropylene honeycomb",
+      "incoming": "Polypropylene Hex-Core"
+    },
+    {
+      "id": "plref_24b71ad7bf486a98",
+      "field": "faceMaterial",
+      "existing": "T700 carbon fiber",
+      "incoming": "Multiweave Raw Carbon Fiber"
+    },
+    {
+      "id": "plref_24b71ad7bf486a98",
+      "field": "coreMaterial",
+      "existing": "Polypropylene honeycomb",
+      "incoming": "Polypropylene Hex-Core"
+    },
+    {
+      "id": "plref_0c8b1283bbf6ca2c",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% TruFoam Floating Core"
+    },
+    {
+      "id": "plref_2c7badf17a36318b",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% TruFoam Floating Core"
+    },
+    {
+      "id": "plref_86208c4e191e348b",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% TruFoam Floating Core"
+    },
+    {
+      "id": "plref_1538e7f9bccd22e2",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% TruFoam Floating Core"
+    },
+    {
+      "id": "plref_abac8c68f20613cd",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam (proprietary TruFoam blend)"
+    },
+    {
+      "id": "plref_ff2acd34a5d66044",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam (proprietary TruFoam blend)"
+    },
+    {
+      "id": "plref_d139942983920060",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam (proprietary TruFoam blend)"
+    },
+    {
+      "id": "plref_b1fa2c06703c1a4b",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam (proprietary TruFoam blend)"
+    },
+    {
+      "id": "plref_0aef51b8ec8fe936",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam"
+    },
+    {
+      "id": "plref_442b3dcd7bf97a1c",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam"
+    },
+    {
+      "id": "plref_850deef686224c16",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam"
+    },
+    {
+      "id": "plref_a4a1c736cc53bad7",
+      "field": "coreMaterial",
+      "existing": "100% foam",
+      "incoming": "100% Foam"
+    }
+  ],
+  "candidatesPending": 3
+}

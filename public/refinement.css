@@ -1,0 +1,190 @@
+/* Shared compact-mobile hierarchy; behavior remains in existing components. */
+:root{--space:12px}.top{padding:14px 16px 8px}.brand{align-items:center}.brand h1,.secondary-title{font-size:28px;line-height:1.15;margin:0}.sub{font-size:12px}.content{padding-top:8px}.header-actions{width:auto!important;display:flex!important;margin:0!important}.header-actions [data-add-session-header]{display:none}.header-actions .btn{font-size:14px;padding:8px 12px;background:var(--surface);color:var(--text);border:1px solid var(--line)}body:not([data-page=main]) .top{display:none}.secondary-title{margin:10px 0 16px}body:not([data-page=main]) #firstUseGuide{display:none}#syncStatus{font-size:12px;padding:3px 0;border:0;margin:0 0 6px;line-height:1.4}#syncStatus.sync-success{display:none}.hero{margin:16px 0 8px;gap:8px}.stat{padding:10px}.stat b{font-size:18px}.main-role{max-width:160px;margin:0 0 10px!important}.main-role label{display:none}.main-role select{min-height:44px;padding:8px}.main-paddle-header h2{font-size:24px;margin:4px 0}.main-paddle-header p{margin:5px 0;line-height:1.4}.main-actions{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:12px 0}.main-actions .primary{grid-column:1/-1}.btn.quiet{background:transparent;border-color:transparent;font-size:14px;color:var(--text)}.empty-library .hero,.empty-library .main-role,.empty-library #mainPaddleCard,.empty-library .header-actions{display:none}.card{padding:14px;margin-bottom:10px}.section-title{margin:8px 0 12px}.section-title h2{font-size:20px}body[data-page=timeline] #viewTimeline>.section-title,body[data-page=sessions] #viewSessions>.section-title h2,body[data-page=paddles] #viewPaddles>.section-title h2{display:none}.small,.meta{line-height:1.4}.actions{margin-top:10px}.btn{min-height:44px}.navbtn{min-height:48px;padding:6px 3px;font-size:12px}.navbtn.active{background:var(--surface)!important;color:var(--text)!important;box-shadow:inset 0 2px var(--accent)}.navbtn b{font-size:19px;margin-bottom:3px}.bottomnav{gap:4px;padding-top:6px}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important;margin:12px 0;gap:6px}.metric{padding:9px 7px}.metric strong{font-size:18px}.metric span{font-size:12px;text-transform:none;letter-spacing:0}.status-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.status-chips span{font-size:12px;padding:4px 8px;background:var(--surface);border-radius:20px}.home-spec-grid{gap:8px}.home-spec{padding:10px}.home-spec small{font-size:12px}.home-spec-value{font-size:19px}.event{padding:0 0 12px 8px}.event .what{font-size:16px;line-height:1.35}.event-menu{margin:0 0 0 auto;width:max-content;max-width:100%}.event-menu>summary{list-style:none;min-width:44px;min-height:44px;padding:10px;text-align:center;font-size:18px}.event-menu>summary::-webkit-details-marker{display:none}.event-menu .actions{margin:0 0 8px}.event-menu .btn{font-size:14px}.event-menu[open]{width:100%}#sessionList .card{padding:12px}#sessionList .note{margin:8px 0}.settings-root{display:flex!important;flex-direction:column;gap:0!important;margin:0!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}.settings-root.hide{display:none!important}.settings-root .btn{display:flex;align-items:center;justify-content:space-between;text-align:left;border:0;border-radius:0;border-bottom:1px solid var(--line);padding:14px!important;background:var(--card);font-size:16px}.settings-root small{display:block;color:var(--muted);font-size:13px;margin-top:3px}#settingsBack{margin:-8px 0 8px;padding-left:0}#viewData>section,#settingsGeneral>.card{padding:12px 0;border:0;background:transparent}#viewData h2{font-size:22px;margin:0 0 12px}#settingsForm{gap:14px}#settingsForm .field{padding:0;gap:6px}#settingsForm input,#settingsForm select,#settingsAppearance select{min-height:46px}#settingsAccount>p{margin:10px 0}#settingsAccount .account-actions,#settingsAccount .account-links,#settingsAccount .account-danger{gap:8px;margin:12px 0}.sheet,.equipment-dialog{padding:12px 16px calc(12px + env(safe-area-inset-bottom))}.sheet-head{top:-12px;padding:8px 0;gap:8px}.sheet-head h2,.sheet-head h3{font-size:22px;line-height:1.2}.iconbtn{min-width:44px;width:44px;height:44px}.form{gap:12px}.form-section{padding:8px 0}.form-section>summary,summary{padding:10px 0;min-height:44px}.draft-status{font-size:12px;color:var(--muted);border:0;padding:0;line-height:1.4}.form-actions,.equipment-dialog form>.actions{position:sticky;bottom:0;background:var(--card);padding:10px 0 calc(10px + env(safe-area-inset-bottom));z-index:3;border-top:1px solid var(--line)}.equipment-dialog label{margin:8px 0}.equipment-dialog p{margin:6px 0;line-height:1.4}.equipment-dialog .sheet-head{top:-12px}.equipment-dialog details{margin:6px 0}.model-approval{margin:10px 0;padding:12px}.model-approval h4{margin:8px 0;font-size:16px}.model-approval p{margin:6px 0;line-height:1.4}.approval-badge{font-size:15px;padding:6px 10px}.competition-details{margin-top:8px}.equipment-section{margin-top:16px;padding-top:12px}.equipment-section h3{font-size:20px}.equipment-section>label{display:block;font-size:14px}.equipment-section select{margin:6px 0 10px}.pro-highlights{font-size:14px;line-height:1.4!important;margin:8px 0;padding-left:18px!important}.pro-highlights li{margin:4px 0}.pro-plan{padding:12px;margin:8px 0;min-height:60px}.pro-plan:has(input:checked){padding:11px}.pro-plan strong{margin-top:3px}.pro-plan small{font-size:12px;margin-top:3px}#proDialog{padding:14px 16px}#proDialog h2{font-size:26px}#proDialog p{margin:8px 0;font-size:14px;line-height:1.4}.pro-features li{margin:8px 0;line-height:1.4}.pro-all>summary{font-size:15px}.exact-end input{width:100%}#sessionForm .small{line-height:1.4}.setup-lines p{margin:6px 0}.comparison-section{scroll-margin-top:60px}@media(max-width:360px){.content{padding-inline:12px}.home-spec{padding:8px}.metrics .metric strong{font-size:16px}.navbtn{font-size:11px}}
+.setup-rows{margin:8px 0}.setup-rows>div{display:flex;gap:12px;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border,#303038)}.setup-rows dt{color:var(--muted,#aaa)}.setup-rows dd{margin:0;text-align:right}
+.competition-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:54px;border:1px solid var(--border,#303038);border-radius:12px;background:transparent;color:inherit;text-align:left;padding:10px 12px;margin:10px 0}.competition-summary small{display:block;font-size:12px;color:var(--muted,#aaa);margin-top:3px}.metrics:has(>.metric:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+.empty-library .header-actions{display:none!important}.metrics:has(>.metric:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.settings-root .btn{min-height:70px!important;height:auto!important;flex:none!important}.settings-root .btn:last-child{border-bottom:0}
+.competition-badge{border-radius:18px;max-width:100%;min-height:56px}.competition-approved{background:#153728;color:#a6efc4;border-color:#387752}.competition-unapproved{background:#481e28;color:#ffc0c5;border-color:#a54a58}.competition-verification{background:#3c3416;color:#ffe79a;border-color:#8a783b}.competition-badge small{color:inherit;opacity:.85}.competition-badge strong{font-size:15px}
+#mainPaddleCard .maintenance-buttons{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;gap:8px}#mainPaddleCard .maintenance-button{min-height:98px;padding:9px 6px;gap:5px;text-align:center;align-items:center;border-radius:14px}#mainPaddleCard .maintenance-button-heading{font-size:13px}#mainPaddleCard .maintenance-button .wear-badge{font-size:11px;padding:2px 4px}#mainPaddleCard .maintenance-button-meta,#mainPaddleCard .maintenance-product,#mainPaddleCard .maintenance-button>strong{display:none}#mainPaddleCard .quick-maintenance h2{font-size:18px;margin:10px 0}.main-actions{display:block;margin:10px 0}.main-actions .primary{width:100%}.photo-open{display:block;width:100%;border:0;padding:0;background:transparent;cursor:zoom-in}.paddle-media .paddle-photo{height:180px}.home-extra-specs{display:flex;gap:16px}.home-extra-specs span,.home-extra-specs strong{display:block}.home-extra-specs span{font-size:13px;color:var(--muted)}.home-advanced .feel-grid{max-width:300px;margin:30px auto}.metrics .competition-badge{margin:0;min-width:0;padding:8px;justify-content:center}.metrics .competition-badge strong{font-size:12px}.metrics .competition-badge small{font-size:10px}#imageViewer{width:min(94vw,800px);max-height:90dvh;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:14px;overflow:auto}#imageViewer img{display:block;width:100%;max-height:75dvh;object-fit:contain}#imageViewer::backdrop{background:#000d}
+
+.paddle-expanded .favorite-btn{flex:0 0 44px;min-width:44px;width:44px;min-height:44px;padding:6px;font-size:25px;line-height:1}
+
+.paddle-summary .favorite-star{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;min-width:44px;min-height:44px;padding:0;border:0;background:transparent;color:var(--muted);font-size:26px;cursor:pointer}.paddle-summary .favorite-star.is-favorite{color:#ffe080}.paddle-summary-stats{align-self:flex-start}.paddle-main-tags{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.paddle-main-tags:empty{display:none}.paddle-main-tags .main-label{font-size:12px;text-align:right}
+
+.home-spec-grid{gap:0;border-top:1px solid var(--line)}.home-spec{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:10px 6px;gap:3px}.home-spec strong{font-size:18px}.collection-options{margin:8px 0}.role-options{display:grid;gap:8px}.main-role{max-width:240px}.paddle-summary-copy{min-width:0}.paddle-summary .title{overflow-wrap:anywhere}
+
+.model-approval-badges{display:flex;flex-wrap:wrap;gap:6px}.model-approval-badges .competition-badge{margin:0;cursor:default}.metrics .model-approval-badges{grid-column:1/-1}.metrics:has(.model-approval-badges){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+/* Paddle photos lead; tuning exports belong to setup. */
+#mainPaddleCard .paddle-portrait .paddle-photo,.paddle-expanded .paddle-portrait .paddle-photo,#detailBody .paddle-portrait .paddle-photo{height:clamp(260px,40dvh,380px);object-fit:contain}
+.paddle-setup .tuning-setup-image .paddle-photo{height:auto;max-height:460px;object-fit:contain}
+.weight-placement{border-top:1px solid var(--line);padding-top:12px}
+
+.tuning-review-dialog{width:min(94vw,600px);max-height:90dvh;padding:0;border:1px solid var(--line);border-radius:20px;color:var(--text);background:var(--card);overflow:auto}.tuning-review-dialog::backdrop{background:#000b}.tuning-review-dialog>.sheet-head{position:sticky;top:0;background:var(--card);z-index:1;padding:12px 16px}.tuning-review-body{padding:0 16px 16px}.tuning-review-image{display:block;width:100%;height:auto}.tuning-review-footer{position:sticky;bottom:0;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line)}.tuning-review-footer .btn{flex:1}.scan-accessory{border:1px solid var(--line);border-radius:12px;padding:12px;margin:12px 0}.scan-accessory label{display:grid;gap:6px;margin:8px 0}.scan-include{display:flex!important;align-items:center;gap:10px;min-height:44px}.scan-include input{width:22px;height:22px;flex-shrink:0}.tuning-crop{position:relative;overflow:hidden;background:#fff;border-radius:14px}.tuning-crop img{position:absolute;left:0;max-width:none;height:auto}.tuning-estimates{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.tuning-estimates h4{margin:10px 0}.tuning-review-dialog small{color:var(--muted)}
+
+/* Installed components share the available row equally (one, two, or three). */
+#mainPaddleCard .maintenance-button{justify-content:center;align-items:center;text-align:center;min-width:0;padding:12px 8px;gap:6px}
+#mainPaddleCard .maintenance-button-heading{display:block;width:100%;margin:0;font-size:14px;line-height:1.25;text-align:center;overflow-wrap:anywhere}
+#mainPaddleCard .maintenance-button .wear-badge{display:inline-flex;align-items:center;justify-content:center;max-width:100%;margin:0;white-space:normal;font-size:12px;line-height:1.25;text-align:center}
+.paddle-expanded .paddle-spec-summary{margin:16px 0}.paddle-expanded .home-spec{min-width:0}.home-spec strong{overflow-wrap:anywhere}
+
+/* Interface labels use Title Case; prose, entered values, names, and units retain their casing. */
+:where(h1,h2,h3,h4,button,label,summary,.secondary-title,.navbtn,.maintenance-button-heading,.wear-badge,.home-spec>span,.home-extra-specs>div>span,.settings-root .btn){text-transform:capitalize}
+:where(.main-paddle-header h2,.paddle-summary .title,#detailTitle,.home-spec strong,.home-spec strong small,.home-spec>small,.settings-root small,.btn small,.maintenance-button-meta,.maintenance-product){text-transform:none}
+
+/* A continuous full-height drag target beside the closed paddle summary. */
+.paddle-accordion.card{padding:0}
+.paddle-summary{padding:0 14px 0 0;align-items:center}
+.paddle-summary>.paddle-summary-copy,.paddle-summary>.paddle-summary-stats,.paddle-summary>.accordion-chevron{margin-top:14px;margin-bottom:14px}
+.paddle-summary>.reorder-handle{align-self:stretch;display:flex;align-items:center;justify-content:center;height:auto;min-height:76px;margin:0;border-width:0 1px 0 0;border-radius:0;flex:0 0 44px}
+
+/* Distinct history markers remain readable across accent and appearance choices. */
+.timeline{padding-left:40px}.timeline:before{left:15px}.event{padding:0 0 18px 8px;min-height:40px}.event:before{display:none}.timeline-marker{position:absolute;left:-40px;top:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--event-color);color:#111827;box-shadow:0 0 0 4px var(--bg);border:1px solid rgba(0,0,0,.12)}.timeline-marker svg{width:19px;height:19px;flex:none}.event .when{min-height:18px}.developer-support .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}.developer-support[hidden]{display:none!important}
+
+/* Keep model approvals paired on narrow phone screens. */
+.model-approval-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}
+.model-approval-badges .competition-badge{min-width:0;width:auto;padding:10px;gap:0;align-items:flex-start}
+.model-approval-badges .competition-badge>span{min-width:0;width:100%}
+.model-approval-badges .competition-badge strong{display:block;font-size:14px}
+.model-approval-state{display:block;font-size:12px;font-weight:600;line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+.model-approval-badges .competition-badge small{font-size:10px;line-height:1.4}
+
+/* One session, multiple paddle periods: compact switching and readable usage. */
+.active-paddle-switch {display:block;font-size:13px;font-weight:600;margin:10px 0}
+.active-paddle-switch select {width:100%;min-height:44px;margin-top:6px}
+.session-paddle-usage {margin:8px 0;font-size:13px}
+.session-paddle-usage>div {display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--border)}
+.session-paddle-usage span {min-width:0;overflow-wrap:anywhere}
+.session-paddle-usage strong {white-space:nowrap}
+.session-segment-row {padding:12px 0;border-bottom:1px solid var(--border)}
+.session-segment-row label {display:block;font-size:13px}
+.session-segment-row select,.session-segment-row input {width:100%;min-height:44px;margin:5px 0}
+.segment-times {display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:600px){.segment-times{grid-template-columns:1fr 1fr}}
+
+/* Shared spacing pass: one gap between groups; mobile-sized, stable controls. */
+:root {
+  --ui-gutter: 16px;
+  --ui-gap: 12px;
+  --ui-section-gap: 20px;
+}
+.top {padding:calc(12px + env(safe-area-inset-top)) var(--ui-gutter) 8px}
+.content {padding:8px var(--ui-gutter) 20px}
+.secondary-title {margin:8px 0 16px;line-height:1.2}
+.grid,.usage-list {gap:var(--ui-gap)}
+.grid>.card,.usage-list>.card {margin-bottom:0}
+.card {min-width:0}
+.card>h2,.card>h3,.card>h4 {margin-top:0;margin-bottom:10px;line-height:1.3}
+.card>.small,.card>.note {margin:8px 0;line-height:1.45}
+.card>:last-child {margin-bottom:0}
+.section-title {align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.section-title>.btn {min-width:0}
+.actions {gap:8px;align-items:stretch}
+.actions .btn {display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;min-width:0;overflow-wrap:anywhere}
+.iconbtn,.favorite-star,.reorder-handle {flex-shrink:0}
+.paddle-head {align-items:flex-start}
+.paddle-head .badge {flex-shrink:0;white-space:nowrap}
+.paddle-expanded {padding:14px}
+.paddle-main-tags {max-width:110px}
+.paddle-summary .main-label {margin-top:0;line-height:1.3}
+.setup-rows>div {align-items:flex-start}
+.setup-rows dt {flex-shrink:0}
+.setup-rows dd {min-width:0;overflow-wrap:anywhere}
+
+/* Home's section spacing is independent of card and browser paragraph margins. */
+#mainPaddleCard .quick-maintenance {margin:16px 0}
+#mainPaddleCard .quick-maintenance h2 {margin:0 0 8px}
+#mainPaddleCard .maintenance-button {min-height:84px;padding:10px 8px}
+#mainPaddleCard .paddle-media {margin:16px 0}
+#mainPaddleCard .paddle-spec-summary {margin:18px 0}
+.paddle-spec-summary>h3 {margin:0 0 10px;line-height:1.3}
+.home-extra-specs {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.home-extra-specs:empty {display:none}
+.home-extra-specs>div {min-width:0;overflow-wrap:anywhere}
+.home-advanced {margin:20px 0}
+.home-advanced>h3 {margin:0 0 8px;font-size:18px}
+.home-extra-specs:not(:empty)+h3 {margin-top:16px}
+.feel-grid,.home-advanced .feel-grid {width:min(300px,calc(100% - 64px));max-width:300px;margin:32px auto;height:auto;aspect-ratio:4 / 3}
+.feel-top,.feel-bottom {left:50%;transform:translateX(-50%);white-space:nowrap}
+.feel-left,.feel-right {top:50%;transform:translateY(-50%)}
+.product-disclosure,.main-paddle>.equipment-section {margin:20px 0}
+.product-disclosure>summary {padding:12px 0}
+.product-disclosure[open]>summary {margin-bottom:8px}
+
+/* Settings subsections use the same inset as other page content. */
+#settingsGeneral>.card,#settingsAppearance,#settingsAccount {padding:14px 0;margin:0 0 20px;border:0;background:transparent;box-shadow:none}
+#viewData h2 {margin:0 0 12px;line-height:1.3}
+#viewData p {line-height:1.45}
+#settingsAppearance .form,#settingsForm {gap:16px}
+#settingsForm .field {padding:0 0 14px;gap:6px}
+#settingsForm .field label {margin:0}
+#settingsForm .small {margin:2px 0 0}
+#settingsGeneral .card>p {margin:8px 0;line-height:1.45}
+#settingsGeneral details {margin-top:12px}
+#settingsAccount>p {margin:10px 0}
+#settingsAccount .account-actions,#settingsAccount .account-links,#settingsAccount .account-danger {margin:14px 0;gap:10px}
+#settingsAccount .account-links,#settingsAccount .account-danger {padding-top:14px}
+.settings-root .btn {min-height:64px!important;padding:12px 14px!important;gap:12px}
+#settingsBack {margin:0 0 8px;min-height:44px}
+
+/* Shared sheets: consistent edge insets and only one safe-area footer. */
+.sheet,.equipment-dialog,.compare-dialog {padding:0 var(--ui-gutter) 16px;scroll-padding-block:72px 100px;overscroll-behavior:contain}
+.sheet {padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.sheet:has(.form-actions) {padding-bottom:0}
+.equipment-dialog {background:var(--card);color:var(--text);border-color:var(--line)}
+.equipment-dialog input,.equipment-dialog select,.equipment-dialog textarea {background:var(--surface);color:var(--text);border-color:var(--line)}
+.compare-dialog>.sheet-head {background:var(--bg)}
+.sheet-head {position:sticky;top:0;padding:10px 0;margin:0 0 12px;gap:12px;align-items:center}
+.sheet-head h2,.sheet-head h3 {min-width:0;margin:0;overflow-wrap:anywhere}
+.sheet-head .iconbtn {margin-left:auto}
+.equipment-dialog .sheet-head {top:0}
+.form {gap:14px}
+.form .field {gap:6px}
+.form-section {padding:12px 0}
+.form-section[open]>summary {margin-bottom:10px}
+.form-section>.form {gap:14px}
+.form p.small {margin:4px 0;line-height:1.45}
+.field input,.field select,.field textarea,.equipment-dialog input,.equipment-dialog select {min-height:46px}
+input[type=datetime-local] {min-width:0;max-width:100%}
+.form-actions,.equipment-dialog form>.actions {position:sticky;bottom:0;margin:12px calc(-1 * var(--ui-gutter)) 0;padding:12px var(--ui-gutter) calc(12px + env(safe-area-inset-bottom));gap:8px;align-items:stretch;background:var(--card)}
+.equipment-dialog form>.actions {margin-bottom:-16px}
+.form-actions>.btn,.equipment-dialog form>.actions>.btn {flex:1;min-width:0;line-height:1.3;text-align:center}
+.equipment-dialog .actions:not(form>.actions) {position:static}
+.weight-entry {margin:12px 0;padding:12px}
+.weight-entry legend {padding:0 4px}
+.weight-entry label {gap:6px}
+#weightRows .form {gap:12px}
+.comparison-scroll {margin:12px 0}
+.comparison-scroll th,.comparison-scroll td {padding:10px}
+
+/* Sessions and history stay readable with long names and multiple paddles. */
+#viewSessions>.section-title {margin:0 0 14px;justify-content:flex-start}
+#sessionList .card {padding:14px}
+.session-paddle-usage>div {align-items:baseline;border-color:var(--line)}
+.session-segment-row {padding:12px 0}
+.session-segment-row:first-child {padding-top:0}
+.active-session {margin-bottom:16px}
+.active-session>p {margin:8px 0}
+.active-session .actions {margin-top:12px}
+#sessionFollowup:empty {display:none}
+#sessionFollowup:not(:empty) {margin:0 0 16px}
+.event {padding-bottom:16px}
+.event .event-menu {margin-top:0}
+.event .detail {line-height:1.45;overflow-wrap:anywhere}
+#proDialog .sheet-head {margin-bottom:10px}
+.pro-plan {gap:10px;align-items:start}
+.pro-plan input {margin:3px 0 0}
+.pro-value {float:none;display:inline-block;margin-left:8px}
+.pro-features {margin:12px 0;padding-left:20px}
+
+@media(max-width:360px) {
+  :root {--ui-gutter:12px}
+  .paddle-summary {gap:6px;padding-right:10px}
+  .paddle-expanded {padding:12px}
+  .paddle-summary .title {font-size:16px}
+  .paddle-summary-stats {font-size:12px}
+  .paddle-main-tags {max-width:82px}
+  .home-spec {padding:10px 4px}
+  .home-spec strong {font-size:17px}
+  .model-approval-badges .competition-badge {padding:8px}
+}

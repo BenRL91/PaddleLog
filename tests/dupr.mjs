@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {createDuprClient} from '../lib/server/integrations/dupr.mjs';
+import {ratingSnapshot,ratingAt,analyticsPermission,cohortReady} from '../lib/server/integrations/rating-analytics.mjs';
+const connection={accountId:'a',duprId:'ABC123',status:'verified',linkedAt:'2026-10-01'};
+let calls=[];const client=createDuprClient({baseUrl:'https://uat.mydupr.com/api',clientKey:'fixture',clientSecret:'fixture',clock:()=>Date.parse('2026-10-02T12:00:00Z'),fetcher:async(url,opts)=>{calls.push({url,opts});return Response.json({status:'SUCCESS',result:url.endsWith('/token')?{token:'fixture-token',expiry:'2026-10-02T13:00:00Z'}:{duprId:'ABC123',singlesRating:4,doublesRating:'NR',singlesProvisional:false}});}});
+await assert.rejects(()=>client.player({...connection,status:'claimed'}),/VERIFIED_LINK/);assert.equal(calls.length,0);
+const player=await client.player(connection);await client.player(connection);assert.equal(calls.filter(x=>x.url.endsWith('/token')).length,1);
+const snap=ratingSnapshot(connection,player,'2026-10-02T12:00:00Z');assert.equal(snap.doubles,null);
+assert.equal(ratingAt([snap],'a','2026-10-01','singles'),null);assert.equal(ratingAt([snap],'b','2026-10-03','singles'),null);assert.equal(ratingAt([snap],'a','2026-12-01','singles'),null);assert.equal(ratingAt([snap],'a','2026-10-03','singles').value,4);
+assert.throws(()=>ratingSnapshot(connection,{...player,duprId:'OTHER'}));assert.throws(()=>ratingSnapshot(connection,{...player,singlesRating:99}));
+assert.equal(analyticsPermission({}),false);const consent={granted:true,purpose:'manufacturer_aggregate_research',version:'1',at:'2026-10-01'};const providerRights={commercialAggregateUse:true,agreementReference:'test-only',expiresAt:'2027-01-01'};assert.equal(analyticsPermission({consent,providerRights,now:Date.parse('2026-10-02')}),true);assert.equal(analyticsPermission({consent:{...consent,revokedAt:'2026-10-02'},providerRights}),false);
+const rows=Array.from({length:20},(_,i)=>({allowed:true,accountId:'p'+i,rating:{value:4,provisional:false}}));assert.equal(cohortReady(rows).publishable,true);assert.equal(cohortReady(rows.slice(1)).publishable,false);assert.equal(cohortReady(rows.map(x=>({...x,accountId:'same'}))).publishable,false);assert.equal(cohortReady(rows.map(x=>({...x,rating:{value:4,provisional:null}}))).publishable,false);
+await assert.rejects(()=>createDuprClient().player(connection),/NOT_CONFIGURED/);
+for(const status of [401,403,429,500])await assert.rejects(()=>createDuprClient({baseUrl:'https://uat.mydupr.com/api',clientKey:'x',clientSecret:'x',fetcher:async()=>new Response('private upstream body',{status})}).player(connection),e=>!e.message.includes('private'));
+console.log('PASS: DUPR verified-link gate, token reuse, provider validation, account isolation, NR, historical/freshness boundaries, default-deny commercial consent and distinct-player cohort protection.');
+const wrong=createDuprClient({baseUrl:'https://uat.mydupr.com/api',clientKey:'x',clientSecret:'x',fetcher:async url=>Response.json({status:'SUCCESS',result:url.endsWith('/token')?{token:'t',expiry:'2099-01-01'}:{duprId:'WRONG'}})});await assert.rejects(()=>wrong.player(connection),/IDENTITY_MISMATCH/);
+await assert.rejects(()=>createDuprClient({baseUrl:'https://evil.example/api',clientKey:'x',clientSecret:'x'}).player(connection),/CONFIGURATION_INVALID/);

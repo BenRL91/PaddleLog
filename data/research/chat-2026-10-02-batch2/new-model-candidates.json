@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "paddlelog.new-model-candidates.v1",
+  "checkedAt": "2026-10-02",
+  "items": [
+    {
+      "brand": "Selkirk Sport",
+      "model": "LABS Project Boomstik Raw Carbon Elongated 16mm",
+      "modelNumber": null,
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "configuration": "Retail Raw Carbon / Raw Spin Technology surface with pre-installed MOI Tuning System",
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://asia.selkirk.com/products/boomstik-rc",
+        "retrieved": "2026-10-02"
+      },
+      "candidateNotes": "Catalog contains a Raw Carbon Elongated record only in a 'No MOI Clamps Allowed' configuration. Manufacturer currently sells a distinct retail Raw Carbon Elongated configuration with MOI pre-installed. Do not assign permanent ID until deduplicated against live catalog."
+    },
+    {
+      "brand": "Selkirk Sport",
+      "model": "LABS Project Boomstik Raw Carbon Widebody 16mm",
+      "modelNumber": null,
+      "shape": "Widebody",
+      "thickness": 16.0,
+      "configuration": "Retail Raw Carbon / Raw Spin Technology surface with pre-installed MOI Tuning System",
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://asia.selkirk.com/products/boomstik-rc",
+        "retrieved": "2026-10-02"
+      },
+      "candidateNotes": "Catalog contains a Raw Carbon Widebody record only in a 'No MOI Clamps Allowed' configuration. Manufacturer currently sells a distinct retail Raw Carbon Widebody configuration with MOI pre-installed. Do not assign permanent ID until deduplicated against live catalog."
+    },
+    {
+      "brand": "Six Zero",
+      "model": "Black Opal 14mm Elongated",
+      "modelNumber": null,
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "configuration": "Commercial elongated Black Opal 14mm",
+      "source": {
+        "type": "manufacturer",
+        "organization": "Six Zero",
+        "url": "https://us.sixzeropickleball.com/products/black-opal-14mm-elongated",
+        "retrieved": "2026-10-02"
+      },
+      "candidateNotes": "Exact manufacturer product exists; no matching elongated Black Opal model name is present in supplied catalog. Keep separate pending governing-body/catalog identity review."
+    }
+  ]
+}

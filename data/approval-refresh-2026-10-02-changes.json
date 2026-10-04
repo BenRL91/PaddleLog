@@ -1,0 +1,18 @@
+{
+  "retrievedAt": "2026-10-02",
+  "previousAt": "2026-10-02",
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "counts": [
+    {
+      "organization": "USAP",
+      "count": 5367
+    },
+    {
+      "organization": "UPA-A",
+      "count": 274
+    }
+  ],
+  "requiresReview": false
+}

@@ -1,0 +1,844 @@
+{
+  "schemaVersion": "paddlelog.reference-enrichment.v1",
+  "checkedAt": "2026-10-02",
+  "items": [
+    {
+      "id": "plref_3940c1f3a6869438",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Project Boomstik Elongated 16mm",
+      "expectedModelNumber": null,
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.45,
+        "staticWeightOzRange": {
+          "min": 8.0,
+          "max": 8.3
+        },
+        "handleLength": 5.8,
+        "gripCircumference": 4.25,
+        "faceMaterial": "Multistrata T700 Carbon (3 layers)",
+        "coreMaterial": "BoomCore"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-labs-project-boomstik",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-labs-project-boomstik",
+        "basis": "manufacturer-published",
+        "configuration": "Project Boomstik Elongated, 16mm, standard retail configuration with pre-installed MOI Tuning System",
+        "manufacturerModel": "Selkirk LABS Project Boomstik Elongated",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Applied only to the catalog's standard 16mm Boomstik record; no-MOI and Raw Carbon records are not treated as equivalent."
+      }
+    },
+    {
+      "id": "plref_cdc4e21142224c64",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Project Boomstik Widebody 16mm",
+      "expectedModelNumber": null,
+      "shape": "Widebody",
+      "thickness": 16.0,
+      "specs": {
+        "length": 15.95,
+        "width": 8.0,
+        "staticWeightOzRange": {
+          "min": 8.0,
+          "max": 8.4
+        },
+        "handleLength": 5.6,
+        "gripCircumference": 4.25,
+        "faceMaterial": "Multistrata T700 Carbon (3 layers)",
+        "coreMaterial": "BoomCore"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-labs-project-boomstik",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-labs-project-boomstik",
+        "basis": "manufacturer-published",
+        "configuration": "Project Boomstik Widebody, 16mm, standard retail configuration with pre-installed MOI Tuning System",
+        "manufacturerModel": "Selkirk LABS Project Boomstik Widebody",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Applied only to the catalog's standard 16mm Boomstik record; no-MOI and Raw Carbon records are not treated as equivalent."
+      }
+    },
+    {
+      "id": "plref_c2c160493791d711",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "SLK ERA Power Elongated",
+      "expectedModelNumber": "65778257",
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.45,
+        "staticWeightOzRange": {
+          "min": 7.9,
+          "max": 8.4
+        },
+        "handleLength": 5.8,
+        "gripCircumference": 4.25,
+        "faceMaterial": "3-Layered Face (fiberglass + T700 Raw Carbon Fiber)",
+        "coreMaterial": "Polypropylene surrounded by EVA Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/slk-era-power",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/slk-era-power",
+        "basis": "manufacturer-published",
+        "configuration": "SLK ERA Power Elongated, 16mm",
+        "manufacturerModel": "SLK ERA Power Elongated",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape and thickness match. Manufacturer swing/twist figures omitted because requested units/method are not established on the page."
+      }
+    },
+    {
+      "id": "plref_37060c42f8979536",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "SLK ERA Power Widebody",
+      "expectedModelNumber": "77278257",
+      "shape": "Widebody",
+      "thickness": 16.0,
+      "specs": {
+        "length": 15.95,
+        "width": 8.0,
+        "staticWeightOzRange": {
+          "min": 8.0,
+          "max": 8.3
+        },
+        "handleLength": 5.6,
+        "gripCircumference": 4.25,
+        "faceMaterial": "3-Layered Face (fiberglass + T700 Raw Carbon Fiber)",
+        "coreMaterial": "Polypropylene surrounded by EVA Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/slk-era-power",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/slk-era-power",
+        "basis": "manufacturer-published",
+        "configuration": "SLK ERA Power Widebody, 16mm",
+        "manufacturerModel": "SLK ERA Power Widebody",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape and thickness match. Manufacturer swing/twist figures omitted because requested units/method are not established on the page."
+      }
+    },
+    {
+      "id": "plref_658b11439ce7c92a",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Omni Elongated",
+      "expectedModelNumber": "255268783",
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.45,
+        "staticWeightOzRange": {
+          "min": 7.9,
+          "max": 8.2
+        },
+        "handleLength": 5.8,
+        "gripCircumference": 4.25,
+        "coreMaterial": "PureFoam™"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-omni-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-omni-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Selkirk OMNI Elongated, 16mm, as-sold configuration with pre-installed adjustable MOI weights",
+        "manufacturerModel": "Selkirk OMNI Elongated",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape/thickness match. Swing/twist figures omitted because the product page does not establish the requested units/method."
+      }
+    },
+    {
+      "id": "plref_b0a3d851af1988a7",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Omni Widebody",
+      "expectedModelNumber": "255268789",
+      "shape": "Widebody",
+      "thickness": 16.0,
+      "specs": {
+        "length": 15.95,
+        "width": 8.0,
+        "staticWeightOzRange": {
+          "min": 7.9,
+          "max": 8.2
+        },
+        "handleLength": 5.6,
+        "gripCircumference": 4.25,
+        "coreMaterial": "PureFoam™"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-omni-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-omni-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Selkirk OMNI Widebody, 16mm, as-sold configuration with pre-installed adjustable MOI weights",
+        "manufacturerModel": "Selkirk OMNI Widebody",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape/thickness match. Swing/twist figures omitted because the product page does not establish the requested units/method."
+      }
+    },
+    {
+      "id": "plref_ac993baf62370d83",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Project 008 Invikta 10mm",
+      "expectedModelNumber": null,
+      "shape": "Invikta",
+      "thickness": 10.0,
+      "specs": {
+        "length": 16.45,
+        "width": 7.45,
+        "staticWeightOzRange": {
+          "min": 7.7,
+          "max": 8.1
+        },
+        "handleLength": 5.5,
+        "gripCircumference": 4.25,
+        "coreMaterial": "PureFoam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-labs-project-008",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-labs-project-008",
+        "basis": "manufacturer-published",
+        "configuration": "Project 008 Invikta, 10mm",
+        "manufacturerModel": "Selkirk LABS Project 008 Invikta",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape/thickness combination supported by manufacturer table. Swing/twist omitted for lack of requested units/method."
+      }
+    },
+    {
+      "id": "plref_4e298220d5b4acba",
+      "expectedBrand": "Selkirk Sport",
+      "expectedModel": "Project 008 Tour 16mm",
+      "expectedModelNumber": null,
+      "shape": "Tour",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.45,
+        "width": 7.5,
+        "staticWeightOzRange": {
+          "min": 7.6,
+          "max": 8.0
+        },
+        "handleLength": 6.0,
+        "gripCircumference": 4.25,
+        "coreMaterial": "PureFoam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Selkirk Sport",
+        "url": "https://www.selkirk.com/products/selkirk-labs-project-008",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://www.selkirk.com/products/selkirk-labs-project-008",
+        "basis": "manufacturer-published",
+        "configuration": "Project 008 Tour, 16mm",
+        "manufacturerModel": "Selkirk LABS Project 008 Tour",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact shape/thickness combination supported by manufacturer table. Swing/twist omitted for lack of requested units/method."
+      }
+    },
+    {
+      "id": "plref_7f61574e9f5815e5",
+      "expectedBrand": "PIKKL",
+      "expectedModel": "Hurricane Pro",
+      "expectedModelNumber": "HP14",
+      "shape": "Widebody",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.0,
+        "width": 8.0,
+        "staticWeightOz": 7.76,
+        "handleLength": 5.5,
+        "gripCircumference": 4.25,
+        "faceMaterial": "T700 Raw Carbon Fiber",
+        "coreMaterial": "Polypropylene Hex-Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "PIKKL",
+        "url": "https://pikkl.com/products/hurricane-pro-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://pikkl.com/products/hurricane-pro-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Hurricane Pro, 14mm (Power)",
+        "manufacturerModel": "PIKKL Hurricane Pro 14mm",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact non-X Hurricane Pro 14mm. Pro X specs were not substituted."
+      }
+    },
+    {
+      "id": "plref_24b71ad7bf486a98",
+      "expectedBrand": "PIKKL",
+      "expectedModel": "Vantage Pro",
+      "expectedModelNumber": "VP16",
+      "shape": "Elongated",
+      "thickness": 16.0,
+      "specs": {
+        "length": 16.25,
+        "width": 7.5,
+        "staticWeightOz": 8.3,
+        "handleLength": 5.35,
+        "gripCircumference": 4.25,
+        "faceMaterial": "Multiweave Raw Carbon Fiber",
+        "coreMaterial": "Polypropylene Hex-Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "PIKKL",
+        "url": "https://pikkl.com/products/vantage-pro-pickleball-paddle",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://pikkl.com/products/vantage-pro-pickleball-paddle",
+        "basis": "manufacturer-published",
+        "configuration": "Vantage Pro, 16mm (Control)",
+        "manufacturerModel": "PIKKL Vantage Pro 16mm",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {},
+        "verificationNotes": "Exact non-X Vantage Pro 16mm. Vantage Pro X specs were not substituted."
+      }
+    },
+    {
+      "id": "plref_3309154d9a0413a1",
+      "expectedBrand": "Six Zero",
+      "expectedModel": "Black Opal",
+      "expectedModelNumber": "202914",
+      "shape": null,
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.3,
+        "widthRange": {
+          "min": 7.5,
+          "max": 7.7
+        },
+        "staticWeightOzRange": {
+          "min": 8.0,
+          "max": 8.3
+        },
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "Diamond Tough Raw Carbon Fiber",
+        "coreMaterial": "G4 Aerospace Solid Foam Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "Six Zero",
+        "url": "https://us.sixzeropickleball.com/products/black-opal-14mm",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://us.sixzeropickleball.com/products/black-opal-14mm",
+        "basis": "manufacturer-published",
+        "configuration": "Black Opal 14mm base configuration",
+        "manufacturerModel": "Black Opal 14mm",
+        "averageFields": [],
+        "tolerances": {},
+        "verificationNotes": "Exact model name/thickness match. Shape is left unchanged/null because the official page does not explicitly label the base shape. Swing/twist omitted because units/method are not established."
+      }
+    },
+    {
+      "id": "plref_0c8b1283bbf6ca2c",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM BARRAGE 1",
+      "expectedModelNumber": "TFB1",
+      "shape": "Elongated w/ Long Handle",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.35,
+        "staticWeightOz": 7.9,
+        "handleLength": 5.75,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber",
+        "coreMaterial": "100% TruFoam Floating Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/tfb1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/tfb1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFB1, 14mm, Elongated w/ Long Handle",
+        "manufacturerModel": "CRBN TFB1",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_2c7badf17a36318b",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM BARRAGE 2",
+      "expectedModelNumber": "TFB2",
+      "shape": "Square",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.0,
+        "width": 7.85,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber",
+        "coreMaterial": "100% TruFoam Floating Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/tfb1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/tfb1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFB2, 14mm, Square",
+        "manufacturerModel": "CRBN TFB2",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_86208c4e191e348b",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM BARRAGE 3",
+      "expectedModelNumber": "TFB3",
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber",
+        "coreMaterial": "100% TruFoam Floating Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/tfb1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/tfb1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFB3, 14mm, Elongated",
+        "manufacturerModel": "CRBN TFB3",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_1538e7f9bccd22e2",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM BARRAGE 4",
+      "expectedModelNumber": "TFB4",
+      "shape": "Hybrid/AeroCurve",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.2,
+        "width": 7.8,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber",
+        "coreMaterial": "100% TruFoam Floating Core"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/tfb1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/tfb1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFB4, 14mm, Hybrid/AeroCurve",
+        "manufacturerModel": "CRBN TFB4",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_abac8c68f20613cd",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM GENESIS 1",
+      "expectedModelNumber": "TFG1",
+      "shape": "Elongated w/ Long Handle",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.35,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.75,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam (proprietary TruFoam blend)"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFG1, 14mm, Elongated w/ Long Handle",
+        "manufacturerModel": "CRBN TFG1",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_ff2acd34a5d66044",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM GENESIS 2",
+      "expectedModelNumber": "TFG2",
+      "shape": "Square",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.0,
+        "width": 7.85,
+        "staticWeightOz": 8.1,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam (proprietary TruFoam blend)"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFG2, 14mm, Square",
+        "manufacturerModel": "CRBN TFG2",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_d139942983920060",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM GENESIS 3",
+      "expectedModelNumber": "TFG3",
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.1,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam (proprietary TruFoam blend)"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFG3, 14mm, Elongated",
+        "manufacturerModel": "CRBN TFG3",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_b1fa2c06703c1a4b",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM GENESIS 4",
+      "expectedModelNumber": "TFG4",
+      "shape": "Hybrid",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.2,
+        "width": 7.8,
+        "staticWeightOz": 8.1,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam (proprietary TruFoam blend)"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-pickleball-trufoam-genesis-paddle-1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFG4, 14mm, Hybrid",
+        "manufacturerModel": "CRBN TFG4",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_0aef51b8ec8fe936",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM WAVES 1",
+      "expectedModelNumber": "TFW1",
+      "shape": "Elongated w/ Long Handle",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.35,
+        "staticWeightOz": 7.9,
+        "handleLength": 5.75,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFW1, 14mm, Elongated w/ Long Handle",
+        "manufacturerModel": "CRBN TFW1",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_442b3dcd7bf97a1c",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM WAVES 2",
+      "expectedModelNumber": "TFW2",
+      "shape": "Square",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.0,
+        "width": 7.85,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFW2, 14mm, Square",
+        "manufacturerModel": "CRBN TFW2",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_850deef686224c16",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM WAVES 3",
+      "expectedModelNumber": "TFW3",
+      "shape": "Elongated",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.5,
+        "width": 7.5,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFW3, 14mm, Elongated",
+        "manufacturerModel": "CRBN TFW3",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    },
+    {
+      "id": "plref_a4a1c736cc53bad7",
+      "expectedBrand": "CRBN",
+      "expectedModel": "TRUFOAM WAVES 4",
+      "expectedModelNumber": "TFW4",
+      "shape": "Hybrid/AeroCurve",
+      "thickness": 14.0,
+      "specs": {
+        "length": 16.2,
+        "width": 7.8,
+        "staticWeightOz": 8.0,
+        "handleLength": 5.5,
+        "gripCircumference": 4.125,
+        "faceMaterial": "T700 Raw Carbon Fiber + fiberglass",
+        "coreMaterial": "100% Foam"
+      },
+      "source": {
+        "type": "manufacturer",
+        "organization": "CRBN Pickleball",
+        "url": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "retrieved": "2026-10-02"
+      },
+      "specMetadata": {
+        "checkedAt": "2026-10-02",
+        "sourceUrl": "https://crbnpickleball.com/products/crbn-trufoam-waves-tfw1",
+        "basis": "manufacturer-published",
+        "configuration": "CRBN TFW4, 14mm, Hybrid/AeroCurve",
+        "manufacturerModel": "CRBN TFW4",
+        "averageFields": [
+          "staticWeightOz"
+        ],
+        "tolerances": {
+          "staticWeight": 0.2
+        },
+        "verificationNotes": "Manufacturer family table explicitly maps the numbered variant to shape/dimensions. Swing/twist and balance point omitted because requested units/method or balance origin are not established on the page."
+      }
+    }
+  ],
+  "unresolved": []
+}

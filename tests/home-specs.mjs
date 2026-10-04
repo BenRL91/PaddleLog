@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {homeSpecs,referenceComparisonMarkup} from '../public/reference-comparison.js';
+import {validate} from '../public/validate.js';
+const row={brand:'A',model:'B',reference:{kind:'manufacturer',name:'Maker',values:{staticWeight:8,length:16.5,width:7.5,swingWeight:110,twistWeight:6,balancePoint:24}},referenceRecord:{specs:{staticWeightOzRange:{min:7.8,max:8.2}},specMetadata:{tolerances:{swingWeight:2}}}};
+const p={id:'p',brand:'A',model:'B',staticWeight:8.1,length:16.6,width:7.4,swingWeight:112,twistWeight:6,balancePoint:25};
+const summary=homeSpecs(p,[row]);for(const [key,expected] of [['staticWeight','within'],['length','above'],['width','below'],['swingWeight','within'],['twistWeight','matches'],['balancePoint','above']])assert.equal(summary.find(s=>s.key===key).comparison,expected);
+assert.equal(homeSpecs({...p,staticWeight:7.8},[row])[0].comparison,'within');assert.equal(homeSpecs({...p,staticWeight:8.2},[row])[0].comparison,'within');assert.equal(homeSpecs({...p,staticWeight:8.21},[row])[0].comparison,'above');
+assert.equal(homeSpecs({...p,staticWeight:''},[row])[0].source,'Manufacturer');assert.equal(homeSpecs(p,[{...row,reference:{...row.reference,kind:'reviewer'}}])[0].comparison,null);
+assert.equal(homeSpecs({...p,model:'Unknown'},[row])[0].comparison,null);assert.equal(homeSpecs(p,[{...row,referenceRecord:{...row.referenceRecord,specMetadata:{pendingVerificationFields:['staticWeightOz']}}}])[0].comparison,null);
+const html=referenceComparisonMarkup(p,[row]);assert.ok(html.includes('Balance from butt'));assert.ok(!html.includes('Verified'));assert.ok(!html.includes('<details class="reference-measure"'));
+let state=validate({paddles:[p],sessions:[],usagePeriods:[]});assert.equal(state.paddles[0].balancePoint,25);state=validate(JSON.parse(JSON.stringify(state)));assert.equal(state.paddles[0].balancePoint,25);assert.throws(()=>validate({paddles:[{...p,balancePoint:-1}],sessions:[],usagePeriods:[]}));
+console.log('PASS: always-visible seven specs, personal precedence, manufacturer-only comparison, inclusive ranges/tolerances, unknown values, hidden Verified, and balance-point validation/backup roundtrip.');

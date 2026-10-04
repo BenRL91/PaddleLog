@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "paddlelog.new-model-candidates.v1",
+  "checkedAt": "2026-10-02",
+  "items": [
+    {
+      "brand": "Gearbox",
+      "manufacturerModel": "GBX Power - Elongated 16mm",
+      "modelNumber": null,
+      "shape": "Elongated",
+      "thickness": 16,
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/gbx-power-elongated",
+        "retrieved": "2026-10-02"
+      },
+      "notes": "Current official manufacturer product; no matching model name found in supplied 552-record catalog. Candidate only; no permanent PaddleLog ID assigned."
+    },
+    {
+      "brand": "Gearbox",
+      "manufacturerModel": "G3 - Elongated 16mm Pickleball Paddle",
+      "modelNumber": null,
+      "shape": "Elongated",
+      "thickness": 16,
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/g3-elongated",
+        "retrieved": "2026-10-02"
+      },
+      "notes": "Current official manufacturer product; no matching model name found in supplied catalog. Candidate only; no permanent PaddleLog ID assigned."
+    },
+    {
+      "brand": "Gearbox",
+      "manufacturerModel": "GX2 Hyper - SSTCORE 2.0",
+      "modelNumber": null,
+      "shape": "Hyper",
+      "thickness": 16,
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/gx2-hyper",
+        "retrieved": "2026-10-02"
+      },
+      "notes": "Official manufacturer product page; no matching GX2 Hyper model found in supplied catalog. Candidate only."
+    },
+    {
+      "brand": "Gearbox",
+      "manufacturerModel": "GX2 Integra XL - SSTCORE 2.0",
+      "modelNumber": null,
+      "shape": "Elongated/Integra XL",
+      "thickness": 16,
+      "source": {
+        "type": "manufacturer",
+        "organization": "Gearbox Sports",
+        "url": "https://gearboxsports.com/products/gx2-integra-xl",
+        "retrieved": "2026-10-02"
+      },
+      "notes": "Official manufacturer product page; no matching GX2 Integra XL model found in supplied catalog. Candidate only."
+    }
+  ]
+}

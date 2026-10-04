@@ -1,0 +1,16 @@
+// Point-mass estimates. Distances cm from butt; swingweight pivot 10 cm from butt.
+export const specFields={staticWeight:'Static weight (oz)',balancePoint:'Balance Point (cm)',length:'Length (in)',width:'Width (in)',thickness:'Thickness (mm)',swingWeight:'Swingweight (kg·cm²)',twistWeight:'Twistweight (kg·cm²)',serveSpeed:'Serve speed (mph)',volleySpeed:'Volley speed (mph)'};
+export function normalizeWeights(value){
+ if(value==null)return {base:{},items:[]};
+ if(!value||typeof value!=='object'||!Array.isArray(value.items)||value.items.length>40)throw Error('Weight setup needs at most 40 entries.');
+ const base={};for(const k of ['grams','balanceCm','swingWeight']){const n=value.base?.[k];if(n!==''&&n!=null){if(typeof n!=='number'||!Number.isFinite(n)||n<0||n>10000||(k==='grams'&&n===0))throw Error('Invalid baseline '+k);base[k]=n;}}
+ const ids=new Set();const items=value.items.map(i=>{if(!i||typeof i.id!=='string'||ids.has(i.id)||!['top','sides','throat','butt'].includes(i.zone)||typeof i.label!=='string'||i.label.length>200||!['tape','tungsten','lead','strip','slider','cap','coin','other'].includes(i.type))throw Error('Invalid weight entry');ids.add(i.id);if(i.quantity!=null&&(!Number.isInteger(i.quantity)||i.quantity<1||i.quantity>20))throw Error('Invalid weight quantity');for(const k of ['grams','positionCm','lateralCm'])if(!(k!=='grams'&&i[k]==null)&&(typeof i[k]!=='number'||!Number.isFinite(i[k])||i[k]<0||i[k]>(k==='grams'?500:100)))throw Error('Invalid weight amount or position');return {id:i.id,zone:i.zone,type:i.type,label:i.label,grams:i.grams,positionCm:i.positionCm??null,lateralCm:i.lateralCm??null,...(i.quantity!=null?{quantity:i.quantity}:{})};});return {base,items};
+}
+export function estimateWeights(value){const {base,items}=normalizeWeights(value);const addedGrams=items.reduce((n,i)=>n+i.grams,0),hasLong=items.every(i=>i.positionCm!=null),hasSide=items.every(i=>i.lateralCm!=null),swingDelta=hasLong?items.reduce((n,i)=>n+i.grams/1000*(i.positionCm-10)**2,0):null,twistDelta=hasSide?items.reduce((n,i)=>n+i.grams/1000*i.lateralCm**2,0):null;const grams=base.grams==null?null:base.grams+addedGrams;return {addedGrams,swingDelta,twistDelta,grams,balanceCm:grams&&base.balanceCm!=null&&hasLong?(base.grams*base.balanceCm+items.reduce((n,i)=>n+i.grams*i.positionCm,0))/grams:null,swingWeight:base.swingWeight==null||swingDelta==null?null:base.swingWeight+swingDelta};}
+export function normalizeReference(r){
+ if(r==null)return undefined;if(!r||typeof r!=='object'||!['manufacturer','reviewer','other'].includes(r.kind)||typeof r.name!=='string'||!r.name.trim()||r.name.length>200)throw Error('Reference needs a source type and name.');
+ const url=r.url??'';if(url&&(!/^https?:\/\//i.test(url)||url.length>2000))throw Error('Reference URL must start with https:// or http://');
+ const values={};for(const k of Object.keys(specFields))if(r.values?.[k]!=null&&r.values[k]!==''){const n=Number(r.values[k]);if(!Number.isFinite(n)||n<0)throw Error('Invalid reference '+k);values[k]=n;}
+ const date=r.asOf??'';if(date&&(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))))throw Error('Invalid reference date');
+ return {kind:r.kind,name:r.name.trim(),url,asOf:date,values};
+}

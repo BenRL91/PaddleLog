@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PaddleLog setup</title><style>body{max-width:850px;margin:30px auto;padding:18px;font:16px/1.6 system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}a{padding:12px;display:inline-block}</style><a href="/">Back to PaddleLog</a><a href="/monetization.html">Subscription and sign-in setup</a><pre># PaddleLog monetization implementation — September 29, 2026
+
+This document supersedes the earlier proposed Free/Pro split. Purchases remain disabled.
+The existing owner-only Web app is not a public iOS authentication or webhook deployment.
+
+## Implemented now
+
+- `public/billing-config.js` is the one source for Free active-paddle limit (3), proposed
+  product IDs, target US prices ($1.99/month and $14.99/year), default annual plan and
+  implemented premium-feature registry. Actual StoreKit products supply localized prices.
+- `public/feature-policy.js` authorizes additions/reactivations. The server checks the
+  current snapshot revision and policy before its atomic update. No client-side toggle
+  bypasses the limit; JSON imports pass the same check. Existing over-limit collections
+  can be edited, reduced, archived and viewed. Adding inactive/retired paddles is allowed.
+- `paddlelog_pro`, legacy `paddlelife_pro`, and `leeway_all_access` authorize the same PaddleLog premium actions.
+  Feature decisions never inspect a Stripe customer or Apple subscription flag. Monthly,
+  annual, promotion, lifetime and administrative access are grants with validity windows.
+- Basic personal backup export and restore are Free. `/api/export` remains authenticated
+  and account-scoped. Photo-inclusive JSON includes referenced paddle/session/legacy
+  setup images, SHA-256 integrity checks, and explicit mobile-safe size limits. Restore
+  maps uploaded images to new destination-account IDs before the atomic library save.
+  Records-only JSON remains supported. The active-paddle limit still applies to restores.
+- Comparisons, lifecycle analytics, usage statistics, measurement trends, and unlimited
+  active paddles are delivered Pro capabilities. Multiple paddle photos, advanced search,
+  and advanced history remain disabled. `proBenefits` drives the rendered paywall from
+  enabled feature flags; backup export is not advertised as premium.
+- Contextual upgrade remains for the active-paddle limit and delivered Pro insights.
+  Backups do not trigger a paywall. No startup prompt is introduced.
+- Annual is selected by default. Monthly equivalent and Best Value derive from current
+  product amounts; Best Value is omitted for incompatible currencies or no annual saving.
+  Subscription disclosures, Terms/Privacy and Restore Purchases are present.
+- Entitlements refresh on initial load, foreground/resume and reconnect. Same-session
+  offline state never extends a known expiration. A cold start/account switch clears
+  cached claims and requires server confirmation. Existing records/drafts are never
+  deleted or changed by subscription checks. Server writes always reauthorize.
+- Optional funnel event callback carries only allowlisted event/context/plan values.
+  No analytics service or transmission was introduced because none existed.
+
+## Apple preparation
+
+`native/apple-purchases.ts` adapts the Capacitor plugin to PurchaseProvider. Swift plugin
+source implements product lookup, purchase outcomes, restore, deferred finishing and
+Transaction.updates. It must be registered and compiled in the real Xcode project.
+`public/purchases.js` completes/finishes only after server verification succeeds.
+`native/transaction-client.ts` calls the authenticated `/api/billing/apple` endpoint.
+
+`lib/server/apple-verifier.ts` uses Apple&#x27;s official App Store Server Library, trusted
+server-configured Apple root certificates, online certificate revocation checks and
+bundle/environment checks. It queries current subscription status with App Store Server
+API credentials before granting from a submitted historical transaction. Grace periods
+use verified renewal data. A cancelled auto-renewal does not remove the paid period.
+
+`lib/server/apple-sync.ts` enforces appAccountToken ownership, product allowlist,
+validity dates, unique original-transaction ownership and ordered grant updates. Older
+periods cannot overwrite newer periods; replayed signed data is idempotent. Grant
+metadata stores product/transaction/environment; it does not store card data or raw JWS.
+
+`/api/billing/apple/notifications` verifies V2 signed notifications and synchronizes
+current state. On transient failure it returns failure so delivery can retry. Unknown or
+deleted accounts are acknowledged without creating accounts. This endpoint is NOT
+reachable by Apple through the current private Sites access gate. Configure a public
+signature-verified ingress and authenticated public app API before enabling purchases.
+
+## Exact products to create in App Store Connect
+
+Use ONE auto-renewable subscription group named **PaddleLog Pro**. Both products offer
+the same entitlement level; give them the same subscription level within the group.
+
+| Reference name | Product ID | Duration | Initial US target |
+| --- | --- | --- | --- |
+| PaddleLog Pro Monthly | paddlelog.pro.monthly | 1 month | $1.99 |
+| PaddleLog Pro Annual | paddlelog.pro.annual | 1 year | $14.99 |
+
+These IDs are proposed application identifiers, not resources already created at Apple.
+If you choose other IDs, change the central configuration before testing. Product IDs
+are distinct from the bundle ID and numeric App Store app ID. Complete localization,
+review information/screenshots, availability and pricing. Do not turn on introductory
+trials or Family Sharing for the initial launch without testing their account behavior.
+Configure App Store Server Notifications V2 for Sandbox and Production at the appropriate
+public ingress. Complete paid-app agreements and tax/banking details.
+
+## Configuration needed afterward
+
+Client/server non-secret configuration:
+- Registered bundle identifier (`PADDLELOG_APP_ID` for Capacitor; `APPLE_BUNDLE_ID` on server).
+- Numeric App Store Connect app Apple ID (`APPLE_APP_ID`, required in Production).
+- Confirmed product IDs and subscription group ID (group used for setup/QA; the code
+  authorizes by product allowlist, not a group ID guessed here).
+- `APPLE_ENVIRONMENT`: Sandbox or Production, with separate deployments/configuration.
+- Verified public HTTPS API origin (`VITE_API_ORIGIN`), callback/universal-link domains.
+- `APPLE_ROOT_CERTIFICATES_JSON`: JSON array of base64 DER Apple Root CA certificates,
+  obtained directly from Apple&#x27;s PKI site and reviewed. These are public trust anchors,
+  not user-provided transaction certificates.
+
+Server secrets, supplied through secure hosting configuration, never chat/source/client:
+- `APPLE_ISSUER_ID`, `APPLE_KEY_ID`, `APPLE_PRIVATE_KEY` (.p8 In-App Purchase key).
+  Create the key in App Store Connect -&gt; Users and Access -&gt; Integrations -&gt; In-App Purchase.
+
+Activation gates:
+- `APPLE_BILLING_ENABLED=true` only after server credentials, trust roots, ingress and
+  verification tests pass. Missing configuration fails closed with no grants.
+- `billingConfig.purchasesEnabled=true` only after native sign-in, legal documents,
+  products, sandbox end-to-end tests and StoreKit bridge registration pass.
+- These are deliberate release switches. No real subscriptions can be purchased now.
+
+## Before enabling real purchases
+
+1. Complete the shared-auth setup in LEEWAYPB-AUTH.md. Migrate the owner by authenticated
+   account linking, preserving the existing internal UUID and all data/drafts.
+2. Create/sign the iOS target using the real bundle ID; add/register both Swift files.
+   Native StoreKit source has not been compiled in this Linux environment.
+3. Configure the public authenticated API, Apple notification ingress and server secrets.
+   Do not expose the private app&#x27;s existing trusted Sites headers to untrusted callers.
+4. Validate Apple library certificate/OCSP/API networking in the deployed runtime using
+   real Sandbox transactions. Local tests exercise policy and verified-event handling,
+   not Apple&#x27;s signing keys or live purchase processing.
+5. Test Sandbox monthly/annual purchases, cancelled/pending payments, restore across
+   devices, restart, renewal, upgrade/downgrade, billing retry/grace, expiration, refund,
+   revocation, delayed/out-of-order notifications and disconnected verification.
+6. Test account changes, Apple private-relay addresses, deletion, existing subscription
+   linked to a deleted account and ownership conflicts. Define support/relink policy;
+   never silently transfer a subscription to a different LeewayPB account.
+7. Add monitoring, notification delivery/reconciliation checks and a scheduled server
+   reconciliation job before scale. Notification gaps must not grant indefinite access.
+8. Finalize public legal operator/contact, Terms/EULA, Privacy, support and retention.
+   The supplied preview terms are not final commercial legal terms.
+9. Complete real iPhone/Safari/native accessibility/layout tests. Browser preview was
+   previously blocked by security policy; VM tests are not browser or device QA.
+10. Follow RELEASE-CHECKLIST.md for TestFlight and App Store submission. Recheck Apple&#x27;s
+    current requirements at submission; this implementation does not guarantee approval.
+
+## Tests
+
+`pnpm test`: Free 0/3/fourth paddle, Pro monthly/annual/all-access, retired paddles,
+reactivation/import authorization, expiry with an over-limit library, failed writes,
+Free authenticated export, ordered/owned grants, cancellation/pending/failure/success,
+restore, price authority, annual defaults, offline expiry, restart, account switches,
+funnel payload minimization and all pre-existing CRUD/draft/photo/session regression tests.
+`pnpm exec tsc --noEmit`, `pnpm native:build`, and the production Sites build are required.
+No live StoreKit purchase, actual Apple-signed fixture or iPhone UI test is claimed.
+
+## Sources
+
+- https://developer.apple.com/app-store/subscriptions/
+- https://github.com/apple/app-store-server-library-node
+- https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-pricing-for-auto-renewable-subscriptions/
+
+## September 30 payment progress
+
+Google Play now has a concrete server verification transport (`google-api.ts`) and
+entitlement synchronization service (`google-sync.ts`). A server credential provider
+must supply the transport a short-lived Google access token; no API route accepts
+client-supplied subscription status. The service checks account binding, configured
+package/product/base-plan allowlists, test environment, state and expiry. Cancellation
+retains the paid period; hold/pause/expiry remove current access, without touching data.
+Purchase references are hashed, update ordering is enforced, replaced grants are revoked,
+and acknowledgement occurs after durable persistence. Failed acknowledgement can retry.
+
+Play activation still requires: real package registration; `paddlelog_pro` subscription
+with monthly/annual auto-renewing base plans (proposed IDs); a server service account
+with Play API permissions; credential-provider and authenticated-route wiring; Kotlin
+Play Billing bridge; RTDN signature/authenticated ingress and reconciliation; and real
+license-tester end-to-end tests. This is not an enabled Google payment implementation.
+Apple&#x27;s prior StoreKit/verifier preparation remains disabled pending the checklist above.
+No payment credentials, products, prices or store resources were provisioned this turn.
+
+Sources rechecked September 30:
+- https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2
+- https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptions/acknowledge
+- https://supabase.com/docs/reference/javascript/auth-getuser
+- https://supabase.com/docs/reference/javascript/auth-signinwithoauth
+</pre></html>

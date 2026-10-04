@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {normalizePlayerProfile} from '../public/player-profile.js';
+import {validate} from '../public/validate.js';
+import {mergeChanges} from '../public/sync.js';
+const today=new Date().toISOString().slice(0,10);
+const profile={handedness:'right',age:35,ageAsOf:today,gender:'nonbinary',country:'US',singlesRating:4.125,ratingsAsOf:today,ratingSource:'verified',verified:true};
+const clean=normalizePlayerProfile(profile);assert.equal(clean.ratingSource,'self-reported');assert.equal(clean.verified,undefined);assert.equal(clean.doublesRating,null);assert.equal(normalizePlayerProfile(null),null);
+for(const bad of [{age:121},{age:2.5},{singlesRating:9},{doublesRating:'4'},{handedness:'bad'},{gender:'bad'},{city:'x'.repeat(101)},{duprId:'../bad'},{ratingsAsOf:'2026-02-30'},{ratingsAsOf:'2099-01-01'},{ageAsOf:''}])assert.throws(()=>normalizePlayerProfile({...profile,...bad}));
+const base=validate({version:2,paddles:[],sessions:[],usagePeriods:[],settings:{playerProfile:clean}});const desired=structuredClone(base);desired.settings.playerProfile.city='A';const remote=structuredClone(base);remote.settings.playerProfile.city='B';assert.throws(()=>mergeChanges(base,desired,remote),/Settings changed/);
+const unrelated=structuredClone(base);unrelated.settings.overgripHoursPerLevel=6;assert.equal(mergeChanges(base,desired,unrelated).settings.playerProfile.city,'A');assert.equal(mergeChanges(base,desired,unrelated).settings.overgripHoursPerLevel,6);
+console.log('PASS: profile bounds, date validation, enum/length validation, verified-claim stripping, optional fields, and concurrent profile conflict protection.');

@@ -1,0 +1,4 @@
+id,brand,model,modelNumber,property,existingValue,proposedValue,sourceUrl,checkedDate,reason
+plref_5ded35e819d5ba7b,Six Zero,Double Black Diamond Control 14mm,,width,7.6,range 7.5–7.7 in,https://us.sixzeropickleball.com/products/double-black-diamond,2026-10-02,Manufacturer publishes tapered width range; existing catalog stores midpoint. Do not overwrite without range-aware migration.
+plref_05ff2a21c2934374,Six Zero,Double Black Diamond Control 15mm,,width,7.3,range 7.2–7.4 in,https://us.sixzeropickleball.com/products/double-black-diamond,2026-10-02,Manufacturer publishes tapered width range; existing catalog stores midpoint. Do not overwrite without range-aware migration.
+plref_e7a2e2c6f41f41d5,Six Zero,Double Black Diamond Control 16mm,,width,7.6,range 7.5–7.7 in,https://us.sixzeropickleball.com/products/double-black-diamond,2026-10-02,Manufacturer publishes tapered width range; existing catalog stores midpoint. Do not overwrite without range-aware migration.
