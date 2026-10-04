@@ -8,7 +8,7 @@ const config={SUPABASE_URL:'https://provider.test',SUPABASE_PUBLISHABLE_KEY:'pub
 globalThis.fetch=async(url,init)=>{calls++;assert.equal(String(url),'https://provider.test/auth/v1/user');assert.ok(new Headers(init.headers).get('authorization').startsWith('Bearer '));return Response.json(invalid?{msg:'Invalid token'}:{id:'external-a',is_anonymous:anonymous},{status:invalid?401:200});};
 const req=new Request('https://api.test',{headers:{authorization:'Bearer test-access-token-not-a-real-jwt'}});
 await assert.rejects(verifiedExternalIdentity(undefined,config));assert.equal(calls,0);await assert.rejects(verifiedExternalIdentity(req,{}));
-const identity=await verifiedExternalIdentity(req,config);assert.deepEqual(identity,{issuer:'https://provider.test/auth/v1',subject:'external-a'});
+const identity=await verifiedExternalIdentity(req,config);assert.deepEqual(identity,{issuer:'https://provider.test/auth/v1',subject:'external-a',verifiedEmail:undefined});
 invalid=true;await assert.rejects(verifiedExternalIdentity(req,config));invalid=false;anonymous=true;await assert.rejects(verifiedExternalIdentity(req,config));anonymous=false;
 sql.prepare("INSERT INTO leeway_accounts(id,subject,status) VALUES ('owner','sites-owner','active')").run();
 sql.prepare("INSERT INTO account_logs VALUES ('owner','kept',8)").run();await linkExternalIdentity('owner',identity);assert.equal((await externalAccount(identity)).id,'owner');assert.equal(sql.prepare("SELECT payload FROM account_logs WHERE account_id='owner'").get().payload,'kept');
