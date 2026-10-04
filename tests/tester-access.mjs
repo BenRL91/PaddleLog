@@ -8,7 +8,7 @@ const db=new DatabaseSync(':memory:');for(const f of readdirSync('drizzle').filt
 const storage=()=>({prepare(sql){let args=[];return {bind(...v){args=v;return this;},async run(){return db.prepare(sql).run(...args);},async first(){return db.prepare(sql).get(...args);},async all(){return {results:db.prepare(sql).all(...args)}}}},async batch(statements){db.exec('BEGIN');try{const results=[];for(const s of statements)results.push(await s.run());db.exec('COMMIT');return results;}catch(e){db.exec('ROLLBACK');throw e;}}});
 function module(file,globals){let source=readFileSync(file,'utf8').replace(/^import .*;\n/gm,'');const compiled=ts.transpile(source,{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022});const exports={};vm.runInNewContext(compiled,{exports,storage,Date,Response,Request,URL,crypto:webcrypto,...globals});return exports;}
 const helper=module('lib/server/test-access.ts');
-assert.equal(helper.normalizeTesterEmail(' contact@example.invalid '),'tester@example.invalid');assert.throws(()=>helper.normalizeTesterEmail('bad'));
+assert.equal(helper.normalizeTesterEmail(' contact@example.invalid '),'contact@example.invalid');assert.throws(()=>helper.normalizeTesterEmail('bad'));
 await helper.claimTestAccess('unverified');assert.equal(db.prepare('SELECT count(*) n FROM entitlement_grants').get().n,0);
 await helper.claimTestAccess('christine','tester@example.invalid');assert.equal(db.prepare('SELECT account_id FROM tester_access').get().account_id,'christine');
 await helper.claimTestAccess('other','tester@example.invalid');assert.equal(db.prepare('SELECT count(*) n FROM entitlement_grants').get().n,1);assert.equal(db.prepare('SELECT account_id FROM entitlement_grants').get().account_id,'christine');
