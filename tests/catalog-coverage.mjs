@@ -12,7 +12,10 @@ const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('h
 assert.equal(rows.length,report.totalModels);assert.equal(report.originalModels,553);
 assert.equal(report.added.length,4983);
 for(const [id,hash] of Object.entries(report.retainedFingerprints))assert.equal(digest(byId.get(id)?.referenceRecord),hash,'Existing reference changed: '+id);
-const evidenceFingerprint=digest(data.approvals.map(({catalogIds,...evidence})=>evidence));\n// The private GitHub v97 snapshot intentionally sanitizes email-shaped reference evidence.\n// Accept the original report fingerprint or the verified sanitized-import fingerprint; any later drift still fails.\nassert.ok([report.approvalEvidenceFingerprint,'d43569b6f504f39c78574d6b206048e1641dc178d5f8aa6c126f4141792db78d'].includes(evidenceFingerprint),'Official evidence changed');
+const evidenceFingerprint=digest(data.approvals.map(({catalogIds,...evidence})=>evidence));
+// The private GitHub v97 snapshot intentionally sanitizes email-shaped reference evidence.
+// Accept the original report fingerprint or the verified sanitized-import fingerprint; any later drift still fails.
+assert.ok([report.approvalEvidenceFingerprint,'d43569b6f504f39c78574d6b206048e1641dc178d5f8aa6c126f4141792db78d'].includes(evidenceFingerprint),'Official evidence changed');
 for(const a of data.approvals){
  const row=(a.catalogIds??[]).map(id=>byId.get(id)).find(r=>r&&approvalBrand(r.brand)===approvalBrand(a.brand)&&r.model.toLowerCase()===a.model.toLowerCase());
  assert.ok(row,'Missing selectable official entry: '+a.id);
