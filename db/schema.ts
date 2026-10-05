@@ -13,6 +13,15 @@ export const catalog=sqliteTable('user_catalog',recordColumns(),t=>[primaryKey({
 export const accountPhotos=sqliteTable('account_photos',{id:text('id').primaryKey(),accountId:text('account_id').notNull(),objectKey:text('object_key').notNull()});
 export const entitlements=sqliteTable('entitlement_grants',{id:text('id').primaryKey(),accountId:text('account_id').notNull(),key:text('key').notNull(),source:text('source').notNull(),sourceRef:text('source_ref').notNull().unique(),startsAt:integer('starts_at').notNull(),endsAt:integer('ends_at'),revokedAt:integer('revoked_at'),verifiedAt:integer('verified_at').notNull().default(0),metadata:text('metadata').notNull().default('{}')});
 
+export const appMemberships=sqliteTable('app_memberships',{
+ accountId:text('account_id').notNull(),
+ appId:text('app_id').notNull(),
+ role:text('role').notNull(),
+ status:text('status').notNull().default('active'),
+ createdAt:integer('created_at').notNull(),
+ updatedAt:integer('updated_at').notNull()
+},t=>[primaryKey({columns:[t.accountId,t.appId]}),index('app_memberships_app_status_idx').on(t.appId,t.status)]);
+
 export const identities=sqliteTable('leeway_identities',{issuer:text('issuer').notNull(),subject:text('subject').notNull(),accountId:text('account_id').notNull()},t=>[primaryKey({columns:[t.issuer,t.subject]}),index('leeway_identities_account_idx').on(t.accountId)]);
 
 export const healthCounters=sqliteTable('health_counters',{accountId:text('account_id').notNull(),day:text('day').notNull(),code:text('code').notNull(),count:integer('count').notNull().default(0),lastAt:text('last_at').notNull()},t=>[primaryKey({columns:[t.accountId,t.day,t.code]})]);
