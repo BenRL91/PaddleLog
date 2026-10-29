@@ -43,3 +43,34 @@ intended default iOS/Android shells. Verify actual generated shell origins befor
 enabling this. Cookie credentials and wildcard origins are never allowed. The
 private outer hosting gate still prevents native/public access; CORS is not a bypass.
 See docs/PUBLIC-NATIVE-LAUNCH.md for the full externally blocked launch sequence.
+
+## Planned Watch workouts and Pickle Point connection (October 5)
+
+Requested experience: starting PaddleLog play on iPhone can launch its paired Watch
+companion, which runs a HealthKit workout. Watch controls start/pause/resume/end and
+selects the current physical paddle. This is planned, not implemented or enabled.
+A native watchOS companion, HealthKit permissions/entitlements, an iPhone bridge,
+and physical paired-device testing are required after the native launch blockers.
+
+Use one authoritative play-session identifier and timestamped paddle segments.
+Persist command identifiers and acknowledgments so retries/reconnection cannot
+create a duplicate session/workout. Paused workout time needs an explicit policy
+for paddle usage; do not silently count it as play. Keep the Watch functional when
+phone connectivity drops, then reconcile device events and session ownership.
+Paddle switches should receive haptic/visual acknowledgment before being treated
+as confirmed. Cache the permitted active-paddle list for offline controls.
+
+For a future Pickle Point connection, link its game/match records to the play-session
+identifier without copying all account data or running a second workout. One app
+owns the workout; each app owns its domain records. Workout mirroring connects
+paired companion apps and does not automatically synchronize separate app products.
+Cross-app linking needs an explicit authenticated contract, opt-in and duplicate
+prevention. Health permission and session synchronization remain separate concerns;
+do not upload health samples merely because a workout is linked.
+
+Apple references:
+- https://developer.apple.com/documentation/healthkit/building-a-multidevice-workout-app
+- https://developer.apple.com/documentation/healthkit/hkhealthstore/startwatchapp(with:completion:)
+
+Suggested sequence: native auth/build readiness → Watch workout and session controls
+→ paddle-switch recovery/device tests → Pickle Point linking. No deadline is committed.

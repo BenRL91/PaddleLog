@@ -12,7 +12,7 @@ Implemented server-only adapter: bounded requests, no redirects, token expiry/ca
 Implemented analytics contracts: separate singles/doubles observations, NR as null, provisional flags, observation timestamps, historical selection without applying current ratings to earlier sessions, 30-day freshness, default-deny commercial rights + purpose-specific consent, minimum 20 distinct players and exclusion of provisional/unknown confidence. Twenty is an initial engineering threshold, not a guarantee against reidentification. No analytics data is transmitted or sold.
 
 Next actions for Ben:
-1. Request DUPR partner API access for PaddleLog by LeewayPB (web, iOS, Android), read-only player ratings and user-authorized profile linking. Official support contact: contact@example.invalid; request routing to API partnerships.
+1. Request DUPR partner API access for PaddleLog by LeewayPB (web, iOS, Android), read-only player ratings and user-authorized profile linking. Official support contact: support@mydupr.com; request routing to API partnerships.
 2. Describe separately the proposed commercial aggregate paddle/manufacturer analytics use. Request written scope for storing rating history, linking to equipment/session data, retention, derived reports, aggregation, redistribution, attribution and deletion/disconnection obligations.
 3. Obtain sandbox and production credentials through secure configuration, not chat; confirm official SSO authorization/code exchange documentation, callback rules, scopes and stable verified player identifier.
 4. Obtain webhook authenticity/replay verification documentation, delivery ordering, rate limits, historical rating availability and reliability score definitions.

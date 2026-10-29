@@ -1,0 +1,6 @@
+export function normalizeSavedPlayers(value){
+ if(!Array.isArray(value)||value.length>1000)throw Error('Invalid saved player library.');const ids=new Set();
+ return value.map(p=>{if(!p||Object.keys(p).some(k=>!['id','displayName','archived'].includes(k))||typeof p.id!=='string'||!/^[\w-]{1,100}$/.test(p.id)||ids.has(p.id)||typeof p.displayName!=='string'||!p.displayName.trim()||p.displayName.length>60||/@[^\s@]+\.[^\s@]+/.test(p.displayName)||p.archived!=null&&typeof p.archived!=='boolean')throw Error('Saved players need unique IDs and names, not email addresses.');ids.add(p.id);return {id:p.id,displayName:p.displayName.trim(),archived:!!p.archived};});
+}
+// Apply explicit draft edits only. An untouched form must not rename a newer player record.
+export function mergeSavedPlayers(current,base,draft){const rows=new Map(normalizeSavedPlayers(current).map(p=>[p.id,p])),original=new Map(normalizeSavedPlayers(base).map(p=>[p.id,p]));for(const p of normalizeSavedPlayers(draft)){const before=original.get(p.id),now=rows.get(p.id),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);if(before&&same(before,p))continue;if(now&&!same(now,before)&&!same(now,p))throw Error('This saved player changed while the session was open. Keep your draft and reopen to review the player library.');rows.set(p.id,p);}return normalizeSavedPlayers([...rows.values()]);}

@@ -22,7 +22,7 @@ export function mergeChanges(base,desired,latest){
    remote.set(id,mergeRecord(b,a,r));
   }out[key]=[...remote.values()];
  }
- const beforeSettings=base.settings??{mainPaddleId:null,overgripHoursPerLevel:4},afterSettings=desired.settings??{mainPaddleId:null,overgripHoursPerLevel:4},remoteSettings=latest.settings??{mainPaddleId:null,overgripHoursPerLevel:4};out.settings={...remoteSettings};
+ const beforeSettings=base.settings??{mainPaddleId:null,overgripHoursPerLevel:2},afterSettings=desired.settings??{mainPaddleId:null,overgripHoursPerLevel:2},remoteSettings=latest.settings??{mainPaddleId:null,overgripHoursPerLevel:2};out.settings={...remoteSettings};
  for(const field of Object.keys(afterSettings)){if(equal(afterSettings[field],beforeSettings[field]))continue;if(!equal(remoteSettings[field],beforeSettings[field])&&!equal(remoteSettings[field],afterSettings[field]))throw new Error('Settings changed in another tab. Reload and try again.');out.settings[field]=afterSettings[field];}
  for(const key of ['mainPaddleId','singlesMainPaddleId','doublesMainPaddleId','mixedMainPaddleId'])if(out.settings[key]&&!out.paddles.some(p=>p.id===out.settings[key]))out.settings[key]=null;
  if(out.settings.paddleOrder)out.settings.paddleOrder=out.settings.paddleOrder.filter(id=>out.paddles.some(p=>p.id===id));

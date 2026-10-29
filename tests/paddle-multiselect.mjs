@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+import {createAnalytics} from '../public/analytics-ui.js';
+const win=new Window(),doc=win.document;doc.body.innerHTML='<div id="paddleList"></div><p id="syncStatus"></p>';
+let state={paddles:[{id:'a',model:'A',purchase:{price:100,currency:'USD'}},{id:'b',model:'B',status:'archived',purchase:{price:200,currency:'USD'}},{id:'c',model:'C',purchase:{price:900,currency:'USD'}}],sessions:[{id:'s',paddleId:'a',start:'2026-01-01T10:00:00Z',end:'2026-01-01T12:00:00Z',segments:[{paddleId:'a',start:'2026-01-01T10:00:00Z',end:'2026-01-01T11:00:00Z'},{paddleId:'b',start:'2026-01-01T11:00:00Z',end:'2026-01-01T12:00:00Z'}]}],settings:{}};
+const ui=createAnalytics({doc,getState:()=>state,paddleName:p=>p.model,authorize:async()=>true}),tick=()=>new Promise(r=>setTimeout(r,0));await ui.open();
+assert.match(doc.querySelector('.paddle-selection-label').textContent,/All paddles/);
+const checkbox=doc.querySelector('.paddle-selection-list input[value=c]');checkbox.checked=false;checkbox.dispatchEvent(new win.Event('change',{bubbles:true}));await tick();assert.deepEqual([...doc.getElementById('analyticsPaddle').options].filter(o=>o.selected).map(o=>o.value),['a','b']);assert.equal(doc.querySelector('#analyticsDialog #costOfPlay'),null);assert.equal(doc.getElementById('insightCosts').disabled,false);
+const focused=doc.querySelector('.paddle-selection-list input[value=a]');focused.focus();ui.refresh();assert.equal(doc.activeElement,focused);assert.equal(doc.querySelector('.paddle-selection-list input[value=c]').checked,false);
+doc.querySelector('[data-select-none]').click();await tick();assert.match(doc.getElementById('analyticsBody').textContent,/Choose one or more/);ui.refresh();assert.equal([...doc.getElementById('analyticsPaddle').options].filter(o=>o.selected).length,0);
+doc.querySelector('[data-select-all]').click();await tick();assert.match(doc.querySelector('.paddle-selection-label').textContent,/All paddles/);
+await ui.open('b');assert.deepEqual([...doc.getElementById('analyticsPaddle').options].filter(o=>o.selected).map(o=>o.value),['b']);assert.match(doc.querySelector('.paddle-selection-label').textContent,/B/);
+state.paddles=state.paddles.filter(p=>p.id!=='b');ui.refresh();assert.equal([...doc.getElementById('analyticsPaddle').options].filter(o=>o.selected).length,0);assert.match(doc.getElementById('analyticsBody').textContent,/Choose one or more/);
+await win.happyDOM.abort();console.log('PASS: multi-paddle selection for Insights, preserved selection/focus, clear/all, single-paddle entry and deleted selection.');

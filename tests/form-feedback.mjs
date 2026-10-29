@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+import {installFormFeedback} from '../public/form-feedback.js';
+const w=new Window(),d=w.document;
+d.body.innerHTML='<form><details><summary>Optional details</summary><label for="amount">Amount</label><input id="amount" type="number" min="0" required aria-describedby="hint"><p id="hint">Amount paid</p></details></form>';
+installFormFeedback(d);const field=d.querySelector('input'),form=d.querySelector('form');
+field.dispatchEvent(new w.Event('invalid'));
+assert.equal(d.querySelector('details').open,true);assert.equal(field.getAttribute('aria-invalid'),'true');
+const error=d.querySelector('.field-error');assert.ok(error.textContent);assert.ok(field.getAttribute('aria-describedby').includes('hint'));assert.ok(field.getAttribute('aria-describedby').includes(error.id));
+field.dispatchEvent(new w.Event('invalid'));assert.equal(d.querySelectorAll('.field-error').length,1);
+field.value='4';field.dispatchEvent(new w.Event('input',{bubbles:true}));assert.equal(error.hidden,true);assert.equal(field.hasAttribute('aria-invalid'),false);
+field.value='-1';field.dispatchEvent(new w.Event('invalid'));assert.equal(error.hidden,false);
+form.reset();assert.equal(error.hidden,true);assert.equal(field.hasAttribute('aria-invalid'),false);
+await w.happyDOM.abort();console.log('PASS: associated inline errors preserve hints, reveal collapsed fields, avoid duplicates, clear on correction and reset.');

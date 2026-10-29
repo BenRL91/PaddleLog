@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaddleLog Pickle Point automatic session delivery v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "integrationVersion",
+    "operation",
+    "sessionExport",
+    "physicalPaddleReferences"
+  ],
+  "properties": {
+    "format": {
+      "const": "leewaypb.paddlelog-session-sync"
+    },
+    "integrationVersion": {
+      "const": 1
+    },
+    "operation": {
+      "const": "upsert"
+    },
+    "sessionExport": {
+      "allOf": [
+        {
+          "$ref": "paddlelog-export-v1.schema.json"
+        },
+        {
+          "properties": {
+            "sessions": {
+              "minItems": 1,
+              "maxItems": 50
+            }
+          }
+        }
+      ]
+    },
+    "physicalPaddleReferences": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sessionId",
+          "intervalId",
+          "physicalPaddleId"
+        ],
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "intervalId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "physicalPaddleId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          }
+        }
+      }
+    }
+  },
+  "$comment": "Runtime additionally requires recorded-play, one owned physical reference per known interval, unique references, semantic date/order validation and account-scoped revision reconciliation."
+}

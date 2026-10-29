@@ -19,3 +19,22 @@ export function performancePoints(p,key){if(!(key in trendFields))return [];cons
 export function maintenanceCycles(p,sessions,now=Date.now()){
  const result=[];for(const kind of componentKinds){const events=maintenanceEvents(p).filter(e=>e.kind===kind&&Number.isFinite(Date.parse(e.at))).sort((a,b)=>Date.parse(a.at)-Date.parse(b.at)||a.id.localeCompare(b.id));for(let i=0;i<events.length;i++){const e=events[i];if(e.action!=='install')continue;const next=events[i+1];result.push({kind,product:e.product||kind,start:Date.parse(e.at),end:next?Date.parse(next.at):null,closed:!!next,usage:usageSplit(p.id,sessions,Date.parse(e.at),next?Date.parse(next.at):Infinity)});}}return result.sort((a,b)=>b.start-a.start);
 }
+
+// Completed replacement habits, recomputed from authoritative usage records.
+// Group by component and recorded product so unrelated products are not pooled.
+export function consumableComparison(paddles,sessions){
+ return paddles.flatMap(p=>{
+  const groups=new Map();
+  for(const cycle of maintenanceCycles(p,sessions)){
+   const key=JSON.stringify([cycle.kind,cycle.product]);
+   if(!groups.has(key))groups.set(key,{paddleId:p.id,kind:cycle.kind,product:cycle.product,completed:[],current:null});
+   const group=groups.get(key);
+   if(cycle.closed)group.completed.push(cycle.usage);
+   else group.current=cycle.usage;
+  }
+  return [...groups.values()].map(({completed,...group})=>{
+   const count=completed.length,sum=completed.reduce((a,u)=>({total:a.total+u.total,logged:a.logged+u.logged,estimated:a.estimated+u.estimated}),{total:0,logged:0,estimated:0});
+   return {...group,count,average:count?sum.total/count:null,loggedAverage:count?sum.logged/count:null,estimatedAverage:count?sum.estimated/count:null,min:count?Math.min(...completed.map(u=>u.total)):null,max:count?Math.max(...completed.map(u=>u.total)):null};
+  });
+ });
+}

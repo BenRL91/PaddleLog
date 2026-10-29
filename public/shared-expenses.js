@@ -1,0 +1,12 @@
+export const moneyCents=n=>Math.round((n+Number.EPSILON)*100);
+export const roundMoney=n=>moneyCents(n)/100;
+// Allocate integer cents cumulatively so fractional shares reconcile to the pack price.
+export const supplyCost=(pack,units,used=0)=>(moneyCents(roundMoney(pack.amount)*(used+units)/pack.quantity)-moneyCents(roundMoney(pack.amount)*used/pack.quantity))/100;
+export const expenseKinds={overgrip:'Overgrips',edgeTape:'Edge tape',skin:'Skins',weightedTape:'Weighted tape',weightedStrip:'Weighted strips',membership:'Facility membership',dropIn:'Drop-in fee',court:'Court reservation',tournament:'Tournament entry fee',other:'Other pickleball expense'};
+export const equipmentKinds=['overgrip','edgeTape','skin','weightedTape','weightedStrip'];
+export const weightSupplyKinds=['weightedTape','weightedStrip'];
+export const supplyUnit=kind=>kind==='weightedTape'?'inch':kind==='weightedStrip'?'strip':'unit';
+export const validSupplyQuantity=(kind,n)=>Number.isFinite(n)&&n>0&&(kind==='weightedTape'||Number.isInteger(n));
+export function usedUnits(state,id,exceptEvent=''){return ((state.settings.collectionExpenses??[]).find(e=>e.id===id)?.consumedUnits??0)+((state.settings.collectionExpenses??[]).find(e=>e.id===id)?.outsideUseUnits??0)+state.paddles.reduce((n,p)=>n+(p.expenses??[]).filter(e=>e.supplyId===id&&e.id!==exceptEvent&&(!exceptEvent||e.maintenanceEventId!==exceptEvent)).reduce((a,e)=>a+(e.units??1),0),0);}
+export function availableSupplies(state,kind,eventId=''){return (state.settings.collectionExpenses??[]).filter(e=>e.kind===kind&&e.quantity&&e.quantity>usedUnits(state,e.id,eventId));}
+export function allocateSupply(state,p,event,supplyId,units=1){const pack=(state.settings.collectionExpenses??[]).find(e=>e.id===supplyId);if(!pack||!pack.quantity||pack.kind!==event.kind)throw Error('Choose a matching supply pack.');if(!validSupplyQuantity(pack.kind,units)||units+usedUnits(state,pack.id,weightSupplyKinds.includes(pack.kind)?'cost-'+event.id:event.id)>pack.quantity+1e-8)throw Error('Not enough units remain in this pack.');return {id:'cost-'+event.id,...(!weightSupplyKinds.includes(pack.kind)?{maintenanceEventId:event.id}:{}),supplyId:pack.id,units,kind:event.kind,product:pack.product,amount:supplyCost(pack,units,usedUnits(state,pack.id,weightSupplyKinds.includes(pack.kind)?'cost-'+event.id:event.id)),currency:pack.currency,date:event.at.slice(0,10),notes:'Allocated from shared supplies'};}

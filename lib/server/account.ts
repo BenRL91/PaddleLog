@@ -1,4 +1,4 @@
-import {claimTestAccess} from './test-access';
+import {claimTestAccess,admitBetaAccount,betaAdmissionMessage} from './test-access';
 import {nativeOriginAllowed} from './native-cors.mjs';
 import {env} from 'cloudflare:workers';
 import {verifiedExternalIdentity} from './external-identity';
@@ -11,7 +11,7 @@ export async function account(allowDeleting=false,req?:Request){
  if(env.LEEWAY_AUTH_MODE==='supabase'){
   let identity;try{identity=await verifiedExternalIdentity(req,env);}catch{throw new AccountError(401,'Sign in to your LeewayPB account. Your draft is kept.');}
   if(req&&!req.headers.has('authorization')&&!['GET','HEAD'].includes(req.method)&&req.headers.get('origin')!==new URL(req.url).origin)throw new AccountError(403,'Same-origin request required.');
-  const a=await externalAccount(identity);if(a&&req?.headers.has('x-leeway-account')&&req.headers.get('x-leeway-account')!==a.id)throw new AccountError(409,'Account changed. Reload to continue; your draft is kept.');if(!a)throw new AccountError(503,'Account unavailable.');if(a.status!=='active'&&!allowDeleting)throw new AccountError(409,'Account deletion is in progress.');if(a.status==='active')await claimTestAccess(a.id,identity.verifiedEmail);return a;
+  const a=await externalAccount(identity);if(a&&req?.headers.has('x-leeway-account')&&req.headers.get('x-leeway-account')!==a.id)throw new AccountError(409,'Account changed. Reload to continue; your draft is kept.');if(!a)throw new AccountError(503,'Account unavailable.');if(a.status!=='active'&&!allowDeleting)throw new AccountError(409,'Account deletion is in progress.');if(!allowDeleting&&!await admitBetaAccount(a.id,identity.verifiedEmail))throw new AccountError(403,betaAdmissionMessage);if(a.status==='active')await claimTestAccess(a.id,identity.verifiedEmail);return a;
  }
  if(env.LEEWAY_AUTH_MODE&&env.LEEWAY_AUTH_MODE!=='sites')throw new AccountError(503,'Sign-in configuration is unavailable.');
  const user=await getChatGPTUser();if(!user)throw new AccountError(401,'Sign in to continue. Your local draft is kept.');
@@ -31,5 +31,5 @@ export async function account(allowDeleting=false,req?:Request){
  }
  return a;
 }
-export function failure(e:unknown){if(e instanceof AccountError)return Response.json({error:e.message},{status:e.status});console.error('Account operation failed');return Response.json({error:'Service unavailable. Your draft is kept; please retry.'},{status:503});}
+export function failure(e:unknown){if(e instanceof AccountError)return Response.json({error:e.message},{status:e.status,headers:{'Cache-Control':'no-store'}});console.error('Account operation failed');return Response.json({error:'Service unavailable. Your draft is kept; please retry.'},{status:503,headers:{'Cache-Control':'no-store'}});}
 export function crossSite(req:Request){return req.headers.get('sec-fetch-site')==='cross-site'&&!(nativeOriginAllowed(req,env)&&/^Bearer \S+$/.test(req.headers.get('authorization')??''));}

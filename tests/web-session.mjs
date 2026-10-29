@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';import fs from 'node:fs';import ts from 'typescript';import {createClient} from '@supabase/supabase-js';
-const deps={createClient,linkHeader:()=> '__Host-leeway-link=; Path=/; Max-Age=0'};async function load(path){const code=fs.readFileSync(path,'utf8').replace(/^import .*;\s*$/gm,'');globalThis.sessionDeps=deps;return import('data:text/javascript;base64,'+Buffer.from(ts.transpileModule('const {'+Object.keys(deps).join(',')+'}=globalThis.sessionDeps;\n'+code,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText).toString('base64'));}
+let admitted=true;const deps={admitBetaAccount:async()=>admitted,betaAdmissionMessage:"Invite required",createClient,linkHeader:()=> '__Host-leeway-link=; Path=/; Max-Age=0'};async function load(path){const code=fs.readFileSync(path,'utf8').replace(/^import .*;\s*$/gm,'');globalThis.sessionDeps=deps;return import('data:text/javascript;base64,'+Buffer.from(ts.transpileModule('const {'+Object.keys(deps).join(',')+'}=globalThis.sessionDeps;\n'+code,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText).toString('base64'));}
 const helper=await load('lib/server/web-session.ts');Object.assign(deps,helper);
 assert.equal(helper.cookieAuthorization(new Request('https://app.test',{headers:{cookie:'unrelated=x; __Host-leeway-access=abc'}})),'Bearer abc');
 assert.equal(helper.cookieAuthorization(undefined),'');
@@ -18,6 +18,7 @@ assert.equal((await route.POST(req({action:'signin',refreshToken:'valid-refresh'
 assert.equal((await route.POST(req({action:'refresh'}))).status,401);
 let r=await route.POST(req({action:'signin',refreshToken:'valid-refresh'}));assert.equal(r.status,200);assert.equal((await r.json()).accountId,'existing-library');assert.equal(r.headers.getSetCookie().length,2);
 r=await route.POST(req({action:'refresh'},{cookie:'__Host-leeway-refresh=valid-refresh'}));assert.equal(r.status,200);
+admitted=false;r=await route.POST(req({action:'refresh'},{cookie:'__Host-leeway-refresh=valid-refresh'}));assert.equal(r.status,403);assert.equal((await r.json()).code,'BETA_INVITE_REQUIRED');assert.ok(r.headers.getSetCookie().every(h=>h.includes('Max-Age=0')));admitted=true;
 r=await route.POST(req({action:'signout'}));assert.equal(r.status,200);assert.ok(r.headers.getSetCookie().every(h=>h.includes('Max-Age=0')));
 assert.equal((await route.POST(req({action:'unknown'}))).status,400);
 // Simulated provider outage must not delete session cookies or touch paddle records.

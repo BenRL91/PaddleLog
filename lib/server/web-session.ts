@@ -11,5 +11,5 @@ export async function refreshWebSession(token:string,config:AuthConfig){
  const client=createClient(config.SUPABASE_URL,config.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:(input,init)=>fetch(input,{...init,signal:AbortSignal.timeout(10000)})}});
  const {data,error}=await client.auth.refreshSession({refresh_token:token});
  if(error||!data.session||!data.user||data.user.is_anonymous)throw new Error('Sign in again.');
- return {session:data.session,identity:{issuer:new URL(config.SUPABASE_URL).origin+'/auth/v1',subject:data.user.id}};
+ return {session:data.session,identity:{issuer:new URL(config.SUPABASE_URL).origin+'/auth/v1',subject:data.user.id,verifiedEmail:data.user.email_confirmed_at?data.user.email?.trim().toLowerCase():undefined}};
 }

@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {roundMoney,supplyCost} from '../public/shared-expenses.js';
+import {validate} from '../public/validate.js';
+import {costSummary} from '../public/pro-data.js';
+assert.equal(roundMoney(1.005),1.01);
+const pack={amount:1,quantity:3};
+assert.deepEqual([0,1,2].map(n=>supplyCost(pack,1,n)),[.33,.34,.33]);
+assert.equal([0,1,2].reduce((c,n)=>c+Math.round(supplyCost(pack,1,n)*100),0),100);
+const raw={usagePeriods:[],paddles:['a','b','c'].map((id,i)=>({id,brand:'Test',model:id,maintenance:[{id:'m'+id,kind:'overgrip',action:'install',at:'2026-01-01T09:00:00Z'}],expenses:[{id:'cost-'+id,maintenanceEventId:'m'+id,supplyId:'pack',units:1,kind:'overgrip',product:'Grips',amount:1/3,currency:'USD',date:'2026-01-01'}]})),sessions:[],settings:{collectionExpenses:[{id:'pack',kind:'overgrip',product:'Grips',amount:1,quantity:3,currency:'USD',date:'2026-01-01'}]}};
+const clean=validate(raw);assert.deepEqual(clean.paddles.map(p=>p.expenses[0].amount),[.33,.34,.33]);
+const reversed=validate({...raw,paddles:[...raw.paddles].reverse()});assert.deepEqual(reversed.paddles.map(p=>p.expenses[0].amount),[.33,.34,.33]);
+assert.deepEqual(validate(JSON.parse(JSON.stringify(clean))),clean);
+const rows=costSummary({id:'a',expenses:[{currency:'USD',amount:.1},{currency:'USD',amount:.2}]},[{id:'s',paddleId:'a',start:'2026-01-01T10:00:00Z',end:'2026-01-01T13:00:00Z'}]);assert.equal(rows[0].total,.3);assert.equal(rows[0].perHour,.1);
+console.log('PASS: cent rounding, pack remainder reconciliation, stable allocation order, backup roundtrip and cent totals/rates.');

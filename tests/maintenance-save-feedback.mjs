@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';import {Window} from 'happy-dom';import {createEquipment} from '../public/equipment-ui.js';import {validate} from '../public/validate.js';
+const w=new Window();Object.assign(globalThis,{window:w,document:w.document,localStorage:w.localStorage,FormData:w.FormData});
+w.document.body.innerHTML='<p id="syncStatus" role="status">Save failed: Connection timed out.</p>';
+let state=validate({paddles:[{id:'p',brand:'A',model:'B'}],sessions:[],usagePeriods:[],settings:{collectionExpenses:[{id:'grips',kind:'overgrip',product:'Grip',quantity:12,amount:24,currency:'USD',date:'2026-01-01'}]}}),saved=structuredClone(state),fail=true;
+const ui=createEquipment({getState:()=>state,getAccount:()=> 'owner',confirm:async()=>true,persist:async()=>{if(fail){state=structuredClone(saved);return false;}saved=structuredClone(state);return true;}});
+ui.open('p','overgrip');const dialog=w.document.getElementById('maintenanceDialog');dialog.querySelector('[name=supplyId]').value='grips';dialog.querySelector('[name=at]').value='2026-01-01T00:00';
+const submit=async()=>{dialog.querySelector('form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));for(let i=0;i<5;i++)await new Promise(r=>setTimeout(r,0));};
+await submit();assert.equal(dialog.open,true);assert.match(dialog.querySelector('[role=status]').textContent,/Connection timed out/);assert.ok(w.localStorage.getItem('paddlelog.maintenanceDraft.owner'));assert.equal(state.paddles[0].maintenance.length,0);
+fail=false;await submit();assert.equal(dialog.open,false);assert.equal(state.paddles[0].maintenance.length,1);assert.equal(w.localStorage.getItem('paddlelog.maintenanceDraft.owner'),null);await w.happyDOM.close();console.log('PASS: maintenance failure cause shown locally, entries retained, confirmed retry closes and clears draft.');

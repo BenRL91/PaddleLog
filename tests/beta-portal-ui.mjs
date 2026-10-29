@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import {Window} from 'happy-dom';
+const window=new Window({url:'https://paddlelog.leewaypb.com/admin'});
+window.document.write(readFileSync('app/admin/admin.html','utf8').replace(/<script[^>]*>.*?<\/script>/s,''));
+const records=[{email:'pending@example.com',enabled:1,accountId:null},{email:'paid@example.com',enabled:0,accountId:'paid'}];let posted;
+vm.runInNewContext(readFileSync('public/admin-testers.js','utf8'),{document:window.document,AbortSignal,Date,fetch:async(url,opts)=>{if(opts.method==='POST'){posted=JSON.parse(opts.body);return Response.json({count:posted.emails.length});}return Response.json({testers:records,history:[]});}});
+await new Promise(r=>setTimeout(r,20));
+const $=id=>window.document.getElementById(id);
+assert.equal($('testers').children.length,2);$('filter').value='pending';$('filter').dispatchEvent(new window.Event('change'));assert.equal($('testers').children.length,1);
+$('testers').querySelector('button').click();assert.equal($('emails').value,'pending@example.com');assert.equal($('cancel').hidden,false);
+$('cancel').click();assert.equal($('emails').value,'');$('emails').value='A@example.com, b@example.com\nA@example.com';await $('testerForm').onsubmit({preventDefault(){}});assert.deepEqual(posted.emails,['a@example.com','b@example.com']);assert.match($('status').textContent,/No emails sent/);
+console.log('Beta portal UI: roster, filters, edit/cancel, bulk email parsing, and save confirmation passed.');

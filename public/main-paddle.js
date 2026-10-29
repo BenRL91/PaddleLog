@@ -1,0 +1,14 @@
+export function activeMain(paddles,settings={}){const active=paddles.filter(p=>(p.status??'active')==='active');return [settings.mainPaddleId,settings.singlesMainPaddleId,settings.doublesMainPaddleId,settings.mixedMainPaddleId,...active.map(p=>p.id)].find(id=>active.some(p=>p.id===id))??null;}
+export function normalizeMainHistory(value){if(value==null)return [];if(!Array.isArray(value)||value.length>5000)throw Error('Invalid Main paddle history.');const ids=new Set();let openCount=0;return value.map(row=>{if(!row||typeof row.id!=='string'||ids.has(row.id)||typeof row.paddleId!=='string'||!row.paddleId||row.start!==null&&(typeof row.start!=='string'||!Number.isFinite(Date.parse(row.start)))||row.end!==null&&(typeof row.end!=='string'||!Number.isFinite(Date.parse(row.end)))||row.start&&row.end&&Date.parse(row.end)<Date.parse(row.start))throw Error('Invalid Main paddle period.');if(row.end===null&&++openCount>1)throw Error('Multiple current Main periods.');ids.add(row.id);return {id:row.id,paddleId:row.paddleId,start:row.start,end:row.end};});}
+export function changeMain(settings,id,at=new Date().toISOString()){
+ const history=normalizeMainHistory(settings.mainPaddleHistory),previous=settings.mainPaddleId??null;
+ if(previous===id)return {...settings,mainPaddleId:id,mainPaddleHistory:history};
+ if(previous&&!history.some(row=>row.paddleId===previous&&row.end===null))history.push({id:'legacy-main-'+history.length,paddleId:previous,start:null,end:at});
+ for(const row of history)if(row.end===null)row.end=at;
+ if(id)history.push({id:'main-'+at+'-'+history.length,paddleId:id,start:at,end:null});
+ return {...settings,mainPaddleId:id,mainPaddleHistory:history};
+}
+export function mainHistoryMarkup(settings,paddles,paddleName,escape,now=Date.now()){
+ const history=settings.mainPaddleHistory??[],stamp=value=>value?new Date(value).toLocaleString():'Start date unknown';
+ return '<section class="card analytics-section"><h3>Main paddle history · all time</h3><p class="small">Calendar time designated as Main, not playing hours. Legacy assignments have unknown start dates; totals include only periods with recorded starts.</p>'+paddles.map(p=>{const rows=history.filter(row=>row.paddleId===p.id);if(!rows.length)return `<article class="insight-paddle"><h4>${escape(paddleName(p))}</h4><p>No recorded Main periods.</p></article>`;const days=rows.reduce((sum,row)=>sum+(row.start?Math.max(0,(row.end?Date.parse(row.end):now)-Date.parse(row.start))/86400000:0),0);return `<article class="insight-paddle"><h4>${escape(paddleName(p))}</h4><p><strong>${days.toFixed(1)} recorded days as Main</strong>${rows.some(row=>!row.start)?' · Total incomplete: legacy start unknown':''}</p>${rows.slice().reverse().map(row=>`<p class="small">${escape(stamp(row.start))} → ${row.end?escape(stamp(row.end)):'Current Main'}</p>`).join('')}</article>`;}).join('')+'</section>';
+}

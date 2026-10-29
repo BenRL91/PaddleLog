@@ -10,6 +10,7 @@ export async function DELETE(req:Request){
  for(const prefix of ['accounts/'+a.id+'/',...(a.legacy_owner?['paddle-photos/']:[])]){let cursor:string|undefined;do{const page=await env.BUCKET.list({prefix,cursor});if(page.objects.length)await env.BUCKET.delete(page.objects.map(x=>x.key));cursor=page.truncated?page.cursor:undefined;}while(cursor);}
  await db.batch([
  ...libraryTables.map(t=>db.prepare(`DELETE FROM ${t} WHERE account_id=?`).bind(a.id)),
+ db.prepare('DELETE FROM feedback_reports WHERE account_id=?').bind(a.id),
  db.prepare('DELETE FROM health_counters WHERE account_id=?').bind(a.id),
  db.prepare('DELETE FROM account_libraries WHERE account_id=?').bind(a.id),
  db.prepare('DELETE FROM account_logs WHERE account_id=?').bind(a.id),

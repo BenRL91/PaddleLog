@@ -1,0 +1,55 @@
+{
+  "format": "leewaypb.paddlelog-session-sync",
+  "integrationVersion": 1,
+  "operation": "upsert",
+  "sessionExport": {
+    "format": "leewaypb.session-export",
+    "schemaVersion": 1,
+    "sourceApp": "pickle-point",
+    "sourceInstanceId": "c7b6215c-9b23-4a33-9ae7-d7c5a44ee625",
+    "exportedAt": "2026-10-05T12:00:00.000Z",
+    "sessions": [
+      {
+        "id": "example-session",
+        "revision": 2,
+        "updatedAt": "2026-10-05T12:00:00.000Z",
+        "status": "completed",
+        "start": "2026-10-05T10:00:00.000Z",
+        "end": "2026-10-05T11:30:00.000Z",
+        "timeBasis": "recorded-play",
+        "playIntervals": [
+          {
+            "id": "first",
+            "start": "2026-10-05T10:00:00.000Z",
+            "end": "2026-10-05T10:30:00.000Z",
+            "paddleRef": {
+              "id": "source-a",
+              "label": "Example A"
+            }
+          },
+          {
+            "id": "second",
+            "start": "2026-10-05T10:30:00.000Z",
+            "end": "2026-10-05T11:00:00.000Z",
+            "paddleRef": {
+              "id": "source-b",
+              "label": "Example B"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "physicalPaddleReferences": [
+    {
+      "sessionId": "example-session",
+      "intervalId": "first",
+      "physicalPaddleId": "physical-a"
+    },
+    {
+      "sessionId": "example-session",
+      "intervalId": "second",
+      "physicalPaddleId": "physical-b"
+    }
+  ]
+}

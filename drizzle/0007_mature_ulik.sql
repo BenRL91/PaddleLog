@@ -21,4 +21,4 @@ CREATE TABLE `tester_access_audit` (
 --> statement-breakpoint
 -- Explicit owner-authorized pending test grant; no account creation or identity merge.
 INSERT OR IGNORE INTO tester_access (id,email,enabled,ends_at,account_id,created_at,updated_at,updated_by)
-VALUES ('example-tester-seed','tester@example.invalid',1,NULL,NULL,1791072000000,1791072000000,'00000000-0000-4000-8000-000000000001');
+VALUES ('beta-tester-seed-20261004','beta-tester@example.test',1,NULL,NULL,1791072000000,1791072000000,'00000000-0000-4000-8000-000000000001');

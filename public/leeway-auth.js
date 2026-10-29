@@ -10,7 +10,7 @@ async function e({ mode: e, hasCallback: t, fetcher: n = fetch }) {
 		},
 		body: JSON.stringify({ action: "refresh" })
 	});
-	if (r.status === 401 || r.status === 503) return !1;
+	if (r.status === 401 || r.status === 403 || r.status === 503) return !1;
 	let i = await r.json();
 	if (!r.ok) throw Error(i.error || "Could not check your sign-in. Please reload and try again.");
 	return i.mode === "supabase" && typeof i.accountId == "string" && !!i.accountId;
@@ -8270,39 +8270,42 @@ async function ga() {
 		} }),
 		config: a
 	});
-	Q("linkState").textContent = a.linked ? "A LeewayPB identity is already linked to this library. You can verify another sign-in to connect it explicitly." : "This library has not yet been linked to LeewayPB.", a.mode === "supabase" && (Q("intro").textContent = "Your paddles, sessions and history, all in one place.", Q("accessNote").textContent = "Sign in with Google or receive a sign-in email.", Q("linkState").textContent = "Email, Google and Apple use your shared LeewayPB identity.");
+	Q("linkState").textContent = a.linked ? "A LeewayPB identity is already linked to this library. You can verify another sign-in to connect it explicitly." : "This library has not yet been linked to LeewayPB.", a.mode === "supabase" && (Q("intro").textContent = "Your paddles, sessions and history, all in one place.", Q("accessNote").textContent = "Invite-only beta. Use your invited email with an available sign-in method. No ChatGPT account is required.", Q("linkState").textContent = "Email, Google and Apple use your shared LeewayPB identity.");
 	let l = async (e) => {
 		if (a.mode === "supabase") {
 			$("Opening your library…"), await c.signIn(), s.clearSession(), location.replace("/");
 			return;
 		}
 		Q("verifiedEmail").textContent = e.email || e.id, Q("confirmConnection").hidden = !1, Q("authControls").hidden = !0, $("Sign-in verified. Review the account above before linking.");
-	}, u = async (e, t) => {
-		e.disabled = !0;
+	}, u = !1, d = async (e, t) => {
+		if (u || e.disabled) return;
+		u = !0;
+		let n = [...document.querySelectorAll("button")], r = n.map((e) => e.disabled);
+		n.forEach((e) => e.disabled = !0), Q("authControls").setAttribute("aria-busy", "true");
 		try {
 			await t();
 		} catch (e) {
 			$(ha(e));
 		} finally {
-			e.disabled = !1;
+			n.forEach((e, t) => e.disabled = r[t]), Q("authControls").removeAttribute("aria-busy"), u = !1;
 		}
 	};
 	for (let e of ["google", "apple"]) {
 		let t = Q(e + "Auth");
-		t.disabled = !a.providers[e], t.disabled || (t.textContent = "Continue with " + (e === "apple" ? "Apple" : "Google")), t.addEventListener("click", () => u(t, async () => {
+		t.disabled = !a.providers[e], t.disabled || (t.textContent = "Continue with " + (e === "apple" ? "Apple" : "Google")), t.addEventListener("click", () => d(t, async () => {
 			$("Opening sign-in…"), location.assign(await c.oauth(e));
 		}));
 	}
-	let d = Q("sendCode"), f = Q("verifyCode");
-	d.disabled = f.disabled = !a.providers.email, Q("emailAuth").addEventListener("submit", (e) => {
-		e.preventDefault(), u(d, async () => {
+	let f = Q("sendCode"), p = Q("verifyCode");
+	f.disabled = p.disabled = !a.providers.email, Q("emailAuth").addEventListener("submit", (e) => {
+		e.preventDefault(), d(f, async () => {
 			await c.sendEmail(Q("authEmail").value), Q("codeAuth").hidden = !1, $("Check your email. Enter the code below, or open the newest sign-in link in this same browser. A new tab is okay.");
 		});
 	}), Q("codeAuth").addEventListener("submit", (e) => {
-		e.preventDefault(), u(f, async () => l(await c.verifyCode(Q("authEmail").value, Q("authCode").value)));
-	}), Q("linkAccount").addEventListener("click", () => u(Q("linkAccount"), async () => {
+		e.preventDefault(), d(p, async () => l(await c.verifyCode(Q("authEmail").value, Q("authCode").value)));
+	}), Q("linkAccount").addEventListener("click", () => d(Q("linkAccount"), async () => {
 		await c.link(), Q("confirmConnection").hidden = !0, $("Your LeewayPB account is connected. Your paddle library and subscription account were preserved. Return to PaddleLog to continue."), Q("linkState").textContent = "LeewayPB account connected.", s.clearSession();
-	})), Q("cancelConnection").addEventListener("click", () => u(Q("cancelConnection"), async () => {
+	})), Q("cancelConnection").addEventListener("click", () => d(Q("cancelConnection"), async () => {
 		await c.cancel(), Q("confirmConnection").hidden = !0, Q("authControls").hidden = !1, $("Choose the sign-in method you want to connect.");
 	})), r ? $("Sign-in was cancelled or could not complete. Try again.") : n ? ($("Verifying your sign-in…"), await l(await c.callback(n))) : $("");
 }

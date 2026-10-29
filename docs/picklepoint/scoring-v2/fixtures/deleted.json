@@ -1,0 +1,250 @@
+{
+  "format": "leewaypb.paddlelog-session-sync",
+  "integrationVersion": 2,
+  "operation": "upsert",
+  "sessionExport": {
+    "format": "leewaypb.session-export",
+    "schemaVersion": 1,
+    "sourceApp": "pickle-point",
+    "sourceInstanceId": "c7b6215c-9b23-4a33-9ae7-d7c5a44ee625",
+    "exportedAt": "2026-10-07T12:02:00.000Z",
+    "sessions": [
+      {
+        "id": "source-session-1",
+        "revision": 1,
+        "updatedAt": "2026-10-06T11:00:00.000Z",
+        "status": "completed",
+        "start": "2026-10-06T10:00:00.000Z",
+        "end": "2026-10-06T11:00:00.000Z",
+        "timezone": "America/New_York",
+        "timeBasis": "recorded-play",
+        "playIntervals": [
+          {
+            "id": "interval-blue",
+            "start": "2026-10-06T10:00:00.000Z",
+            "end": "2026-10-06T10:10:00.000Z",
+            "paddleRef": {
+              "id": "source-blue",
+              "label": "Blue paddle"
+            }
+          },
+          {
+            "id": "interval-green",
+            "start": "2026-10-06T10:10:00.000Z",
+            "end": "2026-10-06T10:20:00.000Z",
+            "paddleRef": {
+              "id": "source-green",
+              "label": "Green paddle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "physicalPaddleReferences": [
+    {
+      "sessionId": "source-session-1",
+      "intervalId": "interval-blue",
+      "physicalPaddleId": "physical-blue-placeholder"
+    },
+    {
+      "sessionId": "source-session-1",
+      "intervalId": "interval-green",
+      "physicalPaddleId": "physical-green-placeholder"
+    }
+  ],
+  "scoringSnapshots": [
+    {
+      "sessionId": "source-session-1",
+      "players": [
+        {
+          "id": "saved_owner-player",
+          "sourcePlayerId": "owner-player",
+          "classification": "account-linked",
+          "displayName": "Alex",
+          "accountRef": {
+            "provider": "leewaypb",
+            "subject": "11111111-1111-4111-8111-111111111111"
+          }
+        },
+        {
+          "id": "guest_s2",
+          "sourcePlayerId": "s2",
+          "classification": "guest",
+          "displayName": "Jordan",
+          "accountRef": null
+        },
+        {
+          "id": "guest_x1",
+          "sourcePlayerId": "x1",
+          "classification": "guest",
+          "displayName": "Guest 1",
+          "accountRef": null
+        },
+        {
+          "id": "guest_x2",
+          "sourcePlayerId": "x2",
+          "classification": "guest",
+          "displayName": "Guest 2",
+          "accountRef": null
+        },
+        {
+          "id": "guest_y1",
+          "sourcePlayerId": "y1",
+          "classification": "guest",
+          "displayName": "Guest 3",
+          "accountRef": null
+        },
+        {
+          "id": "guest_y2",
+          "sourcePlayerId": "y2",
+          "classification": "guest",
+          "displayName": "Guest 4",
+          "accountRef": null
+        }
+      ],
+      "owner": {
+        "accountRef": {
+          "provider": "leewaypb",
+          "subject": "11111111-1111-4111-8111-111111111111"
+        },
+        "participation": [
+          {
+            "gameId": "game-singles",
+            "state": "unknown",
+            "participantId": null
+          },
+          {
+            "gameId": "game-abandoned",
+            "state": "spectating",
+            "participantId": null
+          }
+        ]
+      },
+      "matches": [
+        {
+          "id": "match-1",
+          "gamesRequired": 1,
+          "status": "open",
+          "wins": [
+            0,
+            0
+          ],
+          "winnerTeam": null,
+          "games": []
+        },
+        {
+          "id": "match-2",
+          "gamesRequired": 1,
+          "status": "completed",
+          "wins": [
+            1,
+            0
+          ],
+          "winnerTeam": 0,
+          "games": [
+            {
+              "id": "game-singles",
+              "matchId": "match-2",
+              "discipline": "singles",
+              "profileId": "usap-2026-side-out-singles",
+              "scoringFormat": "side-out",
+              "target": 2,
+              "winBy": 1,
+              "teams": [
+                {
+                  "index": 0,
+                  "participantIds": [
+                    "saved_owner-player"
+                  ]
+                },
+                {
+                  "index": 1,
+                  "participantIds": [
+                    "guest_s2"
+                  ]
+                }
+              ],
+              "status": "completed",
+              "score": [
+                2,
+                0
+              ],
+              "finalScore": [
+                2,
+                0
+              ],
+              "winnerTeam": 0,
+              "start": null,
+              "end": null,
+              "timeBasis": "unknown",
+              "paddleAssociation": {
+                "status": "unknown",
+                "basis": "unknown",
+                "coverage": "unknown",
+                "intervalIds": [],
+                "physicalPaddleIds": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "match-3",
+          "gamesRequired": 1,
+          "status": "open",
+          "wins": [
+            0,
+            0
+          ],
+          "winnerTeam": null,
+          "games": [
+            {
+              "id": "game-abandoned",
+              "matchId": "match-3",
+              "discipline": "doubles",
+              "profileId": "usap-2026-rally-doubles",
+              "scoringFormat": "rally",
+              "target": 3,
+              "winBy": 1,
+              "teams": [
+                {
+                  "index": 0,
+                  "participantIds": [
+                    "guest_x1",
+                    "guest_x2"
+                  ]
+                },
+                {
+                  "index": 1,
+                  "participantIds": [
+                    "guest_y1",
+                    "guest_y2"
+                  ]
+                }
+              ],
+              "status": "abandoned",
+              "score": [
+                0,
+                0
+              ],
+              "finalScore": null,
+              "winnerTeam": null,
+              "start": "2026-10-06T10:40:00.000Z",
+              "end": "2026-10-06T10:45:00.000Z",
+              "timeBasis": "elapsed-game",
+              "paddleAssociation": {
+                "status": "none",
+                "basis": "unknown",
+                "coverage": "unknown",
+                "intervalIds": [],
+                "physicalPaddleIds": []
+              }
+            }
+          ]
+        }
+      ],
+      "revision": 3,
+      "updatedAt": "2026-10-07T12:02:00.000Z"
+    }
+  ]
+}

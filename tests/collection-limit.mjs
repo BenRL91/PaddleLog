@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import {authorizePaddleChange} from '../public/feature-policy.js';import {billingConfig} from '../public/billing-config.js';
+const make=n=>({paddles:Array.from({length:n},(_,i)=>({id:String(i),status:['active','inactive','archived'][i%3]})),settings:{}}),grant=[{key:'paddlelog_pro',startsAt:0,endsAt:null,revokedAt:null}];
+assert.equal(billingConfig.freePaddles,5);assert.equal(authorizePaddleChange(make(4),make(5),[]).allowed,true);
+for(const status of ['active','inactive','archived']){const next=make(6);next.paddles[5].status=status;assert.equal(authorizePaddleChange(make(5),next,[]).allowed,false);assert.equal(authorizePaddleChange(make(5),next,grant).allowed,true);}
+const existing=make(8),edited=structuredClone(existing);edited.paddles[0].status='archived';edited.paddles[1].status='active';edited.paddles[2].notes='Edited';assert.equal(authorizePaddleChange(existing,edited,[]).allowed,true);assert.equal(authorizePaddleChange(existing,make(7),[]).allowed,true);assert.equal(authorizePaddleChange(existing,make(9),[]).allowed,false);assert.equal(authorizePaddleChange(make(5),make(5),[]).allowed,true);
+console.log('PASS: five total paddles across all statuses, sixth blocked, existing over-limit editing/reactivation/deletion, Pro unlimited, restore policy.');
