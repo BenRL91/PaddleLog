@@ -1,3 +1,3 @@
 import {componentWear} from './maintenance.js';
 export {wearLevels} from './maintenance.js';
-export function overgripWear(paddle,sessions,interval=4){return componentWear(paddle,sessions,'overgrip',{overgripHoursPerLevel:interval});}
+export function overgripWear(paddle,sessions,interval=2){return componentWear(paddle,sessions,'overgrip',{overgripHoursPerLevel:interval});}

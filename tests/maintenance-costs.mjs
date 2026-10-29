@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+import {createEquipment} from '../public/equipment-ui.js';
+import {validate} from '../public/validate.js';
+import {usedUnits} from '../public/shared-expenses.js';
+const w=new Window({url:'https://test.local'});Object.assign(globalThis,{window:w,document:w.document,localStorage:w.localStorage,FormData:w.FormData});
+let state=validate({paddles:[{id:'p',brand:'Reload',model:'Test'}],sessions:[],usagePeriods:[],settings:{collectionExpenses:['overgrip','edgeTape','skin'].map(kind=>({id:kind,kind,product:'Saved '+kind,quantity:2,amount:9,currency:'EUR',date:'2026-01-01'}))}}),saved=structuredClone(state),fail=false;
+const ui=createEquipment({getState:()=>state,getAccount:()=> 'supplies-test',persist:async()=>{if(fail){state=structuredClone(saved);return false;}state=validate(state);saved=structuredClone(state);return true;},confirm:async()=>true});
+const d=document.getElementById('maintenanceDialog'),field=n=>d.querySelector(`[name=${n}]`),submit=async()=>{d.querySelector('form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));for(let i=0;i<4;i++)await new Promise(r=>setTimeout(r,0));};
+for(const kind of ['overgrip','edgeTape','skin']){
+ const before=state.paddles[0].maintenance.length;ui.open('p',kind);for(const name of ['product','manufacturer','variant','costAmount','costCurrency'])assert.equal(field(name),null);assert.equal(d.querySelector('[data-preset]'),null);
+ field('at').value='2026-01-01T12:00';await submit();assert.equal(d.open,true);assert.match(d.textContent,/Choose a saved supply/);assert.equal(state.paddles[0].maintenance.length,before);
+ field('supplyId').value=kind;const id=field('recordId').value;fail=true;await submit();assert.equal(usedUnits(state,kind),0);assert.equal(d.open,true);d.querySelector('[data-keep]').click();ui.open('p',kind);assert.equal(field('supplyId').value,kind);assert.equal(field('recordId').value,id);fail=false;await submit();assert.equal(d.open,false);assert.equal(usedUnits(state,kind),1);assert.equal(state.paddles[0].expenses.find(x=>x.maintenanceEventId===id).amount,4.5);assert.equal(state.paddles[0].maintenance.find(x=>x.id===id).product,'Saved '+kind);
+ ui.open('p',kind,id);field('at').value='2026-01-02T12:00';await submit();assert.equal(usedUnits(state,kind),1);assert.equal(state.paddles[0].expenses.find(x=>x.maintenanceEventId===id).date,'2026-01-02');
+ ui.open('p',kind);field('at').value='2026-01-03T12:00';field('supplyId').value=kind;field('supplyUnits').value='2';await submit();assert.equal(d.open,true);assert.match(d.textContent,/Not enough units/);assert.equal(usedUnits(state,kind),1);field('supplyUnits').value='1';await submit();assert.equal(usedUnits(state,kind),2);
+ ui.open('p',kind);assert.equal([...field('supplyId').options].some(x=>x.value===kind),false);field('action').value='remove';field('action').dispatchEvent(new w.Event('change',{bubbles:true}));assert.equal(field('supplyId').disabled,true);field('at').value='2026-01-04T12:00';await submit();assert.equal(d.open,false);assert.equal(usedUnits(state,kind),2);
+}
+// Existing custom records remain correctable without buying or consuming another supply.
+state.paddles[0].maintenance.push({id:'legacy',kind:'overgrip',action:'install',at:'2026-01-05T00:00:00Z',interval:2,product:'Old custom grip',manufacturer:'Old brand'});state.paddles[0].expenses.push({id:'legacy-cost',maintenanceEventId:'legacy',kind:'overgrip',product:'Old custom grip',amount:3,currency:'USD',date:'2026-01-05'});saved=structuredClone(state);ui.open('p','overgrip','legacy');field('at').value='2026-01-06T00:00';await submit();assert.equal(d.open,false);assert.equal(state.paddles[0].maintenance.find(x=>x.id==='legacy').product,'Old custom grip');assert.equal(state.paddles[0].expenses.find(x=>x.id==='legacy-cost').amount,3);assert.deepEqual(validate(JSON.parse(JSON.stringify(state))),state);
+await w.happyDOM.abort();console.log('PASS: all consumables require saved stock; metadata/cost allocation, depletion, correction, failed-save recovery/retry, removals, legacy preservation and backup roundtrip.');

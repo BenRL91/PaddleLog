@@ -2,7 +2,7 @@ import {usageSegments,usesPaddle} from './session-segments.js';
 export const wearLevels=Object.freeze([{label:'Brand New',color:'blue'},{label:'New',color:'green'},{label:'Used',color:'yellow'},{label:'Old',color:'orange'},{label:'Very Old',color:'red'}]);
 export const componentKinds=['overgrip','edgeTape','skin'];
 // Planning estimates, not manufacturer lifespan claims. Each installation can override.
-export const maintenanceProducts={overgrip:{label:'Overgrip',interval:4},edgeTape:{label:'Edge tape',interval:8},reload:{label:'Reload',product:'RLD-1 sheets',variant:'RLD-1',manufacturer:'Reload',interval:8},pikkl:{label:'PIKKL',manufacturer:'PIKKL',interval:8},pikklSport:{label:'PIKKL Sport Skins',product:'Sport Skins',variant:'SPSKSP13-SP13',manufacturer:'PIKKL',interval:8},pikklPro:{label:'PIKKL Pro Skins',manufacturer:'PIKKL',interval:8},custom:{label:'Other / custom',manufacturer:'',interval:8}};
+export const maintenanceProducts={overgrip:{label:'Overgrip',interval:2},edgeTape:{label:'Edge tape',interval:8},reload:{label:'Reload',product:'RLD-1 sheets',variant:'RLD-1',manufacturer:'Reload',interval:8},pikkl:{label:'PIKKL',manufacturer:'PIKKL',interval:8},pikklSport:{label:'PIKKL Sport Skins',product:'Sport Skins',variant:'SPSKSP13-SP13',manufacturer:'PIKKL',interval:8},pikklPro:{label:'PIKKL Pro Skins',manufacturer:'PIKKL',interval:8},custom:{label:'Other / custom',manufacturer:'',interval:8}};
 export function maintenanceEvents(p){if(Array.isArray(p.maintenance))return p.maintenance;return p.overgripInstalledAt?[{id:'legacy-overgrip',kind:'overgrip',action:'install',at:p.overgripInstalledAt,product:'Existing overgrip',manufacturer:'',variant:'',notes:'Migrated existing installation date',interval:null,source:'legacy'}]:[];}
 export function currentComponent(p,kind,now=Date.now()) {return maintenanceEvents(p).filter(e=>e.kind===kind&&Date.parse(e.at)<=now).sort((a,b)=>Date.parse(a.at)-Date.parse(b.at)||a.id.localeCompare(b.id)).at(-1)??null;}
 function overlap(a,b,c,d){return Math.max(0,Math.min(b,d)-Math.max(a,c));}
@@ -26,7 +26,7 @@ export function componentWear(p,sessions,kind,settings={}){
  const installed=event?.action==='install';
  // Legacy records with no installation remain usable, but the UI labels the baseline unknown.
  const legacy=kind==='overgrip'&&!event;
- const interval=event?.interval??(kind==='overgrip'?settings.overgripHoursPerLevel:settings.edgeTapeHoursPerLevel)??(kind==='overgrip'?4:8);
+ const interval=event?.interval??(kind==='overgrip'?settings.overgripHoursPerLevel:settings.edgeTapeHoursPerLevel)??(kind==='overgrip'?2:8);
  const hours=installed||legacy?sessionUsage(p.id,sessions,event?Date.parse(event.at):0):0;
  const estimatedHours=installed||legacy?sessions.filter(s=>s.paddleId===p.id&&s.estimatedHours!=null).reduce((n,s)=>n+estimateContribution(s,sessions,event?Date.parse(event.at):0),0):0;
  const level=Math.min(4,Math.floor((hours+1e-9)/interval));

@@ -1,3 +1,4 @@
+import {picklePointCors} from '../lib/server/picklepoint-cors.mjs';
 import {nativeCors,withNativeCors} from '../lib/server/native-cors.mjs';
 import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
@@ -5,7 +6,7 @@ import type { ConnectorBinding } from "../lib/connector-contract.mjs";
 
 export default {
   async fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
-    const cors=nativeCors(request,env);if(cors.response)return cors.response;
+    const cors=picklePointCors(request,env)??nativeCors(request,env);if(cors.response)return cors.response;
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and
     // the auxiliary service binding are absent from production builds.

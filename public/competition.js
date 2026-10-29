@@ -26,10 +26,12 @@ export function approvalSnapshotHealth(data,now=Date.now()){
 // List membership is independent of the unit's measurements and modifications.
 export function modelApproval(p,ruleset,data={},now=Date.now()){
  const unknown=message=>({status:'NOT_VERIFIED',message,records:[]});
+ if(/\(version unconfirmed\)/i.test(p.model??''))return unknown('Identify the exact paddle version to check its approval.');
  if(!ruleset||ruleset.coverage==='unknown'||!active(ruleset,now)||!fresh(ruleset,now,ruleset.reviewDays??90))return unknown('This ruleset needs verification before model approval can be determined.');
  const policy=ruleset.rules?.find(r=>r.type==='approval');
  if(!policy?.sourceUrl||!policy.organizations?.length||!active(policy,now)||!fresh(policy,now,ruleset.reviewDays??90))return unknown('No current approval-list policy is available for this ruleset.');
  let candidates=[...(data.approvals??[]),...(data.modelRestrictions??[])].filter(a=>matchesModel(a,p,modelKey(p))&&policy.organizations.includes(a.organization));
+ if(!candidates.length&&String(p.modelId??'').startsWith('plref_mfr_'))return unknown('Retail version identified. Confirm its exact official approval listing before relying on an approval badge.');
  if(!candidates.length){
   const exact=[...(data.approvals??[]),...(data.modelRestrictions??[])].filter(a=>(a.catalogId||a.id)&&approvalBrand(a.brand)===approvalBrand(p.brand)&&normalize(a.model)===normalize(p.model)&&p.thickness!==''&&p.thickness!=null&&a.thicknessMm!=null&&Number(p.thickness)===a.thicknessMm);
   if(new Set(exact.map(a=>a.catalogId??a.id)).size===1)candidates=exact.filter(a=>policy.organizations.includes(a.organization));

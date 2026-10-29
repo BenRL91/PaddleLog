@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';import {createConnection} from '../web/a
 const config={accountId:'owner',url:'https://provider.test',redirectTo:'https://site.test/auth/return',providers:{email:true,google:false,apple:false}};
 let fail=false,requests=0,verified=0,signedOut=0,requestInit,lastEmail;
 const session={access_token:'provider-verified-token'};
-const client={auth:{signInWithOtp:async payload=>{lastEmail=payload;return {error:fail?Error('Delivery failed'):null};},verifyOtp:async()=>({data:{session},error:fail?Error('Invalid code'):null}),getUser:async token=>{assert.equal(token,session.access_token);verified++;return {data:{user:{id:'user',email:'contact@example.invalid'}},error:null};},exchangeCodeForSession:async()=>({data:{session},error:null}),signOut:async()=>{signedOut++;return {};}}};
+const client={auth:{signInWithOtp:async payload=>{lastEmail=payload;return {error:fail?Error('Delivery failed'):null};},verifyOtp:async()=>({data:{session},error:fail?Error('Invalid code'):null}),getUser:async token=>{assert.equal(token,session.access_token);verified++;return {data:{user:{id:'user',email:'user@test.example'}},error:null};},exchangeCodeForSession:async()=>({data:{session},error:null}),signOut:async()=>{signedOut++;return {};}}};
 const connection=createConnection({client,config,fetcher:async(url,init)=>{requests++;requestInit=init;assert.equal(url,'/api/auth/link');return Response.json(fail?{error:'Account conflict'}:{accountId:'owner',linked:true},{status:fail?409:200});}});
 await assert.rejects(connection.link(),/Verify/);assert.equal(requests,0);
-await connection.sendEmail(' contact@example.invalid ');assert.equal(lastEmail.email,'contact@example.invalid');assert.equal(lastEmail.options.emailRedirectTo,config.redirectTo);
+await connection.sendEmail(' user@test.example ');assert.equal(lastEmail.email,'user@test.example');assert.equal(lastEmail.options.emailRedirectTo,config.redirectTo);
 fail=true;await assert.rejects(connection.verifyCode('a','000000'),/Invalid/);assert.equal(verified,0);fail=false;
-const user=await connection.verifyCode('a','123456');assert.equal(user.email,'contact@example.invalid');assert.equal(requests,0,'No automatic account link');
+const user=await connection.verifyCode('a','123456');assert.equal(user.email,'user@test.example');assert.equal(requests,0,'No automatic account link');
 fail=true;await assert.rejects(connection.link(),/conflict/);assert.equal(signedOut,0);fail=false;await connection.link();assert.equal(requestInit.headers['x-link-account'],'owner');assert.equal(signedOut,1);await assert.rejects(connection.link(),/Verify/);
 await assert.rejects(connection.oauth('google'),/not configured/);await connection.callback('pkce');await connection.cancel();await assert.rejects(connection.link(),/Verify/);
 let resolve;const slow={auth:{signInWithOtp:()=>new Promise(r=>resolve=r)}};const busy=createConnection({client:slow,config});const sending=busy.sendEmail('a');await assert.rejects(busy.sendEmail('a'),/wait/);resolve({});await sending;

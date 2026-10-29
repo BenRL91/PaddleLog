@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+import {filterHistory,createHistoryFilters} from '../public/history-filters.js';
+const events=[{type:'session',paddleIds:['a','b'],d:new Date('2026-01-01T23:00:00'),end:'2026-01-02T01:00:00',search:'Indoor practice Backup'},{type:'overgrip',paddleIds:['a'],d:new Date('2026-01-03T12:00:00'),search:'Install tennis grip'},{type:'period',paddleIds:['b'],d:new Date('2025-12-01T12:00:00'),end:'2026-01-10T23:59:59',search:'Winter usage'}];
+assert.equal(filterHistory(events,{paddle:'b',type:'session'}).length,1);
+assert.equal(filterHistory(events,{query:' TENNIS '}).length,1);
+assert.equal(filterHistory(events,{start:'2026-01-02',end:'2026-01-02'}).length,2);
+assert.equal(filterHistory(events,{start:'2026-01-03',end:'2026-01-03',type:'overgrip'}).length,1);
+assert.equal(filterHistory(events,{order:'oldest'})[0].type,'period');assert.equal(filterHistory(events)[0].type,'overgrip');
+const w=new Window(),doc=w.document;doc.body.innerHTML='<div id="timelineList"></div>';let changed=0;
+const ui=createHistoryFilters({doc,getPaddles:()=>[{id:'a',status:'active'},{id:'b',status:'archived'}],paddleName:p=>p.id,onChange:()=>changed++});
+ui.apply(events);doc.getElementById('historyPaddle').value='b';assert.equal(ui.apply(events).length,2);assert.match(doc.getElementById('historyPaddle').textContent,/Archived/);assert.equal(doc.getElementById('historyPaddle').value,'b');
+doc.getElementById('historyStart').value='2026-01-03';doc.getElementById('historyEnd').value='2026-01-01';assert.equal(ui.apply(events).length,0);assert.match(doc.getElementById('historyFilterStatus').textContent,/From date must/);ui.clear();assert.equal(changed,1);assert.equal(doc.getElementById('historyPaddle').value,'');await w.happyDOM.abort();console.log('PASS: history search, multi-paddle sessions, date overlap, sort, invalid dates, archived options and clear.');

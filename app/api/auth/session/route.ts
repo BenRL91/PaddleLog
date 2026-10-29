@@ -1,3 +1,4 @@
+import {admitBetaAccount,betaAdmissionMessage} from '@/lib/server/test-access';
 import {linkHeader} from '@/lib/server/sign-in-methods';
 import {env} from 'cloudflare:workers';
 import {cookie,refreshCookie,sameOriginMutation,sessionHeaders,refreshWebSession} from '@/lib/server/web-session';
@@ -13,6 +14,7 @@ export async function POST(req:Request){
  try{
   const {session,identity}=await refreshWebSession(token,env),a=await externalAccount(identity);
   if(!a||a.status!=='active')return Response.json({error:'Account unavailable.'},{status:409,headers:sessionHeaders()});
+  if(!await admitBetaAccount(a.id,identity.verifiedEmail))return Response.json({error:betaAdmissionMessage,code:'BETA_INVITE_REQUIRED'},{status:403,headers:sessionHeaders()});
   return Response.json({mode:'supabase',accountId:a.id},{headers:sessionHeaders(session)});
  }catch{return Response.json({error:'Session could not be renewed. Retry or sign in again; your library and drafts are safe.'},{status:503,headers:{'Cache-Control':'no-store'}});}
 }

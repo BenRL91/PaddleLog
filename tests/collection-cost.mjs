@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import {collectionCostSummary} from '../public/pro-data.js';
+import {allTimeProInsights} from '../public/pro-insights.js';
+const paddles=[{id:'a',purchase:{price:100,currency:'USD'},expenses:[{amount:10,currency:'USD'}]},{id:'b',purchase:{price:200,currency:'USD'},expenses:[{amount:20,currency:'CAD'}]},{id:'c'}];
+const sessions=[{id:'s',paddleId:'a',start:'2026-01-01T10:00:00Z',end:'2026-01-01T12:00:00Z',segments:[{paddleId:'a',start:'2026-01-01T10:00:00Z',end:'2026-01-01T11:00:00Z'},{paddleId:'b',start:'2026-01-01T11:00:00Z',end:'2026-01-01T12:00:00Z'}]}];
+const total=collectionCostSummary(paddles,sessions);assert.equal(total.hours.total,2);assert.equal(total.rows.find(r=>r.currency==='USD').total,310);assert.equal(total.rows.find(r=>r.currency==='USD').perHour,155);assert.equal(total.rows.find(r=>r.currency==='CAD').perHour,10);assert.equal(total.missingPurchases,1);assert.equal(collectionCostSummary([paddles[0],paddles[0]],sessions).hours.total,1);assert.equal(collectionCostSummary(paddles,[]).rows[0].perHour,null);assert.equal(collectionCostSummary([],[]).rows.length,0);
+const state={paddles,sessions,settings:{}};const html=allTimeProInsights(state,paddles,p=>p.id);assert.match(html,/Collection total/);assert.match(html,/By paddle/);assert.match(html,/No currency conversion/);assert.match(html,/purchase price is missing/);assert.match(allTimeProInsights(state,[paddles[0]],p=>p.id),/Selected paddle total/);
+console.log('PASS: collection cost totals, weighted hourly rate, segment hours, currencies, missing costs, no play and selected scope.');

@@ -111,7 +111,7 @@ Implemented complete displayed USAP (5,367 unique entries) and UPA-A (274 entrie
 
 ## Sync and operations follow-up — October 2, 2026
 - SYNC-02: Versioned record PATCH requests, maintenance-event deltas, optimistic revisions, refresh only on conflict, and no-op acknowledgement. Implemented; initial reads and explicit restore remain full-library transfers.
-- HEALTH-01: Fixed-code daily account counters, private Settings health display, capped event ingestion, and counter pruning on activity. Implemented; external alerts remain an operations integration.
+- OPS-HEALTH-01: Fixed-code daily account counters, private Settings health display, capped event ingestion, and counter pruning on activity. Implemented; external alerts remain an operations integration.
 - RECOVERY-02: Latest 20 + eight weeks + six months + oldest copy, cleanup after successful saves, conservative unknown-date handling, and cleanup failures isolated from saved data. Implemented.
 - LAUNCH-02: Native CORS boundary and secret-free web/iOS/Android preflight checks. Implemented but native origins remain disabled until shell/public API verification. Current hosting stays owner-only.
 - APPLE-02: Live shared Auth settings confirm email/Google enabled and Apple disabled. Apple provider, credentials, signed native build, and real purchases remain externally blocked. See PUBLIC-NATIVE-LAUNCH.md.
@@ -138,3 +138,91 @@ Supersedes older conflicting entries above. See PREPAYMENT-READINESS-2026-10-03.
 - RECOVERY-03: device backup acceptance and interrupted-upload orphan cleanup remain open.
 - LAUNCH-03: release gates explicitly track device restore, mobile QA, monitoring/recovery,
   and official approval-snapshot review; no external verification gates set by this update.
+
+
+## October 4 — screenshot intake and next development slice
+
+Source: Ben's IMG_1209(1).png. Only clearly visible entries were transcribed; the obscured top rows need a later check. Existing stable IDs are retained. The duplicate operational HEALTH-01 above is renamed OPS-HEALTH-01 so workout integration keeps HEALTH-01.
+
+| Screenshot request | Backlog ID / current state | Next step |
+| --- | --- | --- |
+| Reviewer videos | MEDIA-01, pending | Model-specific curated links and attribution; approved embeds where supported. |
+| Purchase links / discount codes | COMMERCE-01, pending | Default LeewayPB preference; reviewer, none and custom choices. Owner-supplied real URLs/codes required. |
+| Request PaddleLog Verified stats | VERIFIED-01, pending | Define service intake/destination; separate physical-unit measurements from catalog references and official certification. |
+| DUPR connection and average rating per model | DUPR-01, adapter only | Authorized provider access, opt-in and minimum sample sizes; never treat self-reported ratings as verified. |
+| Public collection / user search | COMMUNITY-01, pending | Opt-in visibility with field controls and revocation; keep private receipts and notes private. |
+| Workout app sessions | HEALTH-01, pending | Provider-specific adapters, explicit connection and duplicate-safe import. |
+| Default paddle images | CATALOG-02, pending | Authorized image assets with attribution and custom-photo precedence. |
+| Default Tuning Lab setup images | PARTNER-04, deferred | October 3 removal remains effective. No PE integration restored by this intake. |
+| X-rays | MEDIA-02, pending | Licensed, source-linked model/variant media. |
+| Slow-motion deflection / spin media | MEDIA-03, pending | Licensed media with test context; no inferred unit-level performance. |
+| Tutorials and tooltips | UX-12, new | Extend existing first-use guidance with contextual explanations for specs, wear and setup. |
+| Left/right handedness for analytics | PROFILE-02, field implemented | Optional private right/left/ambidextrous profile already saved; future aggregation requires consent. |
+| Pro comparisons of consumable wear between paddles | ANALYTICS-05, implemented | Insights now compares completed replacement hours by paddle, component and recorded product; current installations excluded from averages. Logged/estimated split, sample count and range shown. |
+| Surface wear calculations; Lee data | WEAR-04, new, priority | Identify what Lee data measures and its permissions. Define fixed-face versus replaceable-skin baseline, observation history and setup context. Hours alone must not be presented as measured spin loss, remaining lifespan or certification. |
+
+Development order: ANALYTICS-05 completed comparison slice → UX-12 contextual help → WEAR-04 surface observations and validated calculations → curated reviewer media / commerce once assets and actual links are available. Third-party feeds and public/native integrations remain dependency-driven.
+
+ANALYTICS-05 validation: cross-paddle isolation, product separation, completed/current exclusion, zero-hour installs, session edits/deletions, estimated-use residuals, UI escaping, and existing Pro gate. No persistence migration. iPhone visual acceptance remains required.
+
+
+## October 4 — contextual tutorials and surface-wear decision
+
+Owner direction supersedes the earlier development order: WEAR-04 surface-wear calculations are deferred until JohnKew wear data is available with appropriate permission and usable measurement context. Do not implement a surface-degradation model from playing hours alone. The screenshot's “Lee data” reference is clarified by the owner as JohnKew wear data.
+
+UX-12 implemented: tap-to-expand contextual guides for adding a paddle, main roles, session logging, estimates, measurements, setup, consumable replacement, Pro comparisons, and backups. All nine guides are replayable under Settings → General → Tutorials & tips. Guides beside forms use native details/summary controls, stay closed initially, and do not submit forms or alter records. Consumable and Insights dialogs reuse the same copy. Current tracking remains unchanged.
+
+Validation: tutorial placement and disclosure semantics, absence of form controls in help, existing Insights behavior, maintenance checks and production build. Physical iPhone visual acceptance remains outstanding.
+
+
+## October 4 — Main and Paddles roles
+
+Implemented the approved screen distinction. Main is everyday use: header Edit paddle, approval badges, Start/Add past session, active timer controls, all three install/replace widgets, recent-session editing, weekly logged usage, and collapsed photo/spec/setup details. Paddles is collection management: searchable cards with thumbnail, roles, approval badges and three neutral-or-wear widgets visible when collapsed; expanded cards have Edit, Use for session, role assignment and four sections (specs/setup, maintenance, history, ownership/notes). Use for session starts or switches a timer without changing Main assignments. Archived/inactive paddles retain history and past-session entry; active-session selection is limited to active paddles. Missing approval data is explicitly unverified. Surface wear remains deferred for JohnKew data.
+
+Validation: new integrated Main/collection DOM and action test covers header editing, collapsed sections, badges/wear, search, inactive handling, session selection/switching without role mutation, and hours after session removal. Production build and related maintenance/analytics checks required before publication; physical iPhone layout review remains user acceptance.
+
+
+October 4 layout refinement: Add past session uses full button styling; Main's two session actions are full-width with spacing. Approval badges now live inside Main's Photo, measurements & setup disclosure and each paddle's Specs & setup section (including its detail view). Collapsed collection cards keep consumable wear visible. This supersedes the earlier visible-approval-card layout.
+
+
+October 4 Surface widget: Skin appears only for Reload and PIKKL brands. Other paddles show an informational Surface widget instead on Main and in collection/detail widgets. Exact catalog face material is grouped into Carbon fiber, Fiberglass, Aramid fiber or Hybrid; documented HexGrit, Durable Grit and Diamond Tough names are retained. Unknown and held face materials remain Not recorded, with no brand-only material guesses. Existing skin history is preserved. Surface has no replacement button, wear stage, lifespan estimate or performance-loss calculation; JohnKew wear data remains the dependency. Current catalog material coverage is incomplete. Skin calculations on supported paddles remain existing usage reminders.
+
+- Boomstik Surface correction: source-backed Elongated/Widebody 16mm entries display InfiniGrit (Selkirk) · Durable texture; preserve T700 construction in reference specs and separate Raw Carbon variants. Manufacturer: https://www.selkirk.com/products/selkirk-labs-project-boomstik . No wear calculations added.
+
+### Catalog coverage and customer names — accepted priority
+- Always prioritize current paddles, while keeping complete coverage of all 5,536 records as the target. Historical, regional and technical variants remain included.
+- Product selector now groups presentation names, separates shape/thickness/version and keeps raw source names and IDs in expandable provenance. Generation and Raw Carbon differences remain distinct. Explicit exact-record choice prevents approval evidence from being merged.
+- Manufacturer-source surface enrichment added nine records: two Boomstik approval variants, two ERA Power variants, five original LUXX variants. Original LUXX ProSpin+ must not be relabeled InfiniGrit. Regional Boomstik page currently specifies a different thickness, so its material was not blindly copied into 16mm approval records.
+- Coverage report: data/catalog-coverage.json; regenerate with node scripts/catalog-coverage.mjs. All missing records are listed by brand and identity. 70 surface records covered; 5,466 remain. Next batches should prioritize verified current manufacturer products, then archived manufacturer pages and remaining historical models. Do not invent unavailable material or current-product status.
+- Advanced surface analysis is planned for Pro after JohnKew wear data and permitted use are available; basic material information remains free.
+
+### Catalog version audit — 2026-10-05
+Audited all 5,536 existing reference records and identified 24 families with overlapping customer variant labels. Added 17 manufacturer retail versions: Honolulu J2CR original/Crystal Blue with both 5.5 and 6 inch handles, J3CR/J6CR original/Crystal Blue, Six Zero Coral/Coral Pro in three shapes, Selkirk LUXX 19 mm InfiniGrit Epic/Invikta, and 11SIX24 Hurache-X Power 2. Updated 22 source-backed surface records across Franklin, Friday, Nox, JOOLA, Luzz, Zocker, Ramsports and 11SIX24. Manufacturer choices appear before technical registry entries. Crystal Blue, Aero-Black, GritBite and Double Diamond Tough labels are supported without wear calculations.
+
+Exact original identities and approval payloads are preserved and tested. Manufacturer retail versions have no inferred approval mapping; the badge requests exact official listing confirmation. Honolulu #101/#102 handle mapping, Sypik Triton 6 SFO/SHC and Thrive Project Fury TPB1173/TPB7311 remain unresolved. Other duplicated technical listings remain available with registry identifiers; shared names are insufficient to merge approval evidence. The full audit is data/catalog-variant-audit.json and changes/protected identities are data/catalog-gap-resolution.json. Surface coverage is 109/5,553; remaining 5,444 records are queued, not claimed complete.
+
+### Guided selector and Proton — 2026-10-05
+Added dependent shape/thickness/surface-version filters, retail-first default with technical alternatives under Advanced listings, and a confirmation card with source product photo, surface and live model-approval badges. Existing exact technical links stay visible when editing. The “I’m not sure of my version” action saves an explicitly unconfirmed model, preserving physical measurements while preventing a guessed approval result. Product photos currently cover manufacturer-sourced Honolulu retail choices and the ten current Proton variants; other models have an explicit photo-unavailable fallback.
+
+Proton and Proton Sports Inc share one presentation-level brand choice; raw catalog/approval identities are unchanged. Added all ten products from Proton’s current paddle collection: Coyote 15 elongated, Flamingo and Peacock 13/15 elongated/widebody, and Roadrunner 15. The 28 legacy technical records remain available. Series One/Type A/Type B/V2, Series Two and original Series Three still require archived manufacturer specs. Peacock manufacturer text describes roughness-enhanced surface without specifying face material, so it is not guessed as carbon or NanoTac. Snapshot and remaining work: data/proton-catalog-coverage.json.
+
+Validation: guided Honolulu/Proton HappyDOM flows, exact technical edit preservation, uncertain selection, photo/card rendering, unchanged measurements, existing catalog/surface/approval regression tests, production build. Browser preview unavailable in this environment; physical iPhone visual QA remains outstanding.
+
+### Default paddle photos — 2026-10-05
+Main, collection thumbnails, paddle details and edit previews now resolve images as uploaded photo → linked catalog photo → generic paddle illustration. Catalog photos are resolved dynamically from the existing model link; they are not copied into user photo IDs or backups. Removing an uploaded photo restores the default. Broken image requests fall back without retry loops. Targeted image-priority/identity/error tests, Main/collection regressions and production build passed. Browser/iPhone visual QA remains outstanding.
+
+### Concise Honolulu labels — 2026-10-05
+Crystal Blue surface widget now reads “Crystal Blue Grit.” Owned Honolulu retail paddle titles read “J2CR · Crystal Blue” (or J3CR/J6CR/Original); the smaller subtitle carries Honolulu, thickness and handle length. Nicknames retain priority. Raw model strings, catalog IDs, approval evidence and full reference surface details remain available and unchanged. Compact-label and Main/collection/surface checks passed.
+
+### Catalog-wide concise display — 2026-10-05
+All linked catalog paddles now use customer product titles, with shape/thickness/retail handle details in the subtitle. Distinct named surface versions stay in titles where needed (Boomstik · InfiniGrit, Coral Pro · Double Diamond Tough). Known brand aliases are shortened in detail lines; CFS/CAS replace their expanded surface terms in model display. Branded surface widgets use technology names without repeating the brand and material; full source material remains in reference details/tooltips. Selected-family picker options omit the already-selected brand/product. Retail version copy removes redundant Crystal Blue/Original explanations and uses compact inch notation. Generation names and numbered shapes are retained; unknown/custom models stay as entered. Nicknames retain priority. All 5,563 catalog titles validated; guided selector, surface, catalog and stable-identity tests and production build passed. iPhone visual QA remains outstanding.
+
+### Button spacing and Pro affordances — 2026-10-05
+Action groups now have 12 px gaps; collection actions have larger touch padding and separation. Compare paddles and Insights share a spaced Pro toolbar with gold PRO pills and visible “PRO features open upgrade options on Free” copy. Accessible labels explain the action before activation. Entitlement refresh updates the hint to included-with-plan for Pro users. Existing click gates and purchase configuration are unchanged. Saving a newly activated paddle above the Free active limit is marked PRO and explained beside Save; ordinary edits remain unmarked. Marker/toolbar, paywall and Main/collection regressions and production build passed. Physical iPhone visual QA remains outstanding.
+
+### Pro value expansion proposal — 2026-10-05
+Removed redundant included-in-plan helper lines for Pro members; Free upgrade explanations and PRO badges remain.
+
+Recommended next implementation: turn Comparisons into a decision workspace with photos, focused spec groups, differences-only view, clear measured/reference provenance, missing-data handling and saved comparisons. Support owned-vs-catalog comparisons while preserving exact versions and avoiding unsubstantiated overall winner scores. Upgrade Insights with selectable date ranges, previous-period changes, usage share and an attention summary grounded in recorded installation/replacement history. Show sample sizes and avoid exact lifespan promises.
+
+Additional Pro candidates for user review: named setup experiments with before/after snapshots and session-linked observations; cost-per-playing-hour and consumable spend analysis (basic cost entry remains accessible); bag rotation and singles/doubles role analysis; personal session ratings/condition filters with sufficient-data indicators; shareable collection/setup reports; advanced surface life estimates only after JohnKew data permission and validation. These are proposals, not delivered features or paywall claims. Keep core logging, cloud sync, basic maintenance and data access useful on Free.

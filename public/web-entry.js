@@ -27,7 +27,7 @@ async function start(){
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')void refresh().catch(e=>note(e.message));});
  }
  window.PaddleLogSession={async signOut(){if(mode==='supabase'){await session('signout');channel?.postMessage('signed-out');location.replace('/leeway-account');}else location.href='/signout-with-chatgpt?return_to=%2F';}};
- await import('/app.js?v=catalog1');
+ await import('/app.js?v=notebook-brand1');
 }
 start().catch(e=>{
  if(e.status===401){location.replace('/leeway-account');return;}

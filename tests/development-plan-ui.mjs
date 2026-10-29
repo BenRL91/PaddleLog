@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {Window} from 'happy-dom';
+import {createBilling} from '../public/billing-ui.js';
+const w=new Window();w.document.write(fs.readFileSync('app/paddle.html','utf8').replace(/<script[\s\S]*?<\/script>/g,''));
+let mode='actual',owner=true,fail=false;
+const fetcher=async(url,options={})=>{if(options.method==='POST'){assert.equal(options.headers['x-leeway-session'],'1');if(fail)return {ok:false};mode=JSON.parse(options.body).mode;return {ok:true};}return {ok:true,json:async()=>({accountId:'owner',canUseDevelopment:owner,developmentMode:owner?mode:null,grants:mode==='pro'?[{key:'paddlelog_pro',startsAt:0,revokedAt:null,endsAt:null}]:[]})};};
+const ui=createBilling({document:w.document,fetcher});ui.useAccount('owner');await ui.refresh();const select=w.document.getElementById('developmentProMode');assert.ok(select);assert.equal(select.value,'actual');
+const change=async(value)=>{select.value=value;select.dispatchEvent(new w.Event('change'));for(let i=0;i<5;i++)await new Promise(r=>setTimeout(r,0));};
+await change('pro');assert.equal(ui.snapshot().pro,true);assert.match(w.document.getElementById('planStatus').textContent,/Development/);assert.equal(w.document.getElementById('purchasePro').disabled,true);
+await change('free');assert.equal(ui.snapshot().pro,false);fail=true;await change('pro');assert.equal(select.value,'free');assert.match(w.document.getElementById('developmentPlanStatus').textContent,/Could not update/);
+owner=false;await ui.refresh();assert.equal(w.document.getElementById('developmentControls').hidden,true);ui.clear();assert.equal(ui.snapshot().canUseDevelopment,false);await w.happyDOM.close();console.log('PASS: owner Development selector, effective UI plan, disabled purchases, failed-change recovery, non-owner and sign-out hiding.');

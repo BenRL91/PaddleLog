@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+import {formDraft} from '../public/workspace-drafts.js';
+const w=new Window({url:'https://test.local'}),doc=w.document;
+doc.body.innerHTML='<form id="form"><input id="paddle"><input id="record"><input id="name"></form><p id="status"></p>';
+let account='a';const install=()=>formDraft({doc,formId:'form',fields:['paddle','record','name'],getAccountId:()=>account,statusId:'status'});const first=install();
+doc.getElementById('paddle').value='p';doc.getElementById('record').value='stable-id';doc.getElementById('name').value='Recovered note';doc.getElementById('name').dispatchEvent(new w.Event('input',{bubbles:true}));doc.getElementById('form').reset();
+const reloaded=install();assert.equal(reloaded.restore(v=>v.paddle==='p'),true);assert.equal(doc.getElementById('name').value,'Recovered note');assert.equal(doc.getElementById('record').value,'stable-id');
+account='b';first.capture();assert.equal(w.localStorage.getItem('paddlelog.workspace-draft.v1:b:form'),null);assert.equal(reloaded.restore(),false);
+account='a';assert.equal(reloaded.restore(()=>false),false);assert.match(doc.getElementById('status').textContent,/no longer available/);assert.equal(reloaded.restore(),true);reloaded.clear();assert.equal(reloaded.restore(),false);
+await w.happyDOM.abort();console.log('PASS: reload recovery, stable record IDs, account isolation, stale-paddle guard and discard.');
+// Exercise real tool handlers: uncertain saves retain IDs and successful retries clear drafts.
+const {createProWorkbench}=await import('../public/pro-workbench.js');
+const uiWindow=new Window({url:'https://test.local'}),uiDoc=uiWindow.document;uiDoc.body.innerHTML='<div id="paddleList"></div>';
+const state={paddles:[{id:'p',model:'Paddle',expenses:[]}],sessions:[],settings:{proWorkspace:{comparisons:[],experiments:[]}}};let success=false,expenseIds=[],experimentIds=[];
+createProWorkbench({doc:uiDoc,getState:()=>state,getAccountId:()=> 'a',paddleName:p=>p.model,authorize:async()=>true,confirm:async()=>true,saveWorkspace:async w=>{experimentIds.push(w.experiments.at(-1).id);if(success)state.settings.proWorkspace=w;return success;},saveExpenses:async(id,rows)=>{expenseIds.push(rows.at(-1).id);if(success)state.paddles[0].expenses=rows;return success;}});
+const tick=()=>new Promise(r=>setTimeout(r,0)),submit=id=>uiDoc.getElementById(id).dispatchEvent(new uiWindow.Event('submit',{cancelable:true}));
+uiDoc.getElementById('openExpenses').click();uiDoc.getElementById('expensePaddle').value='p';uiDoc.getElementById('expenseProduct').value='Grip';uiDoc.getElementById('expenseAmount').value='3';submit('expenseForm');await tick();assert.ok(uiWindow.localStorage.getItem('paddlelog.workspace-draft.v1:a:expenseForm'));
+success=true;submit('expenseForm');await tick();assert.equal(expenseIds[0],expenseIds[1]);assert.equal(state.paddles[0].expenses.length,1);assert.equal(uiWindow.localStorage.getItem('paddlelog.workspace-draft.v1:a:expenseForm'),null);
+success=false;uiDoc.getElementById('openExperiments').click();await tick();uiDoc.getElementById('experimentPaddle').value='p';uiDoc.getElementById('experimentName').value='Weight test';submit('experimentForm');await tick();assert.ok(uiWindow.localStorage.getItem('paddlelog.workspace-draft.v1:a:experimentForm'));
+success=true;submit('experimentForm');await tick();assert.equal(experimentIds[0],experimentIds[1]);assert.equal(state.settings.proWorkspace.experiments.length,1);assert.equal(uiWindow.localStorage.getItem('paddlelog.workspace-draft.v1:a:experimentForm'),null);
+uiDoc.getElementById('closeExperiments').click();uiDoc.getElementById('openExperiments').click();await tick();const experimentId=state.settings.proWorkspace.experiments[0].id,note=uiDoc.getElementById('experiment-note-'+experimentId);note.value='Keep my observation';note.dispatchEvent(new uiWindow.Event('input',{bubbles:true}));uiDoc.getElementById('closeExperiments').click();uiDoc.getElementById('openExperiments').click();await tick();assert.equal(uiDoc.getElementById('experiment-note-'+experimentId).value,'Keep my observation');success=false;uiDoc.querySelector('[data-experiment-note]').click();await tick();assert.ok(uiWindow.localStorage.getItem('paddlelog.experiment-note.v1:a:'+experimentId));success=true;uiDoc.querySelector('[data-experiment-note]').click();await tick();assert.equal(state.settings.proWorkspace.experiments[0].notes,'Keep my observation');assert.equal(uiWindow.localStorage.getItem('paddlelog.experiment-note.v1:a:'+experimentId),null);
+await uiWindow.happyDOM.abort();console.log('PASS: expense and experiment failed-save retries reuse IDs and clear device drafts only on success.');

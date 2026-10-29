@@ -1,0 +1,20 @@
+{
+  "format": "leewaypb.session-export",
+  "schemaVersion": 1,
+  "sourceApp": "pickle-point",
+  "sourceInstanceId": "c7b6215c-9b23-4a33-9ae7-d7c5a44ee625",
+  "exportedAt": "2026-10-05T18:00:00.000Z",
+  "sessions": [
+    {
+      "id": "session-elapsed-time-only",
+      "revision": 1,
+      "updatedAt": "2026-10-05T18:00:00.000Z",
+      "status": "completed",
+      "start": "2026-10-04T23:30:00.000Z",
+      "end": "2026-10-05T01:00:00.000Z",
+      "timezone": "America/New_York",
+      "timeBasis": "session-elapsed",
+      "playIntervals": null
+    }
+  ]
+}

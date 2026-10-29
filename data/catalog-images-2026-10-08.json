@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "paddlelog.catalog-images.v1",
+  "items": [
+    {
+      "id": "plref_a614acfb39f9a7a2",
+      "expectedBrand": "Vatic Pro",
+      "expectedModel": "V-Sol Tour Flash LH 16mm",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SE_Flash_LH_4096.png?v=1789320855&width=900",
+        "originalUrl": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SE_Flash_LH_4096.png?v=1789320855",
+        "alt": "Vatic Pro V-Sol Tour Flash LH 16mm",
+        "sourceUrl": "https://vaticpro.com/products/v-sol-tour",
+        "sourceType": "manufacturer",
+        "credit": "Vatic Pro",
+        "checkedAt": "2026-10-08",
+        "productTitle": "V-Sol Tour with Evergrit (16mm) (Includes Paddle Cover)",
+        "variantTitle": "Flash Long Handle (5.6in)",
+        "selectionMethod": "Exact model/shape/handle review of manufacturer product photography",
+        "validation": {
+          "decoded": true,
+          "checkedWidth": 320
+        }
+      }
+    },
+    {
+      "id": "plref_153fc28099f065df",
+      "expectedBrand": "Vatic Pro",
+      "expectedModel": "V-Sol Tour Elongated 16mm",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SH_Elongated_4096.png?v=1789320848&width=900",
+        "originalUrl": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SH_Elongated_4096.png?v=1789320848",
+        "alt": "Vatic Pro V-Sol Tour Elongated 16mm",
+        "sourceUrl": "https://vaticpro.com/products/v-sol-tour",
+        "sourceType": "manufacturer",
+        "credit": "Vatic Pro",
+        "checkedAt": "2026-10-08",
+        "productTitle": "V-Sol Tour with Evergrit (16mm) (Includes Paddle Cover)",
+        "variantTitle": "Elongated",
+        "selectionMethod": "Exact model/shape/handle review of manufacturer product photography",
+        "validation": {
+          "decoded": true,
+          "checkedWidth": 320
+        }
+      }
+    },
+    {
+      "id": "plref_55d3e496a41cb112",
+      "expectedBrand": "Vatic Pro",
+      "expectedModel": "V-Sol Tour Bloom 16mm",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SE_Bloom_4096.png?v=1789320844&width=900",
+        "originalUrl": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/SE_Bloom_4096.png?v=1789320844",
+        "alt": "Vatic Pro V-Sol Tour Bloom 16mm",
+        "sourceUrl": "https://vaticpro.com/products/v-sol-tour",
+        "sourceType": "manufacturer",
+        "credit": "Vatic Pro",
+        "checkedAt": "2026-10-08",
+        "productTitle": "V-Sol Tour with Evergrit (16mm) (Includes Paddle Cover)",
+        "variantTitle": "Bloom",
+        "selectionMethod": "Exact model/shape/handle review of manufacturer product photography",
+        "validation": {
+          "decoded": true,
+          "checkedWidth": 320
+        }
+      }
+    },
+    {
+      "id": "plref_official_04956b119c4734d6b633",
+      "expectedBrand": "Vatic Pro",
+      "expectedModel": "V-Sol Pro Flash 16mm SH",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/prof16_front.jpg?v=1758756969&width=900",
+        "originalUrl": "https://cdn.shopify.com/s/files/1/0622/5461/2639/files/prof16_front.jpg?v=1758756969",
+        "alt": "Vatic Pro V-Sol Pro Flash 16mm SH",
+        "sourceUrl": "https://vaticpro.com/products/v-sol-pro-16mm",
+        "sourceType": "manufacturer",
+        "credit": "Vatic Pro",
+        "checkedAt": "2026-10-08",
+        "productTitle": "V-Sol Pro (16mm) (Includes Paddle Cover)",
+        "variantTitle": "Flash / Standard (5.3in)",
+        "selectionMethod": "Exact model/shape/handle review of manufacturer product photography",
+        "validation": {
+          "decoded": true,
+          "checkedWidth": 320
+        }
+      }
+    }
+  ]
+}

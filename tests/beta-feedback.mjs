@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {Window} from 'happy-dom';
+import {installSupport,releaseVersion} from '../public/support.js';
+const w=new Window(),d=w.document;d.write(fs.readFileSync('app/paddle.html','utf8').replace(/<script[\s\S]*?<\/script>/g,''));d.body.dataset.page='paddles';installSupport(d);
+const $=id=>d.getElementById(id);$('openFeedback').click();assert.equal($('feedbackScreen').value,'Paddles');$('feedbackMessage').value='The menu won’t open';$('feedbackSteps').value='Open paddle, tap menu';$('feedbackSteps').dispatchEvent(new w.Event('input'));const body=decodeURIComponent($('sendFeedback').href.split('&body=')[1]);assert.match(body,/Screen \/ feature: Paddles/);assert.match(body,/Open paddle, tap menu/);assert.ok(body.includes(releaseVersion));assert.doesNotMatch(body,/accountId|paddleId/);
+Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async()=>{throw Error('Blocked');}},configurable:true});$('copyFeedback').click();await new Promise(r=>setTimeout(r,0));assert.equal($('feedbackReport').hidden,false);assert.equal($('feedbackReport').value,body);$('closeFeedback').click();$('openFeedback').click();assert.equal($('feedbackMessage').value,'The menu won’t open');
+let copied='';Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text;}},configurable:true});$('copyFeedback').click();await new Promise(r=>setTimeout(r,0));assert.equal(copied,body);assert.match($('feedbackStatus').textContent,/copied/);await w.happyDOM.close();console.log('PASS: screen/version/steps, reviewed email draft, copy success, blocked clipboard fallback and unsent report retained.');

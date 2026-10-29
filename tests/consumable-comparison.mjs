@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {consumableComparison} from '../public/analytics.js';
+const at=day=>`2026-09-${String(day).padStart(2,'0')}T00:00:00Z`;
+const install=(id,day,product)=>({id,kind:'overgrip',action:'install',at:at(day),product});
+const a={id:'a',maintenance:[install('a1',1,'A'),install('a2',10,'B'),install('a3',20,'B')]};
+const b={id:'b',maintenance:[install('b1',1,'A'),install('b2',10,'A')]};
+const sessions=[{id:'s1',paddleId:'a',start:at(2),end:'2026-09-02T02:00:00Z'},{id:'s2',paddleId:'b',start:at(2),end:'2026-09-02T04:00:00Z'},{id:'e',paddleId:'a',start:at(1),end:at(10),estimatedHours:5}];
+const original=structuredClone({a,b,sessions});
+let rows=consumableComparison([a,b],sessions);
+assert.equal(rows.find(r=>r.paddleId==='a'&&r.product==='A').average,5);
+assert.equal(rows.find(r=>r.paddleId==='a'&&r.product==='A').estimatedAverage,3);
+assert.equal(rows.find(r=>r.paddleId==='b').average,4);
+const zero=rows.find(r=>r.paddleId==='a'&&r.product==='B');assert.equal(zero.average,0);assert.equal(zero.count,1);assert.equal(zero.current.total,0);
+rows=consumableComparison([a],sessions.filter(s=>s.id!=='e').map(s=>s.id==='s1'?{...s,end:'2026-09-02T01:00:00Z'}:s));assert.equal(rows.find(r=>r.product==='A').average,1);
+assert.equal(consumableComparison([a],[]).find(r=>r.product==='A').average,0);
+const ongoing=consumableComparison([{id:'c',maintenance:[install('c1',1,'A')]}],[])[0];assert.equal(ongoing.average,null);assert.equal(ongoing.min,null);assert.equal(ongoing.count,0);
+assert.deepEqual({a,b,sessions},original);
+console.log('PASS: consumable comparison isolates paddles/products, excludes ongoing cycles, includes zero-hour history, separates estimates, and recalculates after edits/deletion without mutations.');

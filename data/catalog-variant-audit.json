@@ -1,0 +1,1129 @@
+{
+  "checkedAt": "2026-10-05",
+  "totalRecords": 5563,
+  "ambiguousFamilies": [
+    {
+      "key": "adidas|adipower pro edt",
+      "brand": "Adidas",
+      "product": "adiPower Pro EDT",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_a1971e9519fa6407",
+          "model": "adiPower Pro EDT",
+          "modelNumber": "AP1CA1",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_294431ec9c9890be",
+          "model": "AdiPower Pro Edt",
+          "modelNumber": "AP1CA0",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_717e2666aee0a95f5433",
+          "model": "AdiPower Pro Edt 14mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11661/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "arronax|kvl005",
+      "brand": "ARRONAX",
+      "product": "KVL005",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_5be09b3069281630",
+          "model": "KVL005",
+          "modelNumber": "005B",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_ed97a33b32073468",
+          "model": "KVL005 14mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_b63af49484a30ff9",
+          "model": "KVL005 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "franklin sports|c45 aurelius",
+      "brand": "Franklin Sports",
+      "product": "C45 Aurelius",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_189985d71e904e66",
+          "model": "C45 Aurelius",
+          "modelNumber": "C45ALW127",
+          "version": "Traditional · 12.7 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        },
+        {
+          "id": "plref_e8c474fc4c6af229",
+          "model": "C45 Aurelius",
+          "modelNumber": "C45ALW14",
+          "version": "Traditional · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        },
+        {
+          "id": "plref_95b6ee189c848331",
+          "model": "C45 Aurelius",
+          "modelNumber": "C45ALW16",
+          "version": "Traditional · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        },
+        {
+          "id": "plref_official_5e96b531f753ea5b1454",
+          "model": "C45 Aurelius 12.7MM",
+          "modelNumber": "",
+          "version": "Traditional · 12.7 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12802/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        },
+        {
+          "id": "plref_official_3eacf555bd06aa7f7900",
+          "model": "C45 Aurelius 14MM",
+          "modelNumber": "",
+          "version": "Traditional · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12758/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        },
+        {
+          "id": "plref_official_b33144b61736e6dd6c0d",
+          "model": "C45 Aurelius 16MM",
+          "modelNumber": "",
+          "version": "Traditional · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12759/",
+            "https://franklinsports.com/anna-leigh-waters-c45-paddle-series"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "franklin sports|c45 dynasty",
+      "brand": "Franklin Sports",
+      "product": "C45 Dynasty",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_official_0c267df2dc86092f8143",
+          "model": "C45 Dynasty 14MM",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11031/"
+          ]
+        },
+        {
+          "id": "plref_5306c59a9193b181",
+          "model": "C45 Dynasty 14MM",
+          "modelNumber": "59231",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_c1aa0e5d54fc489c",
+          "model": "C45 Dynasty 14MM",
+          "modelNumber": "59231C1",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_8783c5bbd9e236ef",
+          "model": "C45 Dynasty 14MM",
+          "modelNumber": "59251",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_official_339e7ef5cabe192f3356",
+          "model": "C45 Dynasty 16MM",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11032/"
+          ]
+        },
+        {
+          "id": "plref_200c93b5d8c8d643",
+          "model": "C45 Dynasty 16MM",
+          "modelNumber": "59232",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_4df13dde42d54987",
+          "model": "C45 Dynasty 16MM",
+          "modelNumber": "59232C1",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_7f74a25da40d3f76",
+          "model": "C45 Dynasty 16MM",
+          "modelNumber": "59252",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "franklin sports|c45 parris todd signature",
+      "brand": "Franklin Sports",
+      "product": "C45 Parris Todd Signature",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_07c12a1bfac7b9fe",
+          "model": "C45 Parris Todd Signature",
+          "modelNumber": "59246",
+          "version": "Elongated · 13.25 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://franklinsports.com/parris-todd-c45-series"
+          ]
+        },
+        {
+          "id": "plref_e54ca522c3463333",
+          "model": "C45 Parris Todd Signature",
+          "modelNumber": "59246C1",
+          "version": "Elongated · 13.25 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://franklinsports.com/parris-todd-c45-series"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "friday|friday fever 102e",
+      "brand": "Friday",
+      "product": "Friday Fever 102E",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_540b84095f03e133",
+          "model": "Friday Fever 102E",
+          "modelNumber": "FL102E",
+          "version": "Elongated · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://fridaypickle.com/products/fever-102-elongated"
+          ]
+        },
+        {
+          "id": "plref_354229b758875566",
+          "model": "Friday Fever 102E",
+          "modelNumber": "FL102E10",
+          "version": "Elongated · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://fridaypickle.com/products/fever-102-elongated"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "honolulu pickleball company|j2cr",
+      "brand": "Honolulu Pickleball Company",
+      "product": "J2CR",
+      "customerVersions": 4,
+      "records": [
+        {
+          "id": "plref_mfr_0013dbb1fb7d8b7f",
+          "model": "J2CR — Crystal Blue (Blue Grit) · 5.5 in handle — AeroHybridPlus 16mm",
+          "modelNumber": "",
+          "version": "Hybrid · 16 mm · Crystal Blue · 5.5″ handle",
+          "sourceUrls": [
+            "https://808pickle.com/products/j2cr-crystal-blue-endurance-surface%E2%84%A2-pre-order"
+          ]
+        },
+        {
+          "id": "plref_mfr_f754d7b7e53075d3",
+          "model": "J2CR — Crystal Blue (Blue Grit) · 6 in handle — AeroHybridPlus 16mm",
+          "modelNumber": "",
+          "version": "Hybrid · 16 mm · Crystal Blue · 6″ handle",
+          "sourceUrls": [
+            "https://808pickle.com/products/j2cr-crystal-blue-endurance-surface%E2%84%A2-pre-order"
+          ]
+        },
+        {
+          "id": "plref_mfr_69bf5ae2a93712cd",
+          "model": "J2CR — Original (not Crystal Blue) · 5.5 in handle — AeroHybridPlus 16mm",
+          "modelNumber": "",
+          "version": "Hybrid · 16 mm · Original · 5.5″ handle",
+          "sourceUrls": [
+            "https://808pickle.com/products/j6cr-pre-order-copy"
+          ]
+        },
+        {
+          "id": "plref_mfr_a21649a89ad792ef",
+          "model": "J2CR — Original (not Crystal Blue) · 6 in handle — AeroHybridPlus 16mm",
+          "modelNumber": "",
+          "version": "Hybrid · 16 mm · Original · 6″ handle",
+          "sourceUrls": [
+            "https://808pickle.com/products/j6cr-pre-order-copy"
+          ]
+        },
+        {
+          "id": "plref_official_552c0722940b9de9d706",
+          "model": "J2CR",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12606/"
+          ]
+        },
+        {
+          "id": "plref_b80f6f5452ebdd9f",
+          "model": "J2CR",
+          "modelNumber": "101",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_2a8a59469119a706",
+          "model": "J2CR",
+          "modelNumber": "102",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        }
+      ],
+      "status": "Customer versions available; exact technical mappings retained separately"
+    },
+    {
+      "key": "joola|magnus iv",
+      "brand": "JOOLA",
+      "product": "Magnus IV",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_453bc447759a6ad6",
+          "model": "Magnus IV 14mm",
+          "modelNumber": "M14G4D",
+          "version": "Elongated · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://equipment.usapickleball.org/view/paddle-list/",
+            "https://joola.com/products/joola-magnus-iv-14mm-pickleball-paddle"
+          ]
+        },
+        {
+          "id": "plref_official_e4a7ee9713471705d758",
+          "model": "Magnus IV 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10595/"
+          ]
+        },
+        {
+          "id": "plref_7f50aa7780d1b6f2",
+          "model": "Magnus IV 16mm",
+          "modelNumber": "M16G3D",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_fa0fe5e82d1c3cf0",
+          "model": "Magnus IV 16mm",
+          "modelNumber": "M16G4D",
+          "version": "Elongated · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://joola.com/collections/pro-iv/products/joola-magnus-iv-16mm-pickleball-paddle"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "joola|perseus power fx",
+      "brand": "JOOLA",
+      "product": "Perseus Power FX",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_e39e302b8a2a1f7e",
+          "model": "Perseus Power FX",
+          "modelNumber": "P16G3FD",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_621854ed3a111359",
+          "model": "Perseus POWER FX 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "joola|radius pro v",
+      "brand": "JOOLA",
+      "product": "Radius Pro V",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_aaaf3bac3e7efb5a",
+          "model": "Radius Pro V",
+          "modelNumber": "R16G5D",
+          "version": "Radius · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://joola.com/products/joola-radius-pro-v-pickleball-paddle"
+          ]
+        },
+        {
+          "id": "plref_official_c7b01d114b00619fe490",
+          "model": "Radius Pro V 16mm",
+          "modelNumber": "",
+          "version": "Radius · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/13033/",
+            "https://joola.com/products/joola-radius-pro-v-pickleball-paddle"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "kamito|alpha-x",
+      "brand": "Kamito",
+      "product": "Alpha-X",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_e5144bf0a469a8b8",
+          "model": "Alpha-X",
+          "modelNumber": "KMG31426",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_963205d3832b3d5a",
+          "model": "Alpha-X",
+          "modelNumber": "KMG31626",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_d34d27e737da3a048b53",
+          "model": "Alpha-X 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/13045/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "kamito|dominus",
+      "brand": "Kamito",
+      "product": "Dominus",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_1c8712f8ce1aab9a",
+          "model": "Dominus",
+          "modelNumber": "KMG21425",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_acbf2c5fa9d1eca7",
+          "model": "Dominus",
+          "modelNumber": "KMG21625",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_7ebe3e581da1a46e0078",
+          "model": "Dominus 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/13067/"
+          ]
+        },
+        {
+          "id": "plref_fb370e0c96f34358",
+          "model": "Dominus Widebody",
+          "modelNumber": "KMWG21425",
+          "version": "Widebody · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_2ae2db71639a4bf2",
+          "model": "Dominus Widebody",
+          "modelNumber": "KMWG21625",
+          "version": "Widebody · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "luzz|cannon2 m1",
+      "brand": "Luzz",
+      "product": "Cannon2 M1",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_f496644a3d1c787b",
+          "model": "Cannon2 M1",
+          "modelNumber": "CANNON2 M1",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_aa0009c0e7a9d10b4bad",
+          "model": "CANNON2 M1 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12675/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "luzz|inferno2 m1",
+      "brand": "Luzz",
+      "product": "Inferno2 M1",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_1dd1262f6fdb1066",
+          "model": "Inferno2 M1",
+          "modelNumber": "INFERNO2 M1",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_78b8721368bd58e5",
+          "model": "Inferno2 M1 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "nox|x-foam nexo",
+      "brand": "NOX",
+      "product": "X-FOAM NEXO",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_109271a996cd34df",
+          "model": "X-FOAM NEXO",
+          "modelNumber": "XFNPC0314",
+          "version": "Hybrid · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-nexo-14mm"
+          ]
+        },
+        {
+          "id": "plref_official_0b82b7557ea094e31470",
+          "model": "X-FOAM NEXO 14MM",
+          "modelNumber": "",
+          "version": "Hybrid · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12072/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-nexo-14mm"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "nox|x-foam tempus",
+      "brand": "NOX",
+      "product": "X-FOAM TEMPUS",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_43d352bfb3e529bb",
+          "model": "X-FOAM TEMPUS",
+          "modelNumber": "XFNPC0114",
+          "version": "Square · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-tempus-16mm"
+          ]
+        },
+        {
+          "id": "plref_db8077fac7c1d5bd",
+          "model": "X-FOAM TEMPUS",
+          "modelNumber": "XFNPC0216",
+          "version": "Square · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-tempus-16mm"
+          ]
+        },
+        {
+          "id": "plref_official_b01b761f252ec99c4024",
+          "model": "X-FOAM TEMPUS 14MM",
+          "modelNumber": "",
+          "version": "Square · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12073/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-tempus-16mm"
+          ]
+        },
+        {
+          "id": "plref_official_f2f0fb1e7d6690b81b69",
+          "model": "X-FOAM TEMPUS 16mm",
+          "modelNumber": "",
+          "version": "Square · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12145/",
+            "https://noxsport.com/en/products/pala-pickleball-x-foam-tempus-16mm"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "proton sports inc|project flamingo",
+      "brand": "Proton Sports Inc",
+      "product": "Project Flamingo",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_46a8947d6bce8a1a",
+          "model": "Series Three – Project Flamingo",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        },
+        {
+          "id": "plref_official_f35c50f096eb44cead74",
+          "model": "Series Three Project Flamingo - S3FE13",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12266/"
+          ]
+        },
+        {
+          "id": "plref_official_2e689c85e33c367dad43",
+          "model": "Series Three Project Flamingo - S3FE15",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10722/"
+          ]
+        },
+        {
+          "id": "plref_official_eaf1e385a4bf9e511e7c",
+          "model": "Series Three Project Flamingo - S3FS13",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12270/"
+          ]
+        },
+        {
+          "id": "plref_official_c65c101026daa766ac83",
+          "model": "Series Three Project Flamingo- S3FS15",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12281/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "proton sports inc|project peacock",
+      "brand": "Proton Sports Inc",
+      "product": "Project Peacock",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_official_1af5cb2a36b973a8adca",
+          "model": "Series Three Project Peacock - S3PE13",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12267/"
+          ]
+        },
+        {
+          "id": "plref_official_8a1149ea0907b0524a28",
+          "model": "Series Three Project Peacock - S3PS13",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12268/"
+          ]
+        },
+        {
+          "id": "plref_official_a51d2bd3b2ce341d2331",
+          "model": "Series Three Project Peacock - S3PS15",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12265/"
+          ]
+        },
+        {
+          "id": "plref_official_dcfa9c7fdddf3b9a5d68",
+          "model": "Series Three Project Peacock- S3PE15",
+          "modelNumber": "",
+          "version": "Shape not listed · Thickness not listed · Version unconfirmed",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/12279/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "ramsports|ignis",
+      "brand": "Ramsports",
+      "product": "Ignis",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_ad05f9b8c6a4e150",
+          "model": "Ignis",
+          "modelNumber": "IGN142E",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://ramsports.com/products/ignis-pro"
+          ]
+        },
+        {
+          "id": "plref_official_704c8982f3cadd1e75ff",
+          "model": "Ignis 14mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10998/"
+          ]
+        },
+        {
+          "id": "plref_official_764d13723d8c0d639420",
+          "model": "IGNIS 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10660/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "ramsports|infinite",
+      "brand": "Ramsports",
+      "product": "Infinite",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_402074a2861528ac",
+          "model": "Infinite",
+          "modelNumber": "INF143E",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_983731d7e2251281ade0",
+          "model": "Infinite 14mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10997/"
+          ]
+        },
+        {
+          "id": "plref_official_f6c539d405506ddb87aa",
+          "model": "Infinite 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10996/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "ramsports|typhoon",
+      "brand": "Ramsports",
+      "product": "Typhoon",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_b58db49704d2d74a",
+          "model": "Typhoon",
+          "modelNumber": "TYE14CS",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_8f02ab47ca96fec01d34",
+          "model": "Typhoon 14mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11926/"
+          ]
+        },
+        {
+          "id": "plref_official_23f19bd7b545f38f466f",
+          "model": "Typhoon 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/13135/"
+          ]
+        },
+        {
+          "id": "plref_ed25aa72aa4e52eb",
+          "model": "Typhoon Widebody 14mm",
+          "modelNumber": "",
+          "version": "Widebody · 14 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "selkirk sport|boomstik",
+      "brand": "Selkirk Sport",
+      "product": "Boomstik",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_564f2dca70430e2c",
+          "model": "Project Boomstik Elongated (No MOI Clamps Allowed)",
+          "modelNumber": "872278257",
+          "version": "Elongated · 16 mm · InfiniGrit",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://www.selkirk.com/products/selkirk-labs-project-boomstik"
+          ]
+        },
+        {
+          "id": "plref_3940c1f3a6869438",
+          "model": "Project Boomstik Elongated 16mm",
+          "modelNumber": "",
+          "version": "Elongated · 16 mm · InfiniGrit",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/",
+            "https://www.selkirk.com/products/selkirk-labs-project-boomstik"
+          ]
+        },
+        {
+          "id": "plref_official_3d370f8e7eae160b4c99",
+          "model": "Project Boomstik Epic 13mm",
+          "modelNumber": "",
+          "version": "Epic · 13 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10274/"
+          ]
+        },
+        {
+          "id": "plref_official_5f78334d6aa00f3b5927",
+          "model": "Project Boomstik Epic 16mm",
+          "modelNumber": "",
+          "version": "Epic · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10275/"
+          ]
+        },
+        {
+          "id": "plref_official_59775c1851adb82c0b04",
+          "model": "Project Boomstik Invikta 13mm",
+          "modelNumber": "",
+          "version": "Invikta · 13 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/9990/"
+          ]
+        },
+        {
+          "id": "plref_official_bb494214c8a057137b40",
+          "model": "Project Boomstik Invikta 16mm",
+          "modelNumber": "",
+          "version": "Invikta · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/9991/"
+          ]
+        },
+        {
+          "id": "plref_d769d31525e308d6",
+          "model": "Project Boomstik Widebody (No MOI Clamps Allowed)",
+          "modelNumber": "87278257",
+          "version": "Widebody · 16 mm · InfiniGrit",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://www.selkirk.com/products/selkirk-labs-project-boomstik"
+          ]
+        },
+        {
+          "id": "plref_cdc4e21142224c64",
+          "model": "Project Boomstik Widebody 16mm",
+          "modelNumber": "",
+          "version": "Widebody · 16 mm · InfiniGrit",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/view/paddle-list/",
+            "https://www.selkirk.com/products/selkirk-labs-project-boomstik"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "selkirk sport|boomstik raw carbon",
+      "brand": "Selkirk Sport",
+      "product": "Boomstik Raw Carbon",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_2be7e50d9532e0cc",
+          "model": "Project Boomstik Elongated Raw Carbon (No MOI Clamps Allowed)",
+          "modelNumber": "7292272663",
+          "version": "Elongated · 16 mm · Raw Carbon",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_df839075a0144a05afc5",
+          "model": "Project Boomstik Elongated Raw Carbon 16mm",
+          "modelNumber": "",
+          "version": "Elongated · 16 mm · Raw Carbon",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11934/"
+          ]
+        },
+        {
+          "id": "plref_71a78611797a289f",
+          "model": "Project Boomstik Widebody Raw Carbon (No MOI Clamps Allowed)",
+          "modelNumber": "7292272669",
+          "version": "Widebody · 16 mm · Raw Carbon",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_official_e4ac55a8047b8d61e983",
+          "model": "Project Boomstik Widebody Raw Carbon 16mm",
+          "modelNumber": "",
+          "version": "Widebody · 16 mm · Raw Carbon",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/11935/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "sypik|triton pro ultimate 6",
+      "brand": "Sypik",
+      "product": "Triton Pro Ultimate 6",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_8b83ae1e21cbbd1c",
+          "model": "Triton Pro Ultimate 6",
+          "modelNumber": "SFO0601122026",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_ee5afe33566ec442",
+          "model": "Triton Pro Ultimate 6",
+          "modelNumber": "SHC0601122026",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "thrive|project fury",
+      "brand": "Thrive",
+      "product": "Project Fury",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_c4faddb061d1d723",
+          "model": "Project Fury",
+          "modelNumber": "TPB1173",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        },
+        {
+          "id": "plref_6bac0f7602ff1c4c",
+          "model": "Project Fury",
+          "modelNumber": "TPB7311",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    },
+    {
+      "key": "zocker|aspire",
+      "brand": "Zocker",
+      "product": "Aspire",
+      "customerVersions": 0,
+      "records": [
+        {
+          "id": "plref_b0850b990cd2b8ae",
+          "model": "Aspire",
+          "modelNumber": "ASP25",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://upaa.unitedpickleball.com/approved-paddles/",
+            "https://zocker.vn/tay-vot-so-1-chau-a-phuc-huynh-tro-thanh-dai-su-thuong-hieu-vot-pickleball-zocker-aspire.html"
+          ]
+        },
+        {
+          "id": "plref_official_40a477bbb3929956b77d",
+          "model": "Aspire 13.3mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 13.3 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10803/"
+          ]
+        },
+        {
+          "id": "plref_official_74b56ebb11756573cbf0",
+          "model": "Aspire 16mm",
+          "modelNumber": "",
+          "version": "Shape not listed · 16 mm",
+          "sourceUrls": [
+            "https://equipment.usapickleball.org/paddle-list/entry/10814/"
+          ]
+        }
+      ],
+      "status": "Exact version mapping needs primary-source verification"
+    }
+  ],
+  "missingSurfaces": 5444
+}

@@ -5,7 +5,7 @@ The existing owner-only Web app is not a public iOS authentication or webhook de
 
 ## Implemented now
 
-- `public/billing-config.js` is the one source for Free active-paddle limit (3), proposed
+- `public/billing-config.js` is the one source for Free total-paddle limit (5), proposed
   product IDs, target US prices ($1.99/month and $14.99/year), default annual plan and
   implemented premium-feature registry. Actual StoreKit products supply localized prices.
 - `public/feature-policy.js` authorizes additions/reactivations. The server checks the
@@ -19,12 +19,12 @@ The existing owner-only Web app is not a public iOS authentication or webhook de
   and account-scoped. Photo-inclusive JSON includes referenced paddle/session/legacy
   setup images, SHA-256 integrity checks, and explicit mobile-safe size limits. Restore
   maps uploaded images to new destination-account IDs before the atomic library save.
-  Records-only JSON remains supported. The active-paddle limit still applies to restores.
+  Records-only JSON remains supported. The total-paddle limit still applies to restores.
 - Comparisons, lifecycle analytics, usage statistics, measurement trends, and unlimited
   active paddles are delivered Pro capabilities. Multiple paddle photos, advanced search,
   and advanced history remain disabled. `proBenefits` drives the rendered paywall from
   enabled feature flags; backup export is not advertised as premium.
-- Contextual upgrade remains for the active-paddle limit and delivered Pro insights.
+- Contextual upgrade remains for the total-paddle limit and delivered Pro insights.
   Backups do not trigger a paywall. No startup prompt is introduced.
 - Annual is selected by default. Monthly equivalent and Best Value derive from current
   product amounts; Best Value is omitted for incompatible currencies or no annual saving.

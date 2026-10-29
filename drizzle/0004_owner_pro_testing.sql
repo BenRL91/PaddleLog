@@ -10,4 +10,4 @@ FROM leeway_accounts a
 WHERE a.id = '00000000-0000-4000-8000-000000000001' AND a.status = 'active'
 AND EXISTS (SELECT 1 FROM leeway_identities i WHERE i.account_id=a.id
 AND i.issuer='https://eclxqfmuqeavwwafbvhu.supabase.co/auth/v1'
-AND i.subject='00000000-0000-4000-8000-000000000001');
+AND i.subject='00000000-0000-4000-8000-000000000004');

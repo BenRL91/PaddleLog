@@ -31,7 +31,7 @@ export function homeSpecs(p,rows){
 }
 export function referenceComparisonMarkup(p,rows,includeSources=true){
  const specs=homeSpecs(p,rows),hasMine=specs.some(m=>m.mine!=null);
- return '<section class="paddle-spec-summary" aria-label="Paddle specifications"><h3>Your paddle specs</h3><div class="home-spec-grid">'+specs.map(m=>{
+ return '<section class="paddle-spec-summary" aria-label="Paddle specifications"><h3>Your paddle specs</h3><p class="small">Manufacturer and reference values describe the model. Your paddle values describe your own measurements; Tuning Lab values are estimates.</p><div class="home-spec-grid">'+specs.map(m=>{
  const text=m.mine!=null?fmt(m.mine):m.referenceLabel??'Not recorded',icon={below:'↓',above:'↑',within:'↔',matches:'↔'}[m.comparison],description={below:'Below manufacturer specification',above:'Above manufacturer specification',within:'Within manufacturer specification',matches:'Matches manufacturer specification'}[m.comparison];
  return '<div class="home-spec"><span>'+esc(m.label)+'</span><strong>'+esc(text)+(text==='Not recorded'?'':' <small>'+esc(m.units)+'</small>')+(icon?' <span class="spec-indicator" role="img" aria-label="'+esc(description)+'" title="'+esc(description)+': '+esc(m.referenceLabel)+' '+esc(m.units)+'">'+icon+'</span>':'')+'</strong><small>'+esc(text==='Not recorded'?'Add a measurement':m.source)+'</small>'+'</div>';
  }).join('')+'</div>'+(hasMine?'<p class="small">↑ Above · ↓ Below · ↔ Matches manufacturer specs</p>':'')+(includeSources?referenceSourcesMarkup(p,rows):'')+'</section>';

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed PaddleLog v2 scoring receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "integrationVersion",
+    "libraryVersion",
+    "results"
+  ],
+  "properties": {
+    "format": {
+      "const": "leewaypb.paddlelog-session-sync-result"
+    },
+    "integrationVersion": {
+      "const": 2
+    },
+    "libraryVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceSessionId",
+          "paddleLogSessionId",
+          "status",
+          "revision",
+          "usageRevision"
+        ],
+        "properties": {
+          "sourceSessionId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "paddleLogSessionId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "status": {
+            "enum": [
+              "created",
+              "updated",
+              "unchanged",
+              "stale"
+            ]
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "usageRevision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "localEditsPreserved": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
