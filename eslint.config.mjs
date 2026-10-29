@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "mobile/**",
   ]),
   {
     // Baseline debt imported with the sanitized v97 snapshot. Keep these rules

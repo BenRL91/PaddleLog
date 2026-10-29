@@ -1,0 +1,10 @@
+# Standalone native dependency graph; do not change the deployed web lockfile.
+packages:
+  - '.'
+minimumReleaseAge: 10080
+minimumReleaseAgeIgnoreMissingTime: false
+trustLockfile: false
+strictDepBuilds: true
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
